@@ -1,0 +1,476 @@
+<h1 class="mainHeading mb-4 customBreadcrumb">Hotel Info<span class="mandatoryInfo float-right">Indicates Mandatory Fields</span></h1>
+<div class="controlButtons float-right" *ngIf="isRead && createView">
+  <button title="Edit" type="submit" class="genericButton activeButton" (click)="GoHotelUpdate()" mat-raised-button>Edit</button>
+</div>
+<form #hotelDetailsForm="ngForm">
+  <div class="formSections pb-0 borderBottomNone pb-3 pt-1">
+    <div class="alignItemCenter">
+      <span class="mavenProMedium">Hotel Status</span>
+      <div class="form-group hotelStatus">
+        <div class="form-check form-check-inline">
+          <mat-checkbox [disabled]="isRead" name="isActive" checked="true" [(ngModel)]="hotelDetails.isActive" (change)="flagHotelDetailsAsEdited()">Active</mat-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="formSections pt-3 pb-4 borderBottomNone">
+    <h5 class="semiBold mb-5">Hotel Details</h5>
+    <div class="row customeRow">
+      <div class="form-group col-md-4 col-lg-3">
+        <mat-form-field>
+          <input [readonly]="isRead" matInput placeholder="Name" id="name" name="name" pattern=".*[^ ].*" [(ngModel)]="hotelDetails.hotelName"
+            (change)="flagHotelDetailsAsEdited()" required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4 col-lg-3">
+        <mat-form-field>
+          <mat-select [disabled]="isRead" placeholder="Chain" name="chain" [(ngModel)]="hotelDetails.hotelChainId" (change)="getHotelBrands(hotelDetails.hotelChainId); flagHotelDetailsAsEdited()">
+            <mat-option [value]="null">Select</mat-option>
+            <mat-option *ngFor=" let hotelChain of hotelChainList" [value]="hotelChain.hotelChainId">{{hotelChain.hotelChainName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4 col-lg-3">
+        <mat-form-field>
+          <mat-select [disabled]="isRead" placeholder="Brand" name="brand" [(ngModel)]="hotelDetails.hotelBrandId" (change)="flagHotelDetailsAsEdited()"
+            [required]="hotelDetails.hotelChainId != null">
+            <mat-option [value]="null">Select</mat-option>
+            <mat-option *ngFor=" let hotelBrand of hotelBrandList" [value]="hotelBrand.hotelBrandId">{{hotelBrand.hotelBrandName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group  col-md-4 col-lg-3">
+        <mat-form-field>
+          <mat-select [disabled]="isRead" placeholder="Type" name="type" [(ngModel)]="hotelDetails.hotelTypeId" (change)="flagHotelDetailsAsEdited()"
+            required>
+            <mat-option [value]="null">Select</mat-option>
+            <mat-option *ngFor="let hotelType of hotelTypeList" [value]="hotelType.hotelTypeId">{{hotelType.hotelTypeName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group  col-md-4 col-lg-3">
+          <mat-form-field>
+            <mat-select [disabled]="isRead" placeholder="Star Rating" name="starRating" [(ngModel)]="hotelDetails.starRatingId" (change)="flagHotelDetailsAsEdited()"
+              required>
+              <mat-option [value]="null">Select</mat-option>
+              <mat-option *ngFor="let starRating of starRatingList" [value]="starRating.hotelStarRatingId">{{starRating.hotelStarRatingName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group  col-md-4 col-lg-3">
+          <mat-form-field>
+            <input [readonly]="isRead" matInput placeholder="MG Points" type="number" name="mgPoints" min="1" max="99" pattern="^([1-9][0-9]?|)$"
+              [(ngModel)]="hotelDetails.mgPoint" (change)="flagHotelDetailsAsEdited()">
+          </mat-form-field>
+        </div>
+
+
+    </div>
+    <!-- Form section cosed-->
+  </div>
+  <!-- Row div cosed-->
+
+  <div class="formSections pt-5 pb-4 borderTop">
+    <div class="row customeRow">
+
+      <div class="form-group  col-md-4 col-lg-3">
+          <mat-form-field>
+            <input [readonly]="isRead" matInput placeholder="Address 1" id="address1" name="address1" maxlength="500" pattern=".*[^ ].*"
+              [(ngModel)]="hotelDetails.address1" (change)="getLatLng(hotelDetails.cityId)" required/>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group  col-md-4 col-lg-3">
+          <mat-form-field>
+            <input [readonly]="isRead" matInput placeholder="Address 2" id="address2" name="address2" maxlength="500" pattern=".*[^ ].*"
+              [(ngModel)]="hotelDetails.address2" (change)="getLatLng(hotelDetails.cityId)" />
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group  col-md-4 col-lg-3">
+          <mat-form-field>
+            <mat-select [disabled]="isRead" placeholder="Country" name="country" [(ngModel)]="hotelDetails.countryId" (change)="getCities(hotelDetails.countryId)"
+              required>
+              <mat-option [value]="null">Select</mat-option>
+              <mat-option *ngFor="let country of countriesList" [value]="country.countryId">{{country.countryName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group  col-md-4 col-lg-3">
+          <mat-form-field>
+            <mat-select [disabled]="isRead" placeholder="City" id="city" name="city" [(ngModel)]="hotelDetails.cityId" (change)="getLatLng(hotelDetails.cityId)"
+              required>
+              <mat-option [value]="null">Select</mat-option>
+              <mat-option *ngFor="let city of citiesList" [value]="city.cityId">{{city.cityName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group  col-md-4 col-lg-3">
+          <mat-form-field>
+            <input [readonly]="isRead" matInput placeholder="Zipcode" id="zipcode" name="zipcode" pattern="^[a-zA-Z0-9]*$" maxlength="7"
+              [(ngModel)]="hotelDetails.zipCode" (change)="flagHotelDetailsAsEdited()" required />
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-4 col-lg-3">
+          <div class="mapLocator">
+            <mat-form-field>
+              <input matInput placeholder="Latitude / Longitude" id="latLong" name="latLong" [(ngModel)]="latLong" required readonly />
+              <span class="input-group-addon">
+                <button class="" (click)='openMap()' [disabled]='btnLatLng'>
+                  <i _ngcontent-c24="" aria-hidden="true" class="fa fa-map-marker"></i>
+                </button>
+              </span>
+            </mat-form-field>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="formSections pb-4 pt-4">
+    <div class="row mt-3 customeRow">
+      <div class="col-md-12">
+        <mat-form-field>
+          <textarea [readonly]="isRead" matInput placeholder="Hotel Short Description" id="shortDescription" name="shortDescription"
+            rows="5" cols="200" maxlength="500" pattern=".*[^ ].*" [(ngModel)]="hotelDetails.shortDescription" (change)="flagHotelDetailsAsEdited()"
+            required></textarea>
+        </mat-form-field>
+        <p class="small text-right lightGrey">Max. 500 characters</p>
+
+      </div>
+    </div>
+    <div class="row mt-3 customeRow">
+      <div class="col-md-12">
+        <mat-form-field>
+          <textarea [readonly]="isRead" matInput placeholder="Hotel Long Description" id="longDescription" name="longDescription" rows="5"
+            cols="70" maxlength="1200" pattern=".*[^ ].*" [(ngModel)]="hotelDetails.longDescription" (change)="flagHotelDetailsAsEdited()"></textarea>
+        </mat-form-field>
+        <p class="small text-right lightGrey">Max. 1200 characters</p>
+      </div>
+    </div>
+        
+      </div>
+
+      <div class="formSections pb-0 pt-5">
+        <div class="row  mt-0 customeRow pb-4 customeRow">
+
+            <div class="col-md-4 checkInCheckoutBorderRight form-group col-lg-3">
+              <div class="row customeRow mb-4">
+                <div class="col-md-12">
+                  <h5 class="requiredLabel semiBold mb-4">Check-in</h5>
+                </div>
+              </div>
+              <div class="row customeRow">
+                <div class="col-md-12">
+                  <mat-form-field>
+                    <mat-select [disabled]="isRead" placeholder="From" id="checkinfrom" name="checkinfrom" [(ngModel)]="hotelDetails.checkInFrom"
+                      (change)="flagHotelDetailsAsEdited()" required>
+                      <mat-option [value]="null">Select</mat-option>
+                      <mat-option *ngFor="let checkinfrom of checkInCheckOut" [value]="checkinfrom.Value">{{checkinfrom.Value}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+<!--
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-select [disabled]="isRead" placeholder="To (Optional)" id="checkinto" name="checkinto" [(ngModel)]="hotelDetails.checkInTo"
+                      (change)="flagHotelDetailsAsEdited()">
+                      <mat-option [value]="null">Select</mat-option>
+                      <mat-option *ngFor="let checkinto of checkInCheckOut" [value]="checkinto.Value">{{checkinto.Value}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div> -->
+
+
+              </div>
+            </div>
+            <div class="col-md-4 form-group col-lg-3">
+              <div class="row customeRow pr-5 mb-4">
+                <div class="col-md-12">
+                  <h5 class="requiredLabel semiBold mb-4">Check-out</h5>
+                </div>
+              </div>
+              <div class="row customeRow">
+
+                <!--<div class="col-md-6">
+                  <mat-form-field>
+                    <mat-select [disabled]="isRead" placeholder="From (Optional)" id="checkoutfrom" name="checkoutfrom" [(ngModel)]="hotelDetails.checkOutFrom"
+                      (change)="flagHotelDetailsAsEdited()">
+                      <mat-option [value]="null">Select</mat-option>
+                      <mat-option *ngFor="let checkoutfrom of checkInCheckOut" [value]="checkoutfrom.Value">{{checkoutfrom.Value}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>-->
+
+                <div class="col-md-12">
+                  <mat-form-field>
+                    <mat-select [disabled]="isRead" placeholder="To" id="checkoutto" name="checkoutto" [(ngModel)]="hotelDetails.checkOutTo"
+                      (change)="flagHotelDetailsAsEdited()" required>
+                      <mat-option [value]="null">Select</mat-option>
+                      <mat-option *ngFor="let checkoutto of checkInCheckOut" [value]="checkoutto.Value">{{checkoutto.Value}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+              </div>
+            </div>
+            
+          </div>
+      </div>
+
+
+  <div class="formSections pb-0 borderBottomNone pt-5 paddingRight15px">
+    <h2 class="pb-1">Contact Details</h2>
+    <div class="row mt-4">
+      <div class="form-group col-md-12 mb-0">
+        <table class="table genericTable borderTopZero mb-0 contactTable" name="contactDetails">
+          <thead>
+            <tr>
+              <th class="border-top-0 primaryContactTh">Set as Primary</th>
+              <th class="border-top-0 contactContactTh">Contact Person</th>
+              <th class="border-top-0 titleContactTh">Designation</th>
+              <th class="border-top-0 emailContactTh">Email</th>
+              <th class="border-top-0 contactNumberContactTh">Contact Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let contact of contacts; let i = index">
+              <td class="align-middle">
+                <mat-radio-group [(ngModel)]="rowselected" [ngModelOptions]="{standalone: true}" (change)="flagContactDetailsAsEdited(i)">
+                  <mat-radio-button [disabled]="isRead" [value]="i"></mat-radio-button>
+                </mat-radio-group>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input [readonly]="isRead" matInput placeholder="" id="{{contact.contactPerson}}" name="{{contact.contactPerson}}" [(ngModel)]="contact.contactPerson"
+                    (change)="flagContactDetailsAsEdited(i)" />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <mat-select [disabled]="isRead" placeholder="" id="{{contact.designationId}}" [name]="contact.designationId + i" [(ngModel)]="contact.designationId"
+                    (change)="flagContactDetailsAsEdited(i)">
+                    <mat-option [value]="null">Select</mat-option>
+                    <mat-option *ngFor="let contactTitle of contactPersonTitleList" [value]="contactTitle.designationId">{{contactTitle.title}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input [readonly]="isRead" matInput placeholder="" id="{{contact.emailAddress}}" name="{{contact.emailAddress}}" type="email"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="contact.emailAddress" (change)="flagContactDetailsAsEdited(i)"
+                  />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input [readonly]="isRead" matInput placeholder="" id="{{contact.contactNumber}}" name="{{contact.contactNumber}}" pattern="[0-9+-]*"
+                         maxlength="18" [(ngModel)]="contact.contactNumber" (change)="flagContactDetailsAsEdited(i)" />
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td class="align-middle">
+                <mat-radio-group [(ngModel)]="rowselected" [ngModelOptions]="{standalone: true}" (change)="flagNewContactDetailsAsEdited()">
+                  <mat-radio-button [disabled]="isRead" [checked]="newContactLength==0" [value]="newContactLength"></mat-radio-button>
+                </mat-radio-group>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input [readonly]="isRead" matInput placeholder="" id="newContactName" name="newContactName" pattern=".*[^ ].*" [(ngModel)]="newContact.contactPerson"
+                    (change)="flagNewContactDetailsAsEdited()" required/>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <mat-select [disabled]="isRead" placeholder="" id="newContactTitle" name="newContactTitle" [(ngModel)]="newContact.designationId"
+                    (change)="flagNewContactDetailsAsEdited()" required>
+                    <mat-option [value]="null">Select</mat-option>
+                    <mat-option *ngFor="let contactTitle of contactPersonTitleList" [value]="contactTitle.designationId">{{contactTitle.title}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input [readonly]="isRead" matInput placeholder="" id="newContactEmail" name="newContactEmail" type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                    [(ngModel)]="newContact.emailAddress" (change)="flagNewContactDetailsAsEdited()" required/>
+                </mat-form-field>
+              </td>
+              <td class="addContact">
+                <mat-form-field>
+                  <input [readonly]="isRead" matInput placeholder="" id="newContactNo" name="newContactNo" pattern="[0-9+-]*" maxlength="18"
+                         [(ngModel)]="newContact.contactNumber" (change)="flagNewContactDetailsAsEdited()" required/>
+                </mat-form-field>
+
+                <button title="Add" type="button" class="buttonStacked" mat-raised-button [disabled]="newContact.contactPerson == null || newContact.designationId == null || newContact.emailAddress == null || newContact.contactNumber ==null || isRead"
+                (click)="addContact()"><span class="fa-stack">
+                  <i class="fa fa-circle-thin fa-stack-2x text-primary"></i>
+                  <i class="fa fa-plus fa-stack-1x fa-inverse text-primary"></i>
+                </span></button>         
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="formSections pb-4 pt-4">
+    <div class="row customeRow">
+      <div class="form-group col-md-4  col-lg-3">
+        <mat-form-field>
+          <input [readonly]="isRead" matInput placeholder="Website" id="website" name="website" pattern="(\w*\W*)?\w*(\.(\w)+)+(\W\d+)?(\/\w*(\W*\w)*)*"
+            [(ngModel)]="hotelDetails.website" (change)="flagHotelDetailsAsEdited()" />
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-4  col-lg-3">
+        <mat-form-field>
+          <input [readonly]="isRead" matInput placeholder="Email (Reservation)" name="reservationEmail" id="reservationEmail" pattern="\w+@\w+\.\w+(,\s*\w+@\w+\.\w+)*"
+            [(ngModel)]="hotelDetails.reservationEmail" (change)="flagHotelDetailsAsEdited()" />
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-4  col-lg-3">
+        <mat-form-field>
+          <input [readonly]="isRead" matInput placeholder="Telephone (Reservation)" name="reservationContactNo" id="reservationContactNo"
+                 pattern="[0-9+-]+(,\s*[0-9+-]+)*" type="tel" [(ngModel)]="hotelDetails.reservationContactNo" (change)="flagHotelDetailsAsEdited()" />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="formSections pb-1 pt-5">
+    <h2>Payment Details</h2>
+    <label for="paymentMethod" class="d-block semiBold mb-3 mt-4 pt-2">Payment Method</label>    
+    <div class="row alignItemCenter pb-4 customeRow">
+      <div class="col-md-4  col-lg-4">
+        <div class="row customeRow">
+          <div class="col-md-5" *ngFor="let paymentMethod of paymentMethodList">
+            <mat-radio-group name="payment_{{paymentMethod.name}}" [(ngModel)]="hotelPaymentMethodRelation.paymentMethodId" (change)="flagPaymentDetailsAsEdited()">
+              <mat-radio-button [disabled]="isRead" [value]="paymentMethod.id">{{paymentMethod.name}}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4  col-lg-4">
+        <mat-form-field>
+          <mat-select [disabled]="isRead" placeholder="Currency" id="currency" name="currency" [(ngModel)]="hotelPaymentMethodRelation.currencyId"
+            (change)="flagPaymentDetailsAsEdited()" required>
+            <mat-option [value]="null">Select</mat-option>
+            <mat-option *ngFor="let currency of currencyList" [value]="currency.currencyId">{{currency.currencyName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4  col-lg-4">
+        <label class="d-block mb-4" for="rateType">Rate Type</label>
+        <div class="row customeRow">
+          <div class="col-md-4" *ngFor="let rateType of rateTypeList">
+            <mat-radio-group name="rate_{{rateType.name}}" [(ngModel)]="hotelPaymentMethodRelation.rateTypeId" (change)="flagPaymentDetailsAsEdited()">
+              <mat-radio-button [disabled]="isRead" [value]="rateType.id">{{rateType.name}}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="formSections pt-5">
+    <h2>Extranet Details</h2>
+    <div class="row mt-4 pt-2 pb-2 customeRow">
+      <div class="form-group col-md-4  col-lg-4  mb-0">
+        <p for="extranetaccountaccess">Extranet Account Access</p>
+        <mat-button-toggle-group [disabled]="isRead" #group="matButtonToggleGroup" name="isExtranetAccess" [(ngModel)]="hotelDetails.isExtranetAccess"
+          (change)="flagHotelDetailsAsEdited()">
+          <mat-button-toggle [value]="true">
+            Yes
+          </mat-button-toggle>
+          <mat-button-toggle [value]="false">
+            No
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="form-group col-md-4  col-lg-4  mb-0">
+        <p for="channelmanagerconnectivity">Channel Manager Connectivity</p>
+        <mat-button-toggle-group [disabled]="isRead" #group1="matButtonToggleGroup" name="isChannelManager" [(ngModel)]="hotelDetails.isChannelManagerConnectivity"
+          (change)="isChannelManager(group1.value)">
+          <mat-button-toggle [value]="true">
+            Yes
+          </mat-button-toggle>
+          <mat-button-toggle [value]="false">
+            No
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="form-group col-md-4 mb-0">
+        <mat-form-field class="mt-4">
+          <mat-select [disabled]="disable" placeholder="Channel Manager" id="channelManager" name="channelManager" [(ngModel)]="hotelDetails.channelManagerId"
+            (change)="flagHotelDetailsAsEdited()" required>
+            <mat-option *ngFor="let channelManager of channelManagerList" [value]="channelManager.id">{{channelManager.channelManager}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="pt-5 pb-4 paddingRight15px">
+    <h2>Taxes</h2>
+    <p>
+      Rates will be considered all INCLUSIVE unless the below section is completed
+    </p>
+    <table class="table genericTable mb-4">
+      <thead>
+        <tr>
+          <th class="taxtesTypeTh">Type</th>
+          <th class="taxtesRoomTh">Per Room / Person</th>
+          <th class="taxtesAmountTh">Amount</th>
+          <th class="taxtesRatesTh">Included in Rates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let taxType of taxTypeList;  let i = index">
+          <td class="typeLabel taxesLabel">
+            <label id="taxesType">{{taxType.taxesType}}</label>
+          </td>
+          <td class="taxesLabel">
+            <mat-form-field>
+              <mat-select [disabled]="isRead" name="taxesApplicability_{{taxType.taxesType}}" [(ngModel)]="taxType.taxApplicabilityId"
+                (change)="flagTaxDetailsAsEdited(i)">
+                <mat-option *ngFor="let taxesApplicability of taxesApplicabilityList" [value]="taxesApplicability.id">{{taxesApplicability.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td class="taxesLabel taxesAmountLabel">
+            <mat-form-field>
+              <input [readonly]="isRead" matInput id="amount" name="amount_{{taxType.taxesType}}" pattern="^(\d\d?(\.\d\d?)?|100(\.00?)?)$"
+                [(ngModel)]="taxType.amount" (change)="flagTaxDetailsAsEdited(i)" [required]="!taxType.amount.length" />
+              <span class="percentageIcon">&nbsp;%</span>
+            </mat-form-field>
+          </td>
+          <td class="taxesLabel">
+            <mat-form-field>
+              <mat-select [disabled]="isRead" id="rates_{{taxType.taxesType}}" name="taxesRate_{{taxType.taxesType}}" [(ngModel)]="taxType.isIncludedInRates"
+                (change)="flagTaxDetailsAsEdited(i)">
+                <mat-option [value]="true">Yes</mat-option>
+                <mat-option [value]="false">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div class="controlButtons borderTopDark paddingTop50px pb-4 mb-1">
+    <button title="Save" type="submit" class="genericButton activeButton mat-raised-button mat-primary"  mat-raised-button (click)="saveHotelDetails()" [disabled]="!hotelDetailsForm.form.valid || isRead">Save</button>
+    <button title="Cancel" type="submit" class="genericButton defaultButton" mat-raised-button (click)="cancelHotelDetails()">Cancel</button>
+
+  </div>
+</form>

@@ -1,0 +1,93 @@
+<div class="container-fluid" style="-webkit-filter: blur(2px);
+filter: blur(2px); pointer-events: none;">
+  <form [formGroup]="individualHotelForm">
+
+    <div class="row customeRow">
+      <div class="form-group col-md-4 col-lg-3 mb-0">
+        <mat-select placeholder="Supplier" name="Supplier" required>
+          <mat-option [value]="null"> Select </mat-option>
+          <mat-option [value]="1"> select </mat-option>
+        </mat-select>
+      </div>
+      <div class="form-group col-md-4 col-lg-3 mb-0">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Search by Hotel Name/Code" formControlName="hotelNameId" [matAutocomplete]="auto">
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="row customeRow">
+      <div class="col-md-2">
+        <mat-icon class="userImage">account_circle</mat-icon>
+        <button class="deletePhoto" mat-raised-button title="Delete Image">
+          <i class="fa fa-times-thin"></i>
+        </button>
+        <div class="image-upload">
+          <label for="file-input">
+            <img src="assets/uploadPhoto.png" title="Upload Image" />
+          </label>
+          <input id="file-input" type="file" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row customeRow">
+      <div class="form-group col-md-4 col-lg-3">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="User Name" id="userName" formControlName="userName" required />
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-4 col-lg-3">
+        <mat-form-field>
+          <mat-select placeholder="Designation" formControlName="designation" required>
+            <mat-option [value]="null">Select</mat-option>
+            <mat-option *ngFor="let designation of designationList" [value]="designation.designationId">{{designation.title}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+    <div class="row customeRow">
+      <div class="form-group col-md-4 col-lg-3">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email ID" id="emailID" formControlName="email" required />
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-4 col-lg-3">
+        <mat-form-field>
+          <mat-select placeholder="Role" formControlName="role" required>
+            <mat-option [value]="null">Select</mat-option>
+            <mat-option *ngFor="let role of roleList" [value]="role.id">{{role.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row customeRow">
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+          <input matInput [matDatepicker]="activationDate" placeholder="Activation Date" formControlName="activationDate"
+                 [min]="(operation === create) ? (agentForm.get('activationDate').value || todaysDate) : minDate"
+                 required>
+          <mat-datepicker-toggle matSuffix [for]="activationDate">
+            <mat-icon matDatepickerToggleIcon>
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+            </mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #activationDate></mat-datepicker>
+
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 controlButtons mt-5 mb-4">
+        <button title="Save" type="submit" class="genericButton activeButton mat-primary mr-2" mat-raised-button>Save</button>
+        <button title="Cancel" type="submit" class="genericButton defaultButton" mat-raised-button>Cancel</button>
+      </div>
+    </div>
+  </form>
+
+</div>

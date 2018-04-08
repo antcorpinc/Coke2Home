@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-grow: 1;
+  background: #004267;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height:45px;
+}
+
+li {
+  display: inline-block;
+}
+
+nav.navbar {
+  padding: 0;
+  min-height:45px;
+}
+
+
+.navbar li a div{
+  display: none !important;
+}

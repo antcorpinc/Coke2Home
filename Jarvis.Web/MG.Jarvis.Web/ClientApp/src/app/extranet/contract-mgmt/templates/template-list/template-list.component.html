@@ -1,0 +1,98 @@
+<div class="container-fluid">
+  <div class="mt-5">
+
+    <h1 class="mainHeading">Templates</h1>
+    <div class="row mt-4 mb-5">
+      <form [formGroup]="searchTemplates" (ngSubmit)="findTemplates(searchTemplates.get('searchText').value,searchTemplates.get('startDate').value,searchTemplates.get('endDate').value)"
+        class="w-100">
+        <div class="col-md-12">
+          <div class="lightBlueContainer pb-2 pl-4 pr-4">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-2">
+                    <mat-form-field>
+                      <span class="font-weight-bold" matPrefix>From &nbsp;</span>
+                      <mat-datepicker-toggle matSuffix [for]="sdate"></mat-datepicker-toggle>
+                      <input matInput [matDatepicker]="sdate" placeholder="DD-MMM-YY" formControlName="startDate">
+                      <mat-datepicker #sdate></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-2">
+                    <mat-form-field>
+                      <span class="font-weight-bold" matPrefix>To &nbsp;</span>
+                      <input matInput [matDatepicker]="enddate" placeholder="DD-MMM-YY" formControlName="endDate" [min]="searchTemplates.get('startDate').value">
+                      <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
+                      <mat-datepicker #enddate></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input matInput placeholder="Search by Template Name, Created By, Created On" formControlName="searchText" (keydown.backspace)="checkIsInputCleared()">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-2 text-right controlButtons">
+                    <button [hidden]='isRead' class="btn activeButton" title="Search" type="submit">
+                      Search</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row mb-4">
+      <div *ngIf="createView" class="col-md-12 text-right controlButtons">
+        <button [hidden]='isRead' class="btn defaultButton" title="Create New Template" type="button" (click)="createTemplate()">
+          Create New Template</button>
+      </div>
+    </div>
+    <mat-table #table [dataSource]="!isSearch ? templatesDataSource : filteredData"
+      matSort matSortActive="updatedDate" matSortDirection="desc" class="genericTable mb-2 flexNone">
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header (click)="makeCopyFalse()"> Template Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="updatedBy">
+        <mat-header-cell *matHeaderCellDef mat-sort-header (click)="makeCopyFalse()"> Modified By </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.updatedBy}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="updatedDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header (click)="makeCopyFalse()"> Modified Date/Time </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span>{{element.updatedDate |date:'dd-MMM-yy'}}</span>
+          <span class="d-inline ml-2">{{element.updatedDate | date: "hh:mm a"}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container *ngIf="createView || deleteView" matColumnDef="actions" class="text-center">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
+        <mat-cell *matCellDef="let element"  class="placeholderColorGray">
+          <mat-select placeholder="Actions" name="Actions"  [(ngModel)]="actions">
+            <mat-option value="{{element.id}}-edit" #edit (click)="GoTemplateUpdate(edit.value)">Edit</mat-option>
+            <mat-option value="{{element.id}}-{{element.name}}-copy" #copy (click)="GoTemplateCopy(copy.value)">Copy</mat-option>
+            <mat-option value="{{element.id}}-delete" #delete (click)="GoTemplateDelete(delete.value)">Delete</mat-option>
+            <mat-option *ngIf="deleteView" value="{{element.id}}-delete">Delete</mat-option>
+          </mat-select>
+        </mat-cell>
+
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row  *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': isCopy}"></mat-row>
+    </mat-table>
+    <br><br>
+    <div style="color:orange" *ngIf="noDataAvailable">
+      No Template is created.
+    </div>
+
+    <mat-paginator *ngIf="!noDataAvailable" (click)="makeCopyFalse()" class="genericPagination" #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
+  </div>
+</div>

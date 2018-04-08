@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "MG.Jarvis.Api.BackOffice": {
+      "commandName": "Project",
+      "commandLineArgs": "--server.urls \"http://localhost:5002\"",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5002/"
+    }
+  }
+}

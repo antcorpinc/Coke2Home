@@ -1,0 +1,135 @@
+    <div class="container-fluid">
+      <div class="mt-4 pt-2 paddingLeft15px paddingRight15px">
+        <h1 class="mainHeading mb-4">Hotel Profile</h1>
+        <div class="row mb-2">
+          <div class="col-md-5 col-lg-3">
+            <div class="globalSearch">
+              <p-autoComplete class="form-control" [(ngModel)]="searchText" (onSelect)="onSelectHotel($event)" (onKeyUp)="onEveryKey()"
+                (keyup.enter)="onSearch(searchText)" [suggestions]="filteredHotels" (completeMethod)="filterHotelSingle($event)"
+                field="hotelName" [size]="40" placeholder="Search by Hotel Name, Contact Name, Location etc..." [minLength]="3"
+                emptyMessage="No Results Found">
+              </p-autoComplete>
+              <button type="submit" class="searchButton" (click)="onSearch(searchText)">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-12 text-right controlButtons">
+            <button title="Search" class="btn defaultButton genericButton genericSmallButton mat-raised-button" *ngIf='createView' title="Create New Hotel Profile" type="submit" (click)="createHotel()">
+              <i class="fa fa-plus mr-2" aria-hidden="true"></i>Create New Hotel Profile</button>
+          </div>
+        </div>
+
+
+        <table class="table mb-4 profileList genericTable">
+          <thead>
+            <tr class="title-Bar">
+              <th (click)="sort('hotelCode')" class="hotelCodeTh">
+                Hotel Code
+                <i class="fa" [ngClass]="{'fa-sort': column != 'hotelCode',
+                              'fa-sort-desc': (column == 'hotelCode' && !isDesc),
+                              'fa-sort-asc': (column == 'hotelCode' && isDesc) }" aria-hidden="true"></i>
+              </th>
+              <th (click)="sort('hotelName')" class="hotelNameTh">
+                Hotel Name
+                <i class="fa" [ngClass]="{'fa-sort': column != 'hotelName',
+                          'fa-sort-desc': (column == 'hotelName' && !isDesc),
+                          'fa-sort-asc': (column == 'hotelName' && isDesc) }" aria-hidden="true"></i>
+              </th>
+              <th (click)="sort('contactPerson')" class="contactPersonTh">
+                Contact Person
+                <i class="fa" [ngClass]="{'fa-sort': column != 'contactPerson',
+                          'fa-sort-desc': (column == 'contactPerson' && !isDesc),
+                          'fa-sort-asc': (column == 'contactPerson' && isDesc) }" aria-hidden="true"></i>
+              </th>
+              <th (click)="sort('contactNumber')" class="contactNumberTh">
+                Contact Number
+                <i class="fa" [ngClass]="{'fa-sort': column != 'contactNumber',
+                          'fa-sort-desc': (column == 'contactNumber' && !isDesc),
+                          'fa-sort-asc': (column == 'contactNumber' && isDesc) }" aria-hidden="true"></i>
+              </th>
+              <th (click)="sort('email')" class="EmailTh">
+                Email
+                <i class="fa" [ngClass]="{'fa-sort': column != 'email',
+                          'fa-sort-desc': (column == 'email' && !isDesc),
+                          'fa-sort-asc': (column == 'email' && isDesc) }" aria-hidden="true"></i>
+              </th>
+              <th (click)="sort('location')" class="LocationTh">
+                Location
+                <i class="fa" [ngClass]="{'fa-sort': column != 'location',
+                          'fa-sort-desc': (column == 'location' && !isDesc),
+                          'fa-sort-asc': (column == 'location' && isDesc) }" aria-hidden="true"></i>
+              </th>
+              <th (click)="sort('isActive')" class="StatusTh">
+                Status
+                <i class="fa" [ngClass]="{'fa-sort': column != 'isActive',
+                          'fa-sort-desc': (column == 'isActive' && !isDesc),
+                          'fa-sort-asc': (column == 'isActive' && isDesc) }" aria-hidden="true"></i>
+              </th>
+              <th class="ActionTh" *ngIf='createView || deleteView'></th>
+            </tr>
+            <tr class="white-space"></tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let hotel of hotelList | filter: searchText: searchParameter: selectedHotel | paginate: { itemsPerPage: pagesize, currentPage: currentpage}">
+              <tr class="backgroundNone">
+                <td class="hotelTitle" colspan="8" (click)="hotel.isExpanded = !hotel.isExpanded">
+                  <div class="ml-1 transparent-circle">
+                    <i class="fa" [ngClass]="{'fa-plus':hotel.isExpanded === false ,
+                                              'fa-minus': hotel.isExpanded === true  }" aria-hidden="true"></i>
+                  </div>
+                  {{hotel.hotelBrandName}}
+                </td>
+              </tr>
+              <ng-container *ngFor="let hotelData of hotel.hotels | orderBy: {property:column,direction: direction}">
+                <tr *ngIf="hotel.isExpanded === true" class="hotelDetails">
+                  <td>{{hotelData.hotelCode}}</td>
+                  <td>
+                    <a [routerLink]="['/hotelmgmt/hotel', hotelData.hotelId, read, 'profilecompl']">{{hotelData.hotelName | titlecase}}</a>
+                  </td>
+                  <td>{{hotelData.contactPerson | titlecase}}</td>
+                  <td>{{hotelData.contactNumber}}</td>
+                  <td>{{hotelData.email}}</td>
+                  <td>{{hotelData.location | titlecase}}</td>
+                  <td *ngIf="hotelData.isActive == true">
+                    <i class="fa fa-circle active_status" aria-hidden="true" id="active_status"></i>Active</td>
+                  <td *ngIf="!hotelData.isActive">
+                    <i class="fa fa-circle inactive_status" aria-hidden="true" id="inactive_status"></i>InActive</td>
+                  <td class="text-center placeholderColorGray" *ngIf='createView || deleteView'>
+                    <mat-select placeholder="Actions" name="Actions" [(ngModel)]="actions">
+                      <mat-option value="{{hotelData.hotelId}}-edit" #edit (click)="GoHotelUpdate(edit.value)">Edit</mat-option>
+                      <mat-option value="{{hotelData.hotelId}}-delete" #delete (click)="GoHotelDelete(delete.value)">Delete</mat-option>
+                    </mat-select>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+        <div style="color:orange" *ngIf="noDataAvailable">
+            No Hotel is created.
+          </div>
+        <div *ngIf="!noDataAvailable" class="row PaginationControls pl-5 ml-4">
+          <div class="col-md-10">
+            <div class="hotelPagination">
+              <pagination-controls (pageChange)="currentpage = $event" boundaryLinks=true directionLinks=true autoHide="true">
+              </pagination-controls>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="page-size">
+              <mat-select placeholder="Show" class="form-group" (select)="onPageChange($event)" [(ngModel)]="pagesize">
+                <mat-option [value]="2">2</mat-option>
+                <mat-option [value]="5">5</mat-option>
+                <mat-option [value]="10">10</mat-option>
+                <mat-option [value]="25">25</mat-option>
+                <mat-option [value]="50">50</mat-option>
+              </mat-select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

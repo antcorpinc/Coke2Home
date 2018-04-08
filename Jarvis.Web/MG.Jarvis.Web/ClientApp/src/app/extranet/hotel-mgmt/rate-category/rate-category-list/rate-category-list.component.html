@@ -1,0 +1,70 @@
+<div class="innerPageWrapper">
+<h1 class="mainHeading mb-4">
+  Rate Category</h1>
+<div class="row mb-3 pt-2">
+  <div class="col-md-12 text-right controlButtons">
+         <button [hidden]='isRead' [disabled]="isButtonEnabledVal" title="Create New Rate Category"  type="button" class="btn defaultButton genericButton genericSmallButton mat-raised-button" mat-raised-button (click)="createRateCategory()"><i _ngcontent-c20="" aria-hidden="true" class="fa fa-plus mr-2"></i>Create New Rate Category</button>         
+  </div>
+</div>
+
+<mat-table #rateCategoryTable [dataSource]="dataSource" matSort matSortActive="rateCategoryName" matSortDirection="asc" class="genericTable mb-4 flexNone pt-1">
+
+  <ng-container matColumnDef="rateCategoryName">
+    <mat-header-cell class="rateCategoryTh ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Rate Category Name </mat-header-cell>
+    <mat-cell  class="rateCategoryTh " *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="roomName">
+    <mat-header-cell class="text-center roomNameTh ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Room Name </mat-header-cell>
+    <mat-cell class="text-center roomNameTh" *matCellDef="let element"> {{element.roomTypeName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cancellationPolicy">
+    <mat-header-cell class="text-center cancellationPolicyTh ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Cancellation Policy </mat-header-cell>
+    <mat-cell class="text-center cancellationPolicyTh" *matCellDef="let element">{{element.cancellationPolicyName}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="mealPlan">
+    <mat-header-cell class="text-center mealPlanTh ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Meal Plan </mat-header-cell>
+    <mat-cell class="text-center mealPlanTh" *matCellDef="let element"> {{element.mealPlanName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="market">
+    <mat-header-cell class="text-center marketTh ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Market(s) </mat-header-cell>
+    <mat-cell class="text-center marketTh" *matCellDef="let element"> {{element.markets}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="isActive">
+    <mat-header-cell class="rateStatusTh ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+    <mat-cell class="rateStatusTh" *matCellDef="let element">
+      <ng-container *ngIf="element.isActive == true">
+        <i class="fa fa-circle active_status" aria-hidden="true"></i>Active</ng-container>
+      <ng-container *ngIf="!element.isActive">
+        <i class="fa fa-circle inactive_status" aria-hidden="true"></i>InActive</ng-container>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions" class="text-center">
+    <mat-header-cell class="rateActionTh noOutlineOnFocus" [hidden]='isRead' *matHeaderCellDef mat-sort-header> </mat-header-cell>
+    <mat-cell class="rateActionTh placeholderColorGray" [hidden]='isRead' *matCellDef="let element">
+      <mat-select placeholder="Actions" name="Actions" [(ngModel)]="actions">
+        <mat-option value="{{element.id}}-edit" #edit (click)="GoRateUpdate(edit.value)">Edit</mat-option>
+        <mat-option value="{{element.id}}-delete" #delete (click)="GoRateDelete(delete.value)">Delete</mat-option>
+      </mat-select>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+  <div style="color:orange" *ngIf="isButtonEnabledVal">
+    Room type or cancellation policy is not created for this property, Create Room type and cancellation policy first.
+  </div>
+  <br>
+  <div style="color:orange" *ngIf="noDataAvailable">
+    No Rate Category is created.
+  </div>
+  <mat-paginator *ngIf="!noDataAvailable" #paginator class="genericPagination" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+
+</div>

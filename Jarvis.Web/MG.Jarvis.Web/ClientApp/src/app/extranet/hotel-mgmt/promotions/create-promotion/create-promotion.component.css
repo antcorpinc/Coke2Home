@@ -1,0 +1,26 @@
+.sectionNote{
+	color: #a5a5a5;
+	font-size: 0.8125rem;
+}
+
+.genericChip{
+	text-align: center;
+	border: 1px solid #5f8ed2;
+	background-color: #fff;
+}
+
+.genericChip:hover{
+	-webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+	transition: 0.6s ease;
+	box-sizing: border-box;
+	box-shadow: 0px 0px 9.62px 3.38px rgba(65, 104, 161, 0.6) !important;
+}
+
+.genericChip.mat-chip:not(.mat-basic-chip){
+    border-radius: 0;
+    display: block;
+    padding: 25px 0px;
+	cursor: pointer;
+}

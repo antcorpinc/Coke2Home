@@ -1,0 +1,232 @@
+<div class="container-fluid pl-0">
+  <form [formGroup]="roomForm" (ngSubmit)="saveRoom()" >
+    <div class="row">
+      <!--<div class="col-md-12 infoMsg">
+    <i class="fa fa-asterisk" aria-hidden="true"></i>Indicates Mandatory Field
+    </div>-->
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+          <div class="customBreadcrumb mb-4"><span>Room Type </span><span>&gt; Create New Room</span></div>
+        <h1 class="mainHeading mb-4 customBreadcrumb">Create New Room Type <span class="mandatoryInfo float-right">Indicates Mandatory Fields</span></h1>
+      </div>
+    </div>
+    <div class="row customeRow">
+      <div class="col-md-12 pt-1 pb-3">
+          <div class="alignItemCenter">
+              <span>Room Status</span>
+              <div class="form-group hotelStatus d-inline-block">
+                <div class="form-check form-check-inline">
+                  <mat-checkbox formControlName="isActive" (change)="flagRoomTypeAsEdited()">Active</mat-checkbox>
+                </div>
+              </div>
+            </div>
+        <h6 class="h6 mb-2 mt-4 darkGreyText">Please select that applies</h6>
+      </div>
+    </div>
+    <div class="row customeRow">
+        <div class="form-group col-md-4 col-lg-3">
+            <mat-form-field>
+                <mat-select  placeholder="Room Type" required formControlName="roomTypeId"  (change)="flagRoomTypeAsEdited()">
+                <mat-option [value]="null">Select</mat-option>
+                <ng-container *ngFor="let room of roomTypesList">
+                  <mat-option [value]="room.id">{{room.name}}</mat-option>
+                </ng-container>
+                </mat-select>
+                </mat-form-field>
+        </div>
+        <div class="form-group col-md-4 col-lg-3">
+            <mat-form-field>
+                <input matInput placeholder="Room Name" required formControlName="name"  (change)="flagRoomTypeAsEdited()" />
+            </mat-form-field>
+        </div>
+        <div class="form-group col-md-4 col-lg-3">
+          <div class="row">
+              <div class="col-md-7 pr-0">
+                  <mat-form-field>
+                    <input matInput placeholder="Room Size" required formControlName="size" pattern="[0-9]*" min="0" (change)="flagRoomTypeAsEdited()" />
+                  </mat-form-field>
+              </div>
+              <div class="col-md-5 pl-0">
+                  <mat-form-field>
+                      <mat-select  placeholder="m2" required  formControlName="sizeMeasureId"  (change)="flagRoomTypeAsEdited()">
+                      <ng-container *ngFor="let size of sizeMeasureList">
+                        <mat-option [value]="size.id">{{size.name}}</mat-option>
+                      </ng-container>
+                      </mat-select>
+                  </mat-form-field>
+              </div>
+          </div>
+      </div>
+
+      <div class="form-group col-md-4 col-lg-3">
+          <mat-form-field>
+            <input matInput placeholder="Total Number of rooms (of this type)" required formControlName="noOfRooms" (change)="flagRoomTypeAsEdited()" pattern="[0-9]*" min="0" />
+          </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4 col-lg-3">
+          <mat-form-field>
+            <input matInput placeholder="Total Number of Double Rooms" required formControlName="noOfDoubleRooms" (change)="flagRoomTypeAsEdited()" pattern="[0-9]*" min="0" />
+          </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4 col-lg-3">
+          <mat-form-field>
+            <input matInput placeholder="Total Number of Twin Rooms" required formControlName="noOfTwinRooms" (change)="flagRoomTypeAsEdited()" pattern="[0-9]*" min="0" />
+          </mat-form-field>
+      </div>
+
+      <!-- Checkbox-->
+    </div>
+
+    <div class="row mb-4 customeRow" *ngIf="roomForm.errors?.validateRoooms && roomForm.controls.noOfTwinRooms.touched">
+        <div class="col-md-12">
+            <mat-error>
+                Total number of rooms cannot be less than total number of double and twin rooms.
+              </mat-error>
+        </div>
+    </div>
+
+    <div class="row pb-5 customeRow">
+      <div class="form-group col-md-4  col-lg-3  mb-0">
+        <p for="extranetaccountaccess">Is Free Sale</p>
+        <mat-button-toggle-group [attr.disabled]="isRead" #group="matButtonToggleGroup" name="IsFreeSale" formControlName="isFreeSale" (change)="flagRoomTypeAsEdited()" >
+        <mat-button-toggle [value]="true">
+           Yes
+        </mat-button-toggle>
+        <mat-button-toggle [value]="false">
+          No
+        </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <div class="form-group col-md-4  col-lg-3  mb-0">
+        <p for="extranetaccountaccess">Smoking</p>
+        <mat-button-toggle-group [attr.disabled]="isRead" #group="matButtonToggleGroup" name="isSmoking" formControlName="isSmoking" (change)="flagRoomTypeAsEdited()" >
+        <mat-button-toggle [value]="true">
+           Yes
+        </mat-button-toggle>
+        <mat-button-toggle [value]="false">
+          No
+        </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <!-- <div class="form-group col-md-4 col-lg-3">
+          <mat-form-field>
+              <mat-select  placeholder="Smoking Policy" required formControlName="smoking">
+              <mat-option>No-Smoking</mat-option>
+              <mat-option>Damage Policy</mat-option>
+              <mat-option>No Pets Policy</mat-option>
+              </mat-select>
+              </mat-form-field>
+      </div> -->
+
+    </div>
+
+    <div class="pt-4 formSections pb-4 borderTopDark">
+      <div class="row customeRow mt-3">
+        <div class="col-md-12">
+            <mat-form-field>
+                <textarea placeholder="Room Description" rows="5" cols="200" maxlength="500"  matInput required formControlName="description" (change)="flagRoomTypeAsEdited()"></textarea>
+            </mat-form-field>
+            <p class="small text-right lightGrey mb-0">Max. 500 characters</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div formGroupName="roomBedOptions">
+      <div class="row pt-5 customeRow">
+        <div class="col-md-12">
+          <h2 class="pb-4">Bed Options</h2>
+        </div>
+      </div>
+      <div class="row customeRow">
+         
+          <div class="col-md-4">
+                      <mat-form-field>
+                      <mat-select formControlName="occupancyId" (change)="flagRoomTypeAsEdited()" placeholder="Number of Guests that can sleep here" required>
+                          <ng-container *ngFor="let occupancy of occupancyList">
+                              <mat-option [value]="occupancy.occupancyId">{{occupancy.noOfGuest}}</mat-option>
+                          </ng-container>
+                        </mat-select>
+                      </mat-form-field>
+        </div>
+      </div>
+
+      <div class="mt-4 mb-4 row lightBlueContainer position-relative pb-3 ml-0 mr-0">
+          <div class="col-md-12">
+            <div class="row customeRow">
+              <div class="col-md-12 pb-3"><h6 class="h6 darkGreyText mavenProMedium">Standard Arrangement</h6></div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-8" formArrayName="roomBedList" *ngFor="let bed of roomBedList.controls; let i =index">
+                  <div class="row">
+                    <div  class="col-md-8 pr-0">
+
+
+                        <div [formGroupName]="i" class="row">
+                          <div class="col-md-5">
+                            <mat-form-field>
+                              <mat-select formControlName="bedId" placeholder="Bed Type available" required (change)="flagBedTypeAsEdited(i)">
+                                <ng-container *ngFor="let beds of bedsList">
+                                  <mat-option [value]="beds.id">{{beds.name}}</mat-option>
+                                </ng-container>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-2 icon-multiply"></div>
+                          <div class="col-md-5 controlButtons">
+                            <mat-form-field>
+                              <mat-select formControlName="noOfBeds" placeholder="Number of Beds" required (change)="flagBedTypeAsEdited(i)">
+                                <mat-option [value]="1">1</mat-option>
+                                <mat-option [value]="2">2</mat-option>
+                                <mat-option [value]="3">3</mat-option>
+                                <mat-option [value]="4">4</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 controlButtons">
+                        <ng-container *ngIf="i > 0">
+                            <button title="Delete" type="button" class="pl-3 genericButton defaultButton genericSmallButton  float-none" mat-raised-button (click)="deleteRoomBed(i)"> Delete</button>
+                          </ng-container>                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 controlButtons pl-0 text-right">
+                  <button title=" Add Another Bed" type="button" [hidden]='isMaxLength' class="genericButton defaultButton genericSmallButton float-none" mat-raised-button (click)="addRoomBed()"> Add Another Bed</button>
+                </div>
+              </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4 customeRow">
+        <div class="col-md-12">
+          <mat-error *ngIf="roomForm.get('roomBedOptions').errors && roomForm.get('roomBedOptions').errors.ValidateArrangment">
+            Number of guests, bed type and number of beds do not match.
+          </mat-error>
+          <mat-error *ngIf="roomForm.get('roomBedOptions').errors && roomForm.get('roomBedOptions').errors.ValidateArrangmentSameBed">
+           This bed type is already selected.
+          </mat-error>
+          <mat-error *ngIf="roomForm.get('roomBedOptions').errors && roomForm.get('roomBedOptions').errors.ValidateArrangmentSingleGuest">
+           For single guest Only 1 bed from any bed type can be selected.
+           </mat-error>
+        </div>
+    </div>
+    
+      <div class="controlButtons paddingTop5s0px pb-4 mb-1  pt-4">
+        <button title="Save" type="submit" class="genericButton activeButton mat-raised-button mat-primary"  mat-raised-button disabled  [disabled]="(!roomForm.valid || !roomForm.dirty)">Save</button>
+        <button title="Cancel" type="submit" class="genericButton defaultButton" mat-raised-button (click)="cancelRoomType()">Cancel</button>
+      </div>
+   
+  </form>
+</div>
+
+
+

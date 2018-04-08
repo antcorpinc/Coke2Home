@@ -1,0 +1,112 @@
+<div class="container-fluid">
+  <div class="mt-5">
+    <h1 class="mainHeading">Create New Cancellation Policy</h1>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="formSections pt-2 pb-3">
+          <div class="row">
+            <div class="form-group col-md-4 col-lg-4">
+              <mat-form-field class="example-full-width disableFields">
+                <input matInput placeholder="What is the name of your policy?" id="name" required disabled />
+              </mat-form-field>
+              <span class="nameNote">This Name is just of you. Not displayed to Customers</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-12 col-lg-12">
+              <div class="row">
+                <div class="col-md-12 pt-4 mt-2">
+                  <h2 class="pb-3">Cancellation Preference</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="row">
+                    <mat-radio-group class="w-100 d-flex disableFields">
+                      <div class="col-md-6">
+                        <mat-radio-button value="1" disabled>Non-Refundable</mat-radio-button>
+                      </div>
+                      <div class="col-md-6">
+                        <mat-radio-button value="2" disabled>Flexible</mat-radio-button>
+                      </div>
+                    </mat-radio-group>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-2 ml-0 mr-0 pt-2 pb-2 alignItemCenter lightBlueContainer">
+                <div class="col-md-1">
+                  <mat-form-field class="disableFields">
+                    <input matInput disabled/>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4 pl-0 pr-0 text-center">Day(s) before Arrival, Cancellation fees is</div>
+                <div class="col-md-1">
+                  <mat-form-field class="disableFields">
+                    <input matInput disabled/>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-1">% of</div>
+                <div class="col-md-4">
+                  <mat-radio-group class="d-flex text-nowrap disableFields">
+                    <mat-radio-button value="1" disabled>First Night</mat-radio-button>
+                    <mat-radio-button value="2" disabled>Full Amount</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <div class="pl-0 col-md-1">
+                  <mat-form-field class="disableFields">
+                    <mat-select placeholder="Actions" disabled>
+                      <mat-option>Edit</mat-option>
+                      <mat-option>Delete</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row formSections">
+          <div class="form-group col-md-12 col-lg-12">
+            <div class="row">
+              <div class="col-md-12">
+                <h2>No Show</h2>
+                <h6 class="h6 pb-2 pb-3 pt-3">Is there any charges for No show?</h6>
+                <mat-button-toggle-group class="disableFields">
+                  <mat-button-toggle [value]="true" disabled="true">
+                    Yes
+                  </mat-button-toggle>
+                  <mat-button-toggle [value]="false" disabled="true">
+                    No
+                  </mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5 pt-4">
+                <div class="row">
+                  <mat-radio-group class="w-100 d-flex disableFields">
+                    <div class="col-md-6">
+                      <mat-radio-button value="1" disabled>First Night</mat-radio-button>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-radio-button value="2" disabled>Full Amount</mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 controlButtons mb-4 pt-5">
+        <button title="Save" type="button" class="btn activeButton" (click)="saveCancellationPolicy()">Save</button>
+        <button title="Cancel" type="button" class="btn defaultButton" (click)="backToList()">Cancel</button>
+        <button class="btn activeButton float-right" title="Save & Continue" type="button" (click)="saveandContinue()">Save & Continue</button>
+      </div>
+    </div>
+  </div>
+</div>

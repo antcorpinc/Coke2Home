@@ -1,0 +1,97 @@
+<div class="row mb-4 alignItemCenter pt-4">
+  <div class="col-md-8">
+    <h2>Cancellation Policies</h2>
+  </div>
+  <div class="col-md-4 text-right controlButtons">
+    <button type="submit" title='Create New Policy' *ngIf='isRead' class="btn defaultButton genericButton genericSmallButton mat-raised-button" (click)='createcancellationpolicy()'>
+      <i class="fa fa-plus mr-2" aria-hidden="true"></i>Create New Policy</button>
+  </div>
+</div>
+<!-- <div style="color:orange" *ngIf='cancellationPolicyList === null;else cancellationListData'>
+  No cancellation policy is created.
+</div> -->
+<!-- <ng-template #cancellationListData>
+ -->  <mat-table #table [dataSource]="dataSource" matSort matSortDirection="desc" class="genericTable mb-4 flexNone">
+    <!-- policy name Column -->
+    <ng-container matColumnDef="policyname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="policyNameTh ProximaFontFamily"> Policy Name </mat-header-cell>
+      <mat-cell class="policyNameTh" *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- details Column -->
+    <ng-container matColumnDef="details">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="policyDetailsTh ProximaFontFamily"> Details </mat-header-cell>
+      <mat-cell class="policyDetailsTh" *matCellDef="let element">
+        <div class='row mb-3'>
+          <div class="col">
+            <h6 class="mb-1">Cancellation</h6>
+            <ng-container *ngIf='element.cancellationPolicyTypeId == 1'>
+              The amount is Non-refundable.
+            </ng-container>
+            <ng-container *ngIf='element.cancellationPolicyTypeId == 2'>
+              <table class="defaultTable">
+                <tr *ngFor="let c of element.cancellationPolicyClausesViewModelList">
+                  <td>
+                    The guest will be charged {{c.percentageCharge}} % of
+                    <span *ngIf='c.cancellationChargesId==1'>Full Amount </span>
+                    <span *ngIf='c.cancellationChargesId==2'>First Night </span>
+                    if they cancel {{c.daysBeforeArrival}} days before arrival.
+                  </td>
+                </tr>
+              </table>
+            </ng-container>
+            <ng-container *ngIf='element.cancellationPolicyTypeId == 11'>
+              The cancellation policy clause is General.
+            </ng-container>
+          </div>
+        </div>
+        <div class='row mb-0'>
+          <div class="col">
+            <h6 class="mb-1">No Show </h6>
+            <span *ngIf='element.noShowCancellationChargesId == null;else noShowSelection '>
+              There is no charge for No Show.
+            </span>
+            <ng-template #noShowSelection>
+              <span>
+                The guest will be charged the
+                <span *ngIf='element.noShowCancellationChargesId == 1'>Full Amount</span>
+                <span *ngIf='element.noShowCancellationChargesId == 2'>First Night</span>
+                if they do not show up.
+              </span>
+            </ng-template>
+          </div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <!-- status Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="policyStatusTh ProximaFontFamily"> Status </mat-header-cell>
+      <mat-cell class="policyStatusTh" *matCellDef="let element">
+        <span *ngIf="element.isActive == false">InActive</span>
+        <span *ngIf="element.isActive == true">Active</span>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="action" class="policyActionTh">
+      <mat-header-cell class="policyActionTh ProximaFontFamily" *matHeaderCellDef>
+      </mat-header-cell>
+      <mat-cell class="policyActionTh" *matCellDef="let element">
+        <mat-select *ngIf="isRead" placeholder='Actions' name='Actions' (change)='CancellationPolicyUpdate($event)'>
+          <mat-option value="{{element.cancellationPolicyId}}-edit"> Edit </mat-option>
+          <mat-option value="{{element.cancellationPolicyId}}-delete"> Delete </mat-option>
+          <mat-option value="{{element.cancellationPolicyId}}-inactive"> Inactive </mat-option>
+        </mat-select>
+      </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <div *ngIf="noDataAvailable" style="color:orange">
+    No cancellation policy is created.
+  </div>
+
+  <mat-paginator *ngIf="!noDataAvailable" class="genericPagination" #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+<!-- </ng-template> -->

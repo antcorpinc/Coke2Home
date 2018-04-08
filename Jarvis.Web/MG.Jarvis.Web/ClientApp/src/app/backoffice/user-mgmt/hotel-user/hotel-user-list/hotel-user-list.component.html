@@ -1,0 +1,156 @@
+<div class="container-fluid pt-4">
+  <h1 class="mainHeading pb-2 mb-4 mt-2">Hotel/Supplier</h1>
+  <form [formGroup]="searchHotelUsers" (ngSubmit)="findHotelUser(searchHotelUsers.get('searchText').value,searchHotelUsers.get('startDate').value,searchHotelUsers.get('endDate').value)"
+    class="w-100">
+    <div class="blueBackground pt-1 pb-1 pl-0 pr-2 alignItemCenter">
+      <div class="row formSections borderBottomNone p-0 m-1">
+
+        <div class="col-md-2 d-flex pr-0">
+          <label class="optionsList mb-0 alignItemCenter pr-3">From:</label>
+          <mat-form-field>
+            <mat-datepicker-toggle matSuffix [for]="startdate">
+              <mat-icon matDatepickerToggleIcon>
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+              </mat-icon>
+            </mat-datepicker-toggle>
+            <input matInput [matDatepicker]="startdate" placeholder="DD-MMM-YY" formControlName="startDate">
+            <mat-datepicker #startdate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-2 d-flex pr-2 pl-4">
+          <label class="optionsList mb-0 alignItemCenter pr-3">To:</label>
+          <mat-form-field>
+            <mat-datepicker-toggle matSuffix [for]="enddate">
+              <mat-icon matDatepickerToggleIcon>
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+              </mat-icon>
+            </mat-datepicker-toggle>
+            <input matInput [matDatepicker]="enddate" placeholder="DD-MMM-YY" formControlName="endDate" [min]="searchHotelUsers.get('startDate').value">
+            <mat-datepicker #enddate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-7 pl-4 pr-4">
+          <mat-form-field>
+            <input matInput placeholder="Search by User Name, Email Id, Designation, Roles, Activation date " formControlName="searchText"
+                   (keydown.backspace)="checkIsInputCleared()">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-1 alignItemCenter pl-1 controlButtons">
+          <button title="Search" type="submit" class="genericButton genericSmallButton activeButton mat-primary" mat-raised-button>Search</button>
+        </div>
+
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-md-12 pt-4 mt-2 pb-3 mb-1 controlButtons">
+      <button title="Create New Hotel/Supplier User" type="submit" class="pt-2 pb-2 genericButton genericSmallButton defaultButton createNew"
+        mat-raised-button (click)="createHotelUser()">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        <span>Create New Hotel/Supplier User</span>
+      </button>
+    </div>
+  </div>
+
+  <mat-table class="flexNone mb-2 genericTable" #table [dataSource]='!isSearch ? dataSource: filteredData' matSort (matSortChange)="sortData($event)"
+    matSortActive="activationDate" matSortDirection="desc">
+
+
+    <ng-container matColumnDef="userName">
+      <mat-header-cell class="usernameTH alignItemCenter pr-0" *matHeaderCellDef mat-sort-header> User Name </mat-header-cell>
+      <mat-cell class="usernameTH" *matCellDef="let element">
+        <div class="d-flex">
+          <mat-icon class="userIcon alignItemCenter">account_circle</mat-icon>
+          <span class="d-flex pl-4 alignItemCenter">{{element.userName}}</span>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="hotels">
+      <mat-header-cell class="hotelIDTH" *matHeaderCellDef mat-sort-header> Hotel Name-ID </mat-header-cell>
+      <mat-cell class="hotelIDTH" *matCellDef="let element">
+        <ng-container *ngIf="element.hotels.length > 1">
+          <span class="d-block">{{element.hotels[0].name}} - {{element.hotels[0].id}}</span>
+          <a (click)="element.hideme = !element.hideme">More</a>
+          <span [hidden]="!element.hideme" class="expandHotelTitle">Hotel Name - ID</span>
+          <div [hidden]="!element.hideme" class="expandHotelDetails">
+              <ng-container *ngFor="let c of element.hotels; let first = first">
+                <span *ngIf="!first">{{c.name}} - {{c.id}}  ,  </span>
+              </ng-container>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="element.hotels.length==1">
+          <span class="d-block">{{element.hotels[0].name}} - {{element.hotels[0].id}}</span>
+        </ng-container>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="designation">
+      <mat-header-cell class="designationIDTH" *matHeaderCellDef mat-sort-header> Designation </mat-header-cell>
+      <mat-cell class="designationIDTH" *matCellDef="let element"> {{element.designation}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell class="emailTH" *matHeaderCellDef mat-sort-header> Email ID </mat-header-cell>
+      <mat-cell class="emailTH" *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="userApplicationRole">
+      <mat-header-cell class="applicationRoleTH" *matHeaderCellDef mat-sort-header> Role(s)
+      </mat-header-cell>
+      <mat-cell class="applicationRoleTH" *matCellDef="let element">
+        <ng-container *ngFor="let c of element.userApplicationRole">
+          <span class="d-block"> {{c.roleName}}</span>
+        </ng-container>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="activationDate">
+      <mat-header-cell class="activationTH" *matHeaderCellDef mat-sort-header>
+        <span class="text-center">
+          <span class="d-block">Activation/</span>Inactivation Date</span>
+      </mat-header-cell>
+      <mat-cell class="activationTH" *matCellDef="let element">
+        <span class="d-block">{{element.activationDate | date : "dd-MMM-yy"}}/</span>
+        <ng-container *ngIf="!element.isActive">
+          {{element.deActivationDate | date : "dd-MMM-yy"}}
+        </ng-container>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isActive">
+      <mat-header-cell class="userStatusTH noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+      <mat-cell class="userStatusTH" *matCellDef="let element">
+        <ng-container *ngIf="!element.isActive ">
+          <i class="fa fa-circle inactive_status" aria-hidden="true"></i>InActive</ng-container>
+        <ng-container *ngIf="element.isActive == true">
+          <i class="fa fa-circle active_status" aria-hidden="true"></i>Active
+        </ng-container>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions" class="text-center">
+      <mat-header-cell class="userActionTH noOutlineOnFocus" *matHeaderCellDef mat-sort-header> </mat-header-cell>
+      <mat-cell class="userActionTH" *matCellDef="let element">
+        <mat-select placeholder="Actions" name="Actions" [(ngModel)]="actions">
+          <ng-container *ngIf="element.isActive ">
+              <!-- <mat-option value="{{element.id}}:edit:{{element.userType}}" #edit (click)="GoUserUpdate(edit.value)">Edit</mat-option> -->
+            <mat-option value="{{element.id}}:edit:1" #edit (click)="GoUserUpdate(edit.value)">Edit</mat-option>
+          </ng-container>
+          <mat-option value="{{element.id}}:delete" #delete (click)="GoUserDelete(delete.value)">Delete</mat-option>
+        </mat-select>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [style.padding-bottom]="row.hideme ? '144px': '0px'"></mat-row>
+
+
+  </mat-table>
+
+  <mat-paginator #paginator class="genericPagination" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+</div>

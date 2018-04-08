@@ -1,0 +1,37 @@
+<div id="collapseExample">
+  <div id="hotelNav">
+    <!-- <div class="row profileWrapper">
+       <div class="col-md-12 pl-0 pr-0" >
+        <div *ngIf="!isCreate" class="card hovercard row">
+          <div class="col-md-4">
+            <div class="avatar">
+              <img alt="" src="assets/hotels/Hilton-logo.jpg" title="Hilton">
+            </div>
+          </div>
+          <div class="col-md-8 userProfileDetails pl-0">
+            <div class="info userDetails">
+              <div class="title">
+                <a>Hilton California</a>
+              </div>
+              <div class="desc">San Francisco,California, USA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>-->
+    <div class="LeftNavBar">
+      <div [ngClass]="{'NavLink':!isCreate , 'disable-NavLink':isCreate}"><a [routerLink]="['profilecompl']" routerLinkActive="active-link"> Profile completeness</a></div>
+      <div class="NavLink"><a [routerLink]="['hoteldetails']" routerLinkActive="active-link">Hotel Info</a></div>
+      <div [ngClass]="{'NavLink':!isCreate , 'disable-NavLink':isCreate}"><a [routerLink]="['roomtypelist']">Room Type</a></div>
+      <div [ngClass]="{'NavLink':!isCreate , 'disable-NavLink':isCreate}"><a [routerLink]="['facilitiesservices']" routerLinkActive="active-link">Facilities & Services</a></div>
+      <div [ngClass]="{'NavLink':!isCreate , 'disable-NavLink':isCreate}"><a [routerLink]="['amenities']">Amenities</a></div>
+      <div [ngClass]="{'NavLink':!isCreate , 'disable-NavLink':isCreate}"><a [routerLink]="['photos']">Photos & Videos</a></div>
+      <div [ngClass]="{'NavLink':!isCreate , 'disable-NavLink':isCreate}"><a [routerLink]="['mealplan']">Associate Meal Plan</a></div>
+      <div [ngClass]="{'NavLink':!isCreate , 'disable-NavLink':isCreate}"><a [routerLink]="['policieslist']">Policies</a></div>
+      <div [ngClass]="{'NavLink':!isCreate , 'disable-NavLink':isCreate}"><a [routerLink]="['ratecategory']">Rate Category</a></div>
+      <div [ngClass]="{'NavLink':!isCreate , 'disable-NavLink':isCreate}"><a [routerLink]="['allocation']">Allocations</a></div>
+      <div [ngClass]="{'NavLink':!isCreate , 'disable-NavLink':isCreate}"><a [routerLink]="['promotionlist']">Promotions</a></div>
+      <div [ngClass]="{'NavLink':!isCreate , 'disable-NavLink':isCreate}"><a [routerLink]="['messagelist']">Messages Setup</a></div>
+    </div>
+  </div>
+</div>

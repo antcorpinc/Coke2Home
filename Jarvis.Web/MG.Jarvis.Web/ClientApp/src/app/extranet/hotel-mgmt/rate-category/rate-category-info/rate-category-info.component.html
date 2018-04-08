@@ -1,0 +1,145 @@
+<div class="innerPageWrapper">
+    <div class="customBreadcrumb mb-4"><span>Rate Category </span><span>&gt; Create New Rate Category</span><span class="mandatoryInfo float-right">Indicates Mandatory Fields</span></div> 
+    <h1 class="mainHeading">Create New Rate Category</h1>
+    <form [formGroup]="rateForm" (ngSubmit)="saveRate()" >
+    <div class ="row">
+        <div class="col-md-8">
+        <div class="row formSections borderBottomNone pb-0 pt-4">
+        <div class="col-md-12 pt-0 pb-3">
+            <div class="alignItemCenter">
+          <span>Rate Category Status</span>
+          <div class="form-group hotelStatus ml-2">
+            <div class="form-check form-check-inline">
+            <mat-checkbox formControlName="isActive" (change)="flagControlsAsEdited()">Active</mat-checkbox>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        
+        <div class="row formSections pt-0 mt-0 pb-4">
+            <div class="form-group col-md-6">
+            <mat-form-field class="example-full-width">
+            <input matInput placeholder="What is the name of your rate category?" (change)="flagControlsAsEdited()" formControlName="name" id="name" required/>
+            </mat-form-field>
+            <span class="nameNote">This Name is just of you. Not displayed to Customers</span>
+            </div>
+          </div>
+          
+        <div class="row formSections mb-0 pb-3">
+            <div class="form-group col-md-12">
+            <h2 class="pb-3 requiredLabel">Which room types?</h2>
+                <div class="row" formArrayName="roomTypeList" *ngFor="let roomType of roomTypeList.controls; let i =index">                    
+                        <div class="col-md-6" [formGroupName]="i">
+                            <mat-checkbox formControlName="isSelected" (change)="flagRoomTypeAsEdited(i)" class="pl-0 roomCheckBox">{{roomType.get('roomName').value}}</mat-checkbox>
+                        </div>                                     
+                </div>
+            </div>
+        </div>
+        
+        <div class="row formSections mb-0 pb-3">
+            <div class="form-group col-md-12">
+            <h2 class="pb-3">Which cancellation policy?</h2>
+                <mat-radio-group formControlName="cancellationPolicyId" (change)="flagCancellationPolicyAsEdited()">
+                    <ng-container *ngFor="let cancellationPolicy of cancellationPolicyList">
+                        <mat-radio-button class="pb-2" [value]="cancellationPolicy.cancellationPolicyId">{{cancellationPolicy.name}}</mat-radio-button>
+                    </ng-container> 
+                </mat-radio-group>
+            </div>
+        </div>
+        
+        <div class="row formSections mb-0 pb-3">	
+            <div class="form-group col-md-12">
+            <h2 class="pb-3">Which meal types?</h2>
+                <mat-radio-group formControlName="hotelMealId" (change)="flagMealTypeAsEdited()">
+                    <ng-container *ngFor="let meal of mealList">
+                        <mat-radio-button class="pb-2" [value]="meal.id">{{meal.meal}}</mat-radio-button>
+                    </ng-container> 
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+        
+        <div class="col-md-4 pt-4">
+        <div class="reviewSection pt-4 mt-0">
+            <h2 class="pb-2 pt-1 mb-2">Review Rate Category</h2>
+            <h6 class="semiBold reviewTitle pt-1">Name</h6>
+            <span class="pb-3 d-block">{{rateForm.get('name').value}}</span>
+            
+            <h6 class="semiBold reviewTitle borderTopDark pt-3">Rooms using this rate</h6>
+            <span class="pb-4">
+                <ul class="pl-0 ml-0 mb-0">
+                    <ng-container *ngFor="let roomN of roomNameReview">
+                        <li>{{roomN}}</li>
+                    </ng-container>
+               </ul>
+            </span>
+            
+            <h6 class="semiBold reviewTitle pt-3 borderTopDark">Cancellation Policy</h6>
+            <span class="pb-3 d-block">
+                {{cancellationPolicyNameReiew}}
+            </span>
+            
+            <h6 class="semiBold reviewTitle pt-3 borderTopDark">Meal Types</h6>
+            <span class="pb-3 d-block">
+                {{mealNameReiew}}
+            </span>
+
+            <h6 class="semiBold reviewTitle pt-3 borderTopDark">Market</h6>
+            <span class="pb-3 d-block">
+                {{marketNameReiew}}
+            </span>
+        </div>
+        </div>
+    </div>
+        
+        <div class="row formSections mb-0 pb-2 borderBottomNone">	
+            <div class="form-group col-md-8">
+            <h2 class="pb-3">Which market?</h2>
+            <mat-form-field>
+                  <mat-select formControlName="marketId" placeholder="Select" name="marketSelect" (change)="flagMarketAsEdited()">
+                  <mat-option>Select</mat-option>
+                  <ng-container *ngFor="let market of marketList">
+                    <mat-option [value]="market.marketId">{{market.marketName}}</mat-option>
+                  </ng-container>
+                  </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-1 pl-4 pt-5 mt-3">
+            OR
+            </div>
+          <div class="col-md-3 pl-0 pt-4 mt-4 controlButtons ">
+            <!-- <mat-form-field>
+          <mat-select placeholder="Create New Market" name="newMarket">
+          <mat-option>Select</mat-option>
+          </mat-select>
+          </mat-form-field> -->
+            <button title="Cancel" type="button" class="genericButton defaultButton genericSmallButton float-none mat-raised-button" mat-raised-button (click)="createMarket()">Create Market</button>
+          </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="mt-0 mb-0 row lightBlueContainer position-relative pb-3 ml-0 mr-0">
+                <div class="co-md-12">
+                <h6 class="h6 darkGreyText mavenProMedium">Market details</h6>
+                    <mat-form-field class="pb-3">
+                      <textarea placeholder="Included Countries" rows="5" cols="70" readonly matInput>{{includedcountryNames}}</textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <textarea placeholder="Excluded Countries" rows="5" cols="70" readonly matInput>{{excludedcountryNames}}</textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+                
+            </div>
+        </div>
+        
+       
+             <div class="controlButtons paddingTop50px pb-4 mb-1">
+                <button title="Save" type="submit" class="genericButton activeButton mat-raised-button mat-primary"  mat-raised-button [disabled]="(!rateForm.valid || !rateForm.dirty)">Save</button>
+                <button title="Cancel" type="button" class="genericButton defaultButton" mat-raised-button (click)="cancelRateCategory()">Cancel</button>                      
+             </div>
+        
+        </form>   
+    </div>

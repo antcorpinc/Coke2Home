@@ -1,0 +1,36 @@
+
+
+.NavLink a {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 20px;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+  overflow: hidden;
+}
+
+.disable-NavLink a {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  padding: 8px 20px;
+  font-size: 0.9375rem;  
+  color: #333;
+  position: relative;
+  overflow: hidden;
+}
+
+  .NavLink a:hover{
+    background: #e6e6e6
+  }
+
+.NavLink a.active-link {
+    background: #2aaae1;
+    color: #fff;
+  }
+

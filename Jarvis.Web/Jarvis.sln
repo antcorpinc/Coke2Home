@@ -1,0 +1,177 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Web", "MG.Jarvis.Web\MG.Jarvis.Web.csproj", "{E38E9EC3-CE72-461B-B056-EA837E4D8FEC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Api", "MG.Jarvis.Api\MG.Jarvis.Api.csproj", "{E93F8F15-9C5B-4DC2-AC84-F2A23DDAA6FA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Auth", "MG.Jarvis.Auth\MG.Jarvis.Auth.csproj", "{465C2E5B-C1E6-450C-A187-FA8E3FED2029}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Model", "MG.Jarvis.Model\MG.Jarvis.Model.csproj", "{FF296614-F1F7-4040-84E9-A06CC3479F11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Services", "MG.Jarvis.Services\MG.Jarvis.Services.csproj", "{F2853115-4EF7-44D1-9202-985C32D3911D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Core.Contracts", "MG.Jarvis.Core.Contracts\MG.Jarvis.Core.Contracts.csproj", "{E8F32393-77B8-4220-A6F9-217DFA4151A7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Core", "MG.Jarvis.Core\MG.Jarvis.Core.csproj", "{E8CF2F11-465D-46B9-83CF-BAFE4C74970E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Business", "MG.Jarvis.Business\MG.Jarvis.Business.csproj", "{D6DD499F-7A99-4C1B-8C74-3A03686D1510}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Api.Extranet", "MG.Jarvis.Api.Extranet\MG.Jarvis.Api.Extranet.csproj", "{07D3887E-39E0-4EA7-95F0-ED40E749177E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Api.BackOffice", "MG.Jarvis.Api.BackOffice\MG.Jarvis.Api.BackOffice.csproj", "{C88EEFB8-0CD6-4952-9C35-35CAC0E39005}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Api.Booking", "MG.Jarvis.Api.Booking\MG.Jarvis.Api.Booking.csproj", "{01E88D6B-3D49-474D-9096-5F0F9F7C1668}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Api.Extranet.Test", "MG.Jarvis.Api.Extranet.Test\MG.Jarvis.Api.Extranet.Test.csproj", "{22734BB4-3842-42DD-9836-738DEE673616}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{EB120177-13C6-4944-A8EC-67F9DC6B00C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Service.BackOffice", "MG.Jarvis.Service.BackOffice\MG.Jarvis.Service.BackOffice.csproj", "{7EB37DCF-99FC-474D-839E-CDA4C899714C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Data", "MG.Jarvis.Data\MG.Jarvis.Data.csproj", "{43D0E1F2-F6EF-4F59-A411-7F563D2902DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Api.BackOffice.UnitTest", "MG.Jarvis.Api.BackOffice.UnitTest\MG.Jarvis.Api.BackOffice.UnitTest.csproj", "{A1088B8D-E984-452A-88EA-509A87AE9CCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG.Jarvis.Api.UserManagement", "MG.Jarvis.Api.UserManagement\MG.Jarvis.Api.UserManagement.csproj", "{DE51CFE1-67A6-4F3D-815B-C79004BCD4E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E38E9EC3-CE72-461B-B056-EA837E4D8FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E38E9EC3-CE72-461B-B056-EA837E4D8FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E38E9EC3-CE72-461B-B056-EA837E4D8FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E38E9EC3-CE72-461B-B056-EA837E4D8FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E93F8F15-9C5B-4DC2-AC84-F2A23DDAA6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E93F8F15-9C5B-4DC2-AC84-F2A23DDAA6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E93F8F15-9C5B-4DC2-AC84-F2A23DDAA6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E93F8F15-9C5B-4DC2-AC84-F2A23DDAA6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{465C2E5B-C1E6-450C-A187-FA8E3FED2029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465C2E5B-C1E6-450C-A187-FA8E3FED2029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465C2E5B-C1E6-450C-A187-FA8E3FED2029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465C2E5B-C1E6-450C-A187-FA8E3FED2029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF296614-F1F7-4040-84E9-A06CC3479F11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF296614-F1F7-4040-84E9-A06CC3479F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF296614-F1F7-4040-84E9-A06CC3479F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF296614-F1F7-4040-84E9-A06CC3479F11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2853115-4EF7-44D1-9202-985C32D3911D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2853115-4EF7-44D1-9202-985C32D3911D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2853115-4EF7-44D1-9202-985C32D3911D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2853115-4EF7-44D1-9202-985C32D3911D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8F32393-77B8-4220-A6F9-217DFA4151A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8F32393-77B8-4220-A6F9-217DFA4151A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8F32393-77B8-4220-A6F9-217DFA4151A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8F32393-77B8-4220-A6F9-217DFA4151A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8CF2F11-465D-46B9-83CF-BAFE4C74970E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8CF2F11-465D-46B9-83CF-BAFE4C74970E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8CF2F11-465D-46B9-83CF-BAFE4C74970E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8CF2F11-465D-46B9-83CF-BAFE4C74970E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6DD499F-7A99-4C1B-8C74-3A03686D1510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6DD499F-7A99-4C1B-8C74-3A03686D1510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6DD499F-7A99-4C1B-8C74-3A03686D1510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6DD499F-7A99-4C1B-8C74-3A03686D1510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D3887E-39E0-4EA7-95F0-ED40E749177E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D3887E-39E0-4EA7-95F0-ED40E749177E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D3887E-39E0-4EA7-95F0-ED40E749177E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D3887E-39E0-4EA7-95F0-ED40E749177E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C88EEFB8-0CD6-4952-9C35-35CAC0E39005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C88EEFB8-0CD6-4952-9C35-35CAC0E39005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C88EEFB8-0CD6-4952-9C35-35CAC0E39005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C88EEFB8-0CD6-4952-9C35-35CAC0E39005}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E88D6B-3D49-474D-9096-5F0F9F7C1668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E88D6B-3D49-474D-9096-5F0F9F7C1668}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E88D6B-3D49-474D-9096-5F0F9F7C1668}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E88D6B-3D49-474D-9096-5F0F9F7C1668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22734BB4-3842-42DD-9836-738DEE673616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22734BB4-3842-42DD-9836-738DEE673616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22734BB4-3842-42DD-9836-738DEE673616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22734BB4-3842-42DD-9836-738DEE673616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EB37DCF-99FC-474D-839E-CDA4C899714C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EB37DCF-99FC-474D-839E-CDA4C899714C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EB37DCF-99FC-474D-839E-CDA4C899714C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EB37DCF-99FC-474D-839E-CDA4C899714C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43D0E1F2-F6EF-4F59-A411-7F563D2902DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D0E1F2-F6EF-4F59-A411-7F563D2902DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D0E1F2-F6EF-4F59-A411-7F563D2902DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D0E1F2-F6EF-4F59-A411-7F563D2902DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1088B8D-E984-452A-88EA-509A87AE9CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1088B8D-E984-452A-88EA-509A87AE9CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1088B8D-E984-452A-88EA-509A87AE9CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1088B8D-E984-452A-88EA-509A87AE9CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE51CFE1-67A6-4F3D-815B-C79004BCD4E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE51CFE1-67A6-4F3D-815B-C79004BCD4E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE51CFE1-67A6-4F3D-815B-C79004BCD4E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE51CFE1-67A6-4F3D-815B-C79004BCD4E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{22734BB4-3842-42DD-9836-738DEE673616} = {EB120177-13C6-4944-A8EC-67F9DC6B00C8}
+		{A1088B8D-E984-452A-88EA-509A87AE9CCC} = {EB120177-13C6-4944-A8EC-67F9DC6B00C8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A2987DB-1C9C-4499-8935-3407B7FD1DD1}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 17
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://mg-tfs-server:8080/tfs/mg-group-holidays
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MG.Jarvis.Api\\MG.Jarvis.Api.csproj
+		SccProjectName1 = MG.Jarvis.Api
+		SccLocalPath1 = MG.Jarvis.Api
+		SccProjectUniqueName2 = MG.Jarvis.Auth\\MG.Jarvis.Auth.csproj
+		SccProjectName2 = MG.Jarvis.Auth
+		SccLocalPath2 = MG.Jarvis.Auth
+		SccProjectUniqueName3 = MG.Jarvis.Business\\MG.Jarvis.Business.csproj
+		SccProjectName3 = MG.Jarvis.Business
+		SccLocalPath3 = MG.Jarvis.Business
+		SccProjectUniqueName4 = MG.Jarvis.Core.Contracts\\MG.Jarvis.Core.Contracts.csproj
+		SccProjectName4 = MG.Jarvis.Core.Contracts
+		SccLocalPath4 = MG.Jarvis.Core.Contracts
+		SccProjectUniqueName5 = MG.Jarvis.Core\\MG.Jarvis.Core.csproj
+		SccProjectName5 = MG.Jarvis.Core
+		SccLocalPath5 = MG.Jarvis.Core
+		SccProjectUniqueName6 = MG.Jarvis.Model\\MG.Jarvis.Model.csproj
+		SccProjectName6 = MG.Jarvis.Model
+		SccLocalPath6 = MG.Jarvis.Model
+		SccProjectUniqueName7 = MG.Jarvis.Services\\MG.Jarvis.Services.csproj
+		SccProjectName7 = MG.Jarvis.Services
+		SccLocalPath7 = MG.Jarvis.Services
+		SccProjectUniqueName8 = MG.Jarvis.Web\\MG.Jarvis.Web.csproj
+		SccProjectName8 = MG.Jarvis.Web
+		SccLocalPath8 = MG.Jarvis.Web
+		SccProjectUniqueName9 = MG.Jarvis.Api.Extranet\\MG.Jarvis.Api.Extranet.csproj
+		SccProjectName9 = MG.Jarvis.Api.Extranet
+		SccLocalPath9 = MG.Jarvis.Api.Extranet
+		SccProjectUniqueName10 = MG.Jarvis.Api.BackOffice\\MG.Jarvis.Api.BackOffice.csproj
+		SccProjectName10 = MG.Jarvis.Api.BackOffice
+		SccLocalPath10 = MG.Jarvis.Api.BackOffice
+		SccProjectUniqueName11 = MG.Jarvis.Api.Booking\\MG.Jarvis.Api.Booking.csproj
+		SccProjectName11 = MG.Jarvis.Api.Booking
+		SccLocalPath11 = MG.Jarvis.Api.Booking
+		SccProjectUniqueName12 = MG.Jarvis.Api.Extranet.Test\\MG.Jarvis.Api.Extranet.Test.csproj
+		SccProjectTopLevelParentUniqueName12 = Jarvis.sln
+		SccProjectName12 = MG.Jarvis.Api.Extranet.Test
+		SccLocalPath12 = MG.Jarvis.Api.Extranet.Test
+		SccProjectUniqueName13 = MG.Jarvis.Service.BackOffice\\MG.Jarvis.Service.BackOffice.csproj
+		SccProjectName13 = MG.Jarvis.Service.BackOffice
+		SccLocalPath13 = MG.Jarvis.Service.BackOffice
+		SccProjectUniqueName14 = MG.Jarvis.Data\\MG.Jarvis.Data.csproj
+		SccProjectName14 = MG.Jarvis.Data
+		SccLocalPath14 = MG.Jarvis.Data
+		SccProjectUniqueName15 = MG.Jarvis.Api.BackOffice.UnitTest\\MG.Jarvis.Api.BackOffice.UnitTest.csproj
+		SccProjectTopLevelParentUniqueName15 = Jarvis.sln
+		SccProjectName15 = MG.Jarvis.Api.BackOffice.UnitTest
+		SccLocalPath15 = MG.Jarvis.Api.BackOffice.UnitTest
+		SccProjectUniqueName16 = MG.Jarvis.Api.UserManagement\\MG.Jarvis.Api.UserManagement.csproj
+		SccProjectName16 = MG.Jarvis.Api.UserManagement
+		SccLocalPath16 = MG.Jarvis.Api.UserManagement
+	EndGlobalSection
+EndGlobal

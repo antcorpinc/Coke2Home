@@ -1,0 +1,60 @@
+
+<div class="container-fluid top-bar">
+  <div class="row" *ngIf="topBarService.getTopBarItem()!= null">
+    <div class="col-9 mainTopBarLogo alignItemCenter">   
+              <div class="logoContainer">
+                <a>
+                  <img src="assets/MgBedBank.png" alt="MG Bedbank" class="mg-Bedbank" title="MG Bedbank" />
+                </a>
+              </div>      
+               <div class="viewUser" *ngIf="topBarService.getTopBarItem().applications!=null">
+                  <select (change)="onApplicationChange($event)">
+                    <option *ngFor="let item of topBarService.getTopBarItem().applications">
+                      {{item.application}}
+                    </option>
+                  </select>
+                </div> 
+    </div>
+    <div class="col-3">
+      <div class="displayUser">
+                <div class="notification">
+                    <a class="bellIcon"><i class="fa fa-bell-o"></i><span class="badge badge-notify"><span class="notify-count">5</span></span></a>
+                </div>
+
+                <div class="userContainer alignItemCenter" *ngIf="topBarService.getTopBarItem().firstName!=null && topBarService.getTopBarItem().lastName!=null">
+                  <mat-icon>account_circle</mat-icon> 
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                      <span class="welcome-txt">Welcome, <span class="user-name">{{topBarService.getTopBarItem().firstName}} {{topBarService.getTopBarItem().lastName}}</span></span><i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item>
+                        <span>Change Password</span>
+                      </button>
+                      <button mat-menu-item (click)="logOut()">
+                        <span>Logout</span>
+                      </button>
+                    </mat-menu> 
+                    <!-- <img src="assets/user.jpg" class="rounded-circle img-fluid user-img">
+                    <div class="dropdown">
+                      <a class="dropdownWelcomeLink"><span class="welcome-txt">Welcome, <span class="user-name">{{topBarService.getTopBarItem().firstName}} {{topBarService.getTopBarItem().lastName}}</span></span><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                      <div class="dropdown-content">
+                        <a>Edit Profile</a>
+                        <a>Change Password</a>
+                        <a (click)="logOut()">Logout</a>
+                      </div>
+                    </div>  -->                
+                </div> 
+         </div>                
+    </div>
+  </div>
+
+  <div class="row" *ngIf="topBarService.getTopBarItem()== null">
+    <div class="col-7 mainTopBarLogo">
+      <div class="logoContainer">
+        <a>
+          <img src="assets/MgBedBank.png" alt="MG Bedbank" class="mg-Bedbank" title="MG Bedbank" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

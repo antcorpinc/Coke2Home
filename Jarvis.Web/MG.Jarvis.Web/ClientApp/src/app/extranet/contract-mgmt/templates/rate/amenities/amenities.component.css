@@ -1,0 +1,8 @@
+.checkBoxList {
+    padding: 20px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.checklists .checkBoxList:last-child {
+    border-bottom: none;
+}

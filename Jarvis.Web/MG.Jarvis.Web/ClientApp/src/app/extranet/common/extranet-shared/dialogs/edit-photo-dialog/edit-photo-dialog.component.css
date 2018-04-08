@@ -1,0 +1,15 @@
+.img-placeholder {
+    padding-top: 24%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.placeholderSection {
+    width: 100%;
+    height: 254px;
+    margin-bottom: 20px;
+    border: 1px solid #e3e3e3;
+    background: #ededed;
+}
+

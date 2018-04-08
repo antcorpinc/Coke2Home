@@ -1,0 +1,7 @@
+.genericTable mat-header-cell, .genericTable mat-row mat-cell {
+  width: 28%;
+}
+
+.genericTable mat-header-cell:last-child, .genericTable mat-row mat-cell:last-child {
+  width: 16%;
+}

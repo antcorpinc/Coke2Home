@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>%24/MG-Grp/Source/Dev/Jarvis/Web/Jarvis.Web/MG.Jarvis.Api.BackOffice.UnitTest</SccProjectName>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SccAuxPath>http://mg-tfs-server:8080/tfs/mg-group-holidays</SccAuxPath>
+    <SccLocalPath>.</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="MappingControllerTest.cs" />
+    <Compile Remove="MarkupControllerTest.cs" />
+    <Compile Remove="SampleTest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Include="Moq" Version="4.8.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.1.18" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.1.18" />
+    <PackageReference Include="NUnit" Version="3.9.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MG.Jarvis.Api.BackOffice\MG.Jarvis.Api.BackOffice.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MG.Jarvis.Core.DAL">
+      <HintPath>..\..\..\Core\MG.Jarvis.Core.DAL\bin\Debug\netstandard2.0\MG.Jarvis.Core.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="MG.Jarvis.Core.Logger">
+      <HintPath>..\..\..\Core\MG.Jarvis.Core.Logger\bin\Debug\netstandard2.0\MG.Jarvis.Core.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="MG.Jarvis.Core.Model">
+      <HintPath>..\..\..\Core\MG.Jarvis.Core.Model\bin\Debug\netstandard2.0\MG.Jarvis.Core.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

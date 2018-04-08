@@ -1,0 +1,120 @@
+<div class="container-fluid pt-4">
+  <div class="customBreadcrumb mb-4">
+    <span>MG </span>
+    <span *ngIf="operation == 'create'">&gt; Create New MG User</span>
+    <span *ngIf="operation == 'edit'">&gt; Edit MG User</span>
+    <span class="mandatoryInfo">Indicates Mandatory Fields</span>
+  </div>
+  <h1 *ngIf="operation == 'create'" class="mainHeading mb-2">Create New User</h1>
+  <h1 *ngIf="operation == 'edit'" class="mainHeading mb-2">Edit User</h1>
+  <form [formGroup]="mgUserForm" (ngSubmit)="saveUser()">
+  <div class="row customeRow">
+    <div class="col-md-2">
+      <mat-icon class="userImage">account_circle</mat-icon>
+      <button class="deletePhoto" mat-raised-button title="Delete Image">
+        <i class="fa fa-times-thin"></i>
+      </button>
+      <div class="image-upload">
+        <label for="file-input">
+          <img src="assets/uploadPhoto.png" title="Upload Image" />
+        </label>
+        <input id="file-input" type="file" />
+      </div>
+    </div>
+  </div>
+
+  <div class="row customeRow formSections p-0 borderBottomNone">
+    <div class="form-group col-md-4 col-lg-3 mb-0">
+      <mat-form-field>
+        <input matInput placeholder="User Name" formControlName="userName" id="userName" required />
+      </mat-form-field>
+    </div>
+    <div class="form-group col-md-4 col-lg-3 mb-0">
+      <mat-form-field>
+        <input matInput placeholder="Employee ID" formControlName="employeeId" id="employeeID" required />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row customeRow formSections p-0 borderBottomNone">
+
+    <div class="form-group col-md-4 col-lg-3">
+      <mat-form-field>
+        <input matInput placeholder="Email ID" formControlName="email" id="email" required />
+      </mat-form-field>
+    </div>
+    <div class="form-group col-md-4 col-lg-3">
+      <mat-form-field>
+        <mat-select placeholder="Department(s)" name="department" formControlName="departments" multiple required>
+          <mat-option *ngFor="let department of departmentList" [value]="department.id">{{department.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div formArrayName="userApplicationRole" *ngFor="let appRole of userApplicationRole.controls; let i =index">
+
+    <div [formGroupName]="i">
+      <div class="row customeRow formSections p-0 borderBottomNone alignItemCenter">
+        <div class="form-group col-md-4 col-lg-3 mb-0">
+          <mat-form-field>
+            <mat-select formControlName="applicationId" placeholder="Application" (change)="getRolesForApplication(i)" required >
+                <mat-option [value]="null">Select</mat-option>
+              <ng-container *ngFor="let app of applicationList">
+                <mat-option [value]="app.id">{{app.name}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-4 col-lg-3 mb-0">
+          <mat-form-field>
+            <mat-select formControlName="roleId" placeholder="Roles"  required>
+                <mat-option [value]="null">Select</mat-option>
+              <ng-container *ngFor="let role of this.appRolesListArray[i] ">
+                <mat-option [value]="role.id">{{role.name}}</mat-option>
+              </ng-container>
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+    <div class="col-md-2 pl-0">
+      <span class="btn transparent-circle mr-2" title="Add" [hidden]='isMaxLength' (click)="addAppRole()"><span></span></span>
+		<ng-container *ngIf="i > 0">
+        <span class="btn transparent-circle" title="Delete" (click)="deleteAppRole(i)"><i aria-hidden="true" class="fa fa-times-thin"></i></span>
+      </ng-container>
+	</div>
+  </div>
+</div>
+</div>
+<div>
+<mat-error *ngIf="mgUserForm.get('userApplicationRole').errors && mgUserForm.get('userApplicationRole').errors.ValidateAppRole">
+  This app type is already selected.
+ </mat-error>
+
+ <mat-error *ngIf="mgUserForm.get('userApplicationRole').errors && mgUserForm.get('userApplicationRole').errors.ValidateAppRoleNotNull">
+  Role needs to be selected
+ </mat-error>
+
+</div>
+
+  <div class="row customeRow formSections p-0 borderBottomNone">
+    <div class="form-group col-md-3 pt-3 mb-0">
+      <mat-form-field>
+        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Activation Date" formControlName="activationDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </mat-icon>
+      </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+	<div class="row">
+	  <div class="controlButtons pl-3 mt-5 mb-4">
+		<button title="Save" type="submit" class="genericButton activeButton mat-primary mr-2" mat-raised-button>Save</button>
+		<button title="Cancel" type="button" class="genericButton defaultButton" mat-raised-button (click)="cancel()">Cancel</button>
+	  </div>
+  </div>
+</form>
+</div>

@@ -1,0 +1,124 @@
+<div class="innerPageWrapper">
+  <h1 class="mainHeading mb-4 customBreadcrumb">Amenities
+    <span class="mandatoryInfo float-right">Indicates Mandatory Fields</span>
+  </h1>
+  <div *ngIf="!isRoomForHotel" style="color:orange">
+    Room type is not created for this property, Create Room type first.
+  </div>
+  <div *ngIf="isRoomForHotel">
+    <div class="row pt-1">
+      <div class="col-md-5">
+        <div class="globalSearch">
+          <input class="form-control ng-pristine ng-valid ng-touched" placeholder="Search by Amenities Name, Category etc." type="text">
+          <button class="searchButton" type="submit">
+            <i aria-hidden="true" class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <form [formGroup]="amenitiesForm" (ngSubmit)="saveAmenities()">
+      <div class="formSections pb-0 pt-0 borderBottomNone">
+        <div formArrayName="amenitiesGroupArray" *ngFor="let amenityGroup of amenitiesGroupArray.controls; let i=index" class="amenitiesType">
+
+          <div [formGroupName]="i" class="formSections pb-0 pt-4 borderBottomNone">
+            <mat-expansion-panel class="expandCollapseContainer" expanded='true'>
+              <mat-expansion-panel-header class="panelHeader">
+                <mat-panel-title>
+                  <div class="row iconHeading">
+                    <div class="col-md-1 pr-0 iconHolder">
+                      <img alt="" src="{{imgPath + amenityGroup.get('iconPath').value}}">
+                    </div>
+                    <div class="col-md-11 pl-2">
+                      <h2>
+                        {{amenityGroup.get('name').value}}
+                      </h2>
+                    </div>
+                  </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row" formArrayName="roomFacilityTypes" *ngFor="let amenityType of getTypeArrayForGroup(i).controls; let j=index">
+                <div class="col-md-12" [formGroupName]="j">
+                  <h5 class="pl-0 h5 semiboldText mb-3" *ngIf="(amenityType.get('name').value) != null">
+                    {{(amenityType.get('name').value)}}
+                  </h5>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-12 checkBoxList">
+                          <div class="form-group borderTopNone m-0">
+                            <h2 class="semiBold genericCheckboxLabel  mb-0">
+                              <mat-checkbox (change)="selectAllAmenities($event,i,j)" formControlName="selectedAll" class="genericCheckBox">All</mat-checkbox>
+                            </h2>
+                          </div>
+                          <div *ngIf="(amenityType.get('roomMessageForAll').value)">
+                            <div style="color:orange">
+                              Please select Room
+                            </div>
+                          </div>
+
+                          <div *ngIf="amenityType.get('selectedAll').value">
+                            <div class="row">
+                              <div class="col-md-12 pl-5">
+                                <div *ngFor=" let room of roomList; let p=index" class="breakFastSelection pt-3 pr-3">
+                                  <div>
+                                    <mat-checkbox (change)="selectRoomForAllAmenities($event, room.roomId, i)" class="pt-2 pb-2 pl-2 mr-2 mealTypeCheckbox">
+                                      {{room.roomName}}
+                                    </mat-checkbox>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+                  <div class="row checklists borderBottomNone borderTopNone pt-0">
+                    <div class="col-md-12 checkBoxList" formArrayName="facilityList" *ngFor="let amenities of getAmenitiesArrayForGroupAndType(i,j).controls; let k=index">
+                      <div class="form-group mb-0" [formGroupName]="k">
+                        <h2 class="semiBold mb-0">
+                          <mat-checkbox class="genericCheckBox" (change)="selectAmenities($event, i, j ,k)" formControlName="isSelected">
+                            {{amenities.get("name").value}}
+                          </mat-checkbox>
+                        </h2>
+                        <div *ngIf="(amenities.get('roomMessageForAmenity').value)">
+                          <div style="color:orange">
+                            Please select Room
+                          </div>
+                        </div>
+                        <div *ngIf="amenities.get('isSelected').value && !(amenityType.get('selectedAll').value)">
+                          <div class="row">
+                            <div class="col-md-12 pl-5 mb-2">
+                              <div formArrayName="facilitiesRoomList" *ngFor="let room of getRoomArrayForAmenities(i,j,k).controls; let l=index" class="breakFastSelection pt-3 pr-3">
+                                <div [formGroupName]="l">
+                                  <mat-checkbox formControlName="isSelected" (change)="selectRoom($event, i, j ,k, l)" class="pt-2 pb-2 pl-2 mr-2 mealTypeCheckbox">
+                                    {{room.get('roomName').value}}
+                                  </mat-checkbox>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="controlButtons borderTopDark paddingTop50px pb-4 mb-1">
+        <button title="Save" type="submit" class="genericButton activeButton mat-primary" [disabled]="isDisable" mat-raised-button>Save</button>
+        <button title="Cancel" type="submit" class="genericButton defaultButton" mat-raised-button>Cancel</button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,126 @@
+.form-group {
+  display: inline-block;
+}
+
+.amt {
+  width: 50%;
+  display: inline-block;
+}
+
+.buttons {
+  float: right;
+  margin-bottom: 15px;
+}
+
+.mapLocator {
+  position: relative;
+}
+
+  .mapLocator .input-group-addon {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .mapLocator .input-group-addon button{
+    background: none;
+    border: none;
+  }
+
+    .mapLocator .input-group-addon .fa {
+      color: #2aaae1;
+      font-size: 1.2rem;
+    }
+
+  .mapLocator .form-control {
+    padding-right: 34px;
+  }
+
+.custom-select {
+  background: url(../../../../assets/selectDropDown.png) no-repeat right .75rem center !important;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+.table th {
+  border-bottom: 0;
+}
+
+.typeLabel {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.taxtesTypeTh {
+  width: 16.7%;
+}
+
+.taxtesRoomTh {
+  width: 21.0%;
+}
+
+.taxtesAmountTh {
+  width: 10.5%;
+}
+
+.taxtesRatesTh {
+  width: 10.5%;
+}
+
+
+td.taxesLabel .mat-form-field{
+  width: 70%;
+}
+
+.taxesAmountLabel .percentageIcon{
+  position: absolute;
+  right: -20px;
+  top: 10px;
+}
+
+
+.primaryContactTh{
+  width: 5%;
+}
+
+.contactContactTh{
+  width: 22%;
+}
+
+.titleContactTh{
+  width: 25.2%;
+}
+
+.emailContactTh{  
+  width: 28.2%;
+}
+
+.contactNumberContactTh{
+  width: 27.9%;  
+}
+
+.addContact{
+  position: relative;
+}
+
+.addContact .btn.buttonStacked{
+  position: absolute;
+  right: 0;
+  top: 25px;
+}
+
+
+.addContact .text-primary{
+  color: #2aaae1 !important;
+}
+
+.contactTable td .mat-form-field{
+  width: 70%;
+}
+

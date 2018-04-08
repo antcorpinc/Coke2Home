@@ -1,0 +1,1685 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~@angular/material/prebuilt-themes/deeppurple-amber.css"; */
+
+body {
+  font-family: 'maven_proregular';
+  font-size:15px;
+  color:#666;
+  background:#fff;
+}
+.mainHeading {
+  font-size: 28px;
+  font-family: 'montserratregular';
+  color: #333;
+  border-bottom: 1px solid #d5d5d5;
+  margin-bottom: 3px;
+  padding-bottom: 9px;
+}
+
+h2 {
+  font-size: 22px;
+  font-family: 'montserratregular';
+  display:flex;
+  color: #333333;
+}
+
+  .form-control:focus, textarea:focus, .custom-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    border-color: #80bdff;
+    outline:0;
+  }
+
+  .form-control, .custom-select {
+  height: calc(2.25rem + 2px);
+}
+
+.formSections {
+ border-bottom: 1px solid #ababab;
+  padding:35px 0;
+}
+
+.borderBottomNone {
+  border-bottom: none !Important;
+}
+
+.requiredLabel:after {
+  content: "*";
+  color: red;
+  padding-left: 5px;
+  font-size:1rem;
+}
+
+body .buttonStacked {
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none !important;
+  box-shadow: inherit !important;
+  border: none;
+  font-size: 16px;
+  min-width: 0;
+}
+
+body .buttonStacked .fa {
+  color: #4168a1;
+}
+
+body .buttonStacked.mat-raised-button[disabled]{
+  background: none;
+  opacity: 0.6;
+  cursor: not-allowed;  
+}
+
+.btn {
+  outline:none;
+}
+
+body .controlButtons .btn {
+  padding: 10px 38px;
+  box-shadow: none;
+}
+
+body .controlButtons .activeButton {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .5); 
+  margin-right: 4px; 
+}
+
+.controlButtons .defaultButton {
+  background-color: #fff;
+  color: #2aaae1;
+  border: 1px solid #2aaae1;
+}
+
+body .genericButton{
+  padding: 12px 38px;  
+  line-height: normal;
+  font-weight: normal;
+  border-radius: 5px;
+  font-family: 'maven_proregular';
+  font-size: 16px;
+  box-shadow: none !important;
+}
+
+
+body .genericButton.genericSmallButton{
+  padding: 9px 11px;
+  font-size: 14px;
+}
+
+body .genericButton.genericSmallButton .mat-button-wrapper{
+  font-size: 0.875rem;
+}
+
+.genericButton .mat-button-wrapper{
+  font-family: 'maven_proregular';
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.genericButton .mat-button-wrapper .fa-plus-circle {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.form-check .custom-control-indicator {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: inherit;
+}
+
+.custom-control-input:checked ~ .custom-control-indicator {
+  background-color: #4168a1;
+}
+
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+
+  20% {
+    transform: scale(25, 25);
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+.btn:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+.iconHeading {
+  align-items:center;
+  margin-bottom:0;
+  background: #ebebeb;
+  margin-left: 0;
+  margin-right: 0; 
+  height: 61px;
+}
+
+.iconHeading .iconHolder{
+  background: #fff;
+  max-width:66px;
+  padding: 0;
+  border-radius:0 50% 50% 0;
+  border: 5px solid #fff;
+}
+  .iconHeading h2 {
+    margin-bottom:0;
+    color: #333;
+    font-size: 20px;
+  }
+
+  .mat-expansion-panel-header{
+    font-family: 'maven_promedium';
+  }
+
+  .iconHeading .fa-stack {
+    color: #29aae2;
+    font-size: 1.5rem;
+  }
+
+.iconHeading .fa-stack-1x {
+  font-size: 1.8rem;
+}
+
+.btn:not([disabled]):not(.disabled) {
+  cursor:pointer;
+}
+
+body .mat-select,body .mat-form-field,body .mat-button-toggle, body .mat-option-text, body .mat-select-value{
+  margin: 0 !important;
+  width: 100%;
+  font-family: 'maven_promedium';
+  font-size: 15px;
+  font-weight: inherit;
+  line-break: inherit;
+  color: #333;
+}
+
+
+body .mat-radio-button,body .mat-checkbox{
+  margin: 0 !important;
+  width: 100%;
+  font-family: 'maven_proregular';
+  font-size: 15px;
+  font-weight: inherit;
+  line-break: inherit;
+  color: #666;
+}
+
+mat-form-field .mat-form-field-infix{
+  width: auto;
+}
+
+mat-form-field .mat-form-field-underline{
+  background: #e2e2e2;
+}
+
+mat-form-field .mat-select-arrow{
+  color:#aaaaaa;
+}
+
+
+label.mat-form-field-label .mat-placeholder-required{
+  color: #f00;
+}
+
+mat-focused.ng-invalid label.mat-form-field-label{
+  color: #f00;
+}
+
+.iconHeading mat-checkbox{
+  position: relative;
+  top: 4px;
+}
+
+app-facilities-services .mat-tab-body-wrapper{
+  margin-top: 20px;
+}
+
+mat-tab-group {
+  font-family: 'Proxima Nova', Georgia, sans-serif !important;
+}
+
+mat-tab-group mat-tab-header,mat-tab-group mat-tab-header .mat-tab-nav-bar{
+  border-bottom: 1px solid #ebebeb;
+}
+
+mat-tab-group mat-tab-header .mat-tab-label{
+  padding: 0  20px;
+  color: #666;
+  font-size: 0.938em;
+  min-width: auto;
+  opacity: inherit; 
+}
+
+mat-tab-group mat-tab-header .mat-tab-label.mat-tab-label-active{
+  color: #000;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+  height: 3px;
+  background-color:#29aae2;
+}
+
+.mat-tab-group.mat-primary .mat-tab-label:focus, .mat-tab-group.mat-primary .mat-tab-link:focus, .mat-tab-nav-bar.mat-primary .mat-tab-label:focus, .mat-tab-nav-bar.mat-primary .mat-tab-link:focus{
+  background: none;  
+}
+
+mat-chip-list.genericProcessFlow  .mat-chip-list-wrapper{
+  display: block;
+  text-align: center;
+}
+
+mat-chip-list.genericProcessFlow .mat-chip-list-wrapper .mat-chip:not(.mat-basic-chip){
+  min-width: 150px;
+  background: none;
+  border: 1px solid #d1d1d1;
+  color: #666;
+  font-family: 'maven_proregular';
+  font-size: 0.938em;   
+  margin-left: 2px;
+}
+
+.mat-chip:not(.mat-basic-chip)+.mat-chip:not(.mat-basic-chip){
+  margin-left: 2px;
+}
+
+mat-chip-list.genericProcessFlow .mat-chip-list-wrapper .mat-chip.mat-chip-selected.mat-primary{
+  background: #29aae2;
+  color: #fff;
+}
+
+mat-chip-list.genericProcessFlow .mat-chip-list-wrapper .mat-chip.mat-chip-selected.mat-primary .fa-stack .fa.fa-inverse {
+  color: #29aae2;
+}
+
+
+mat-chip-list.genericProcessFlow .mat-chip-list-wrapper .mat-chip.mat-chip-selected.mat-primary .fa-stack{
+  color: #fff;
+}
+
+mat-chip-list.genericProcessFlow .mat-chip-list-wrapper mat-chip .fa-stack{
+  color: #d1d1d1;
+  margin-right: 5px;
+  font-size: 0.938em;   
+}
+
+mat-chip-list.genericProcessFlow .mat-chip-list-wrapper mat-chip .fa-stack .fa.fa-inverse{
+  color: #fff;
+  font-weight: 600;
+}
+
+
+mat-checkbox .mat-checkbox-frame{
+  border: 1px solid #e0e0e0 !important;
+}
+
+mat-checkbox.mat-checkbox.mat-checkbox-checked .mat-checkbox-frame{
+  border: 1px solid #2aaae1 !important;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+  background: none !important;
+}
+
+mat-checkbox.mat-checkbox.mat-checkbox-checked .mat-checkbox-background {
+  background: none !important;
+}
+
+mat-checkbox.mat-checkbox-checked .mat-checkbox-checkmark-path{
+  stroke: #2aaae1 !important;
+}
+
+
+mat-expansion-panel .mat-expansion-panel-header .mat-expansion-indicator{
+  border-radius: 50%;
+  width: 29px;
+  height: 29px;
+  border: 1px solid #2aaae1;
+  background: #fff;
+  position: absolute;
+  right: 13px;
+  top: 15px;  
+}
+
+
+mat-expansion-panel.expandCollapseContainer.mat-expanded  .mat-expansion-panel-header .mat-expansion-indicator:after{
+  content: "\f068";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+/*--adjust as necessary--*/
+  font-size: 18px;
+  padding: 0;
+  position: relative;
+  top: -10px;
+  left: 6px;
+  transform: none;
+  border: none;
+  color: #2aaae1;
+  height: 3px;
+}
+
+mat-expansion-panel.expandCollapseContainer  .mat-expansion-panel-header .mat-expansion-indicator:after{
+  content: "\f067";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+/*--adjust as necessary--*/
+  font-size: 18px;
+  padding: 0;
+  position: absolute;
+  top: 2px;
+  left: 7px;
+  transform: none;
+  border: none;
+  color: #2aaae1;  
+}
+
+.mat-expansion-panel.expandCollapseContainer{
+  box-shadow: none !important;
+  transition: inherit;
+  overflow: hidden;
+  color: #333;
+}
+
+mat-expansion-panel .mat-expansion-panel-header{ 
+  padding: 0;
+  padding-right: 0;
+  position: relative;
+  height: auto !important;
+  background: none !important;
+}
+
+mat-expansion-panel .mat-expansion-panel-header .mat-content .row{ 
+  width: 100%;
+}
+
+mat-expansion-panel .mat-expansion-panel-body{
+  padding: 0;
+}
+
+mat-expansion-panel  .mat-expansion-panel-header-title{
+  margin:0;
+}
+
+mat-expansion-panel .mat-expansion-panel-content{
+  font: 16px;
+}
+
+
+mat-expansion-panel .mat-expansion-panel-content .formSections label,mat-expansion-panel .mat-expansion-panel-content .formSections label p{
+  color:#666;
+  font-size: 15px;
+}
+
+body .cdk-overlay-container{
+  z-index: 10000;
+}
+
+textarea:focus{
+ box-shadow: none;
+}
+
+.btn.disabled, .btn:disabled{
+  cursor: not-allowed;
+}
+
+.semiBold{
+  font-size: 18px;
+  color: #333;
+  font-family: 'montserratregular';
+}
+
+/*** Mat form Field ***/
+
+
+h5 mat-checkbox{
+  display: flex;
+}
+
+body .mat-radio-label{
+  white-space: inherit;
+}
+
+body .mat-radio-outer-circle {
+  border: 1px solid #a2a2a2;
+}
+
+.checkBoxList .mat-checkbox-inner-container{
+  margin-right: 10px;
+}
+
+.alignItemCenter{
+  display: flex;
+}
+
+.alignItemCenter .row{
+  width: 100%;
+  align-items: center;
+}
+
+.borderTopNone {
+  border-top: none !important;
+}
+
+.checkBoxList .mat-checkbox-layout{
+  margin-bottom: 0;
+}
+
+body .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple),.mat-option.mat-active{
+  background: #2aaae1;
+  color: #fff;
+}
+
+body .mat-selected.mat-active .mat-option-text{
+  color: #fff;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+.globalSearch {
+  position: relative;
+}
+
+.globalSearch .form-control{
+  padding:9px 11px;
+  height: auto;
+}
+
+  .globalSearch .searchButton {
+    position: absolute;
+    right: 0;
+    top: 6px;
+    background: none;
+    border: none;
+    color: #4168a1;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 4px 17px 0 0;
+  }
+
+.globalSearch  .ui-autocomplete.ui-widget{
+  color: #666;
+  padding-right: 29px;
+  width: 100%;
+}
+
+.bodyContainer .form-control{
+  padding:0 !important;
+  height: auto;
+}
+
+.bodyContainer .globalSearch p-autocomplete.form-control {
+  padding: 3px 10px !Important;
+}
+
+.globalSearch p-autocomplete .ui-autocomplete .ui-autocomplete-input{
+  border: none;
+  width: 100%;
+  font-family: 'maven_proregular';
+  font-size: 16px;   
+  padding-right: 0;
+  box-shadow:none;
+}
+
+.globalSearch p-autocomplete .ui-autocomplete-panel .ui-widget-content{
+  padding:0;
+  color: #333;
+}
+
+.globalSearch p-autocomplete .ui-autocomplete-panel .ui-widget-content .ui-autocomplete-list-item{
+  padding:10px;
+  color: #333;
+  border-radius: 0;
+}
+
+.globalSearch p-autocomplete .ui-autocomplete-panel .ui-widget-content .ui-autocomplete-list-item.ui-state-highlight{
+  background: #2aaae1;
+  color: #fff;
+}
+
+.genericTable tr th,.genericTable mat-header-row {
+  background: #2aaae1;
+  padding: 8px 17px;
+  color: #fff;
+  min-height: inherit;
+  font-size: 15px;
+  font-family: 'maven_promedium';  
+  font-weight: normal;
+  border-bottom: none;
+}
+
+.genericTable tr:nth-child(even),.genericTable mat-row:nth-child(odd) {background: #f3f8ff}
+
+
+
+
+.genericTable td,.genericTable mat-row {
+  border-bottom: 1px solid #ebebeb;
+  color: #666;
+  font-size: 14px;
+  padding:10px 17px;
+}
+
+.genericTable mat-header-cell{
+  font-size: 15px;
+  color: #fff;
+  font-weight: normal;
+  padding:10px 20px;
+  font-family: 'maven_promedium';    
+  font-weight: normal;
+  border-bottom: none;  
+}
+
+.genericTable mat-header-row,.genericTable .mat-row{
+  padding: 0;
+}
+
+.genericTable .mat-sort-header-stem{
+  height: 0;
+}
+
+.genericTable .mat-sort-header-container{
+  align-items: center;
+}
+
+.genericTable .mat-sort-header-container .mat-sort-header-button{
+  color: #fff;
+  outline: none;
+}
+
+
+body .mat-table{
+  font-family: 'maven_proregular';
+}
+
+.mat-header-cell.text-center *{
+  text-align: center;
+}
+
+.genericTable .mat-sort-header-arrow{
+  color: #fff;
+}
+
+.genericTable .mat-cell{
+  padding:15px 20px;
+  color: #666;
+  font-size: 14px;
+}
+
+body .genericPagination {
+  color: #5a5a5a;
+  font-size: 14px;
+  padding: 30px 0;
+}
+
+.genericPagination .mat-paginator-container{
+  min-height: auto;
+  padding: 0;
+  flex-direction:row-reverse;
+  position: relative;
+}
+
+.genericPagination .mat-paginator-page-size{
+  position: absolute;
+  right: 0;
+}
+
+.genericPagination .mat-paginator-page-size{
+  width:152px !important;
+}
+
+.genericPagination .mat-paginator-page-size-label {
+  white-space: nowrap;
+  color: #5a5a5a;
+  font-family: 'maven_proregular';
+}
+
+.genericPagination .mat-paginator-range-label {
+  font-family: 'maven_proregular';
+}
+
+.genericPagination .mat-paginator-range-actions{
+  position: absolute;
+  left: 40%;
+}
+
+body .genericPagination .mat-icon-button {
+  background: #2aaae1;
+  color: #fff;
+  width: 24px;
+  height: 23px;
+  border-radius: 0;
+  margin-right: 10px;
+}
+
+body .genericPagination .mat-paginator-increment,body .genericPagination .mat-paginator-decrement{
+  border-color: #fff !important;
+  margin-left: 8px;
+}
+
+body .genericPagination .mat-icon-button[disabled] .mat-paginator-decrement{
+  border-color: #fff !important;  
+}
+
+body .genericPagination .mat-icon-button[disabled]{
+  opacity: 0.5;
+}
+
+
+.checkBoxList {
+  padding-left: 90px !important;
+}
+
+.hotelStatus {
+  margin-bottom: 0;
+}
+
+body .hotelStatus mat-checkbox{
+  font-family: 'maven_proregular';
+}
+
+
+.hotelStatus {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+
+  .hotelStatus .form-check.form-check-inline {
+    margin: 0;
+  }
+
+  .hotelStatus .custom-control-description {
+    line-height: 1.7;
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+
+
+  mat-button-toggle-group /deep/ .mat-button-toggle-label{
+    margin-bottom: 0;
+    color: #333;
+    font-size: 14px;
+  }
+  body .mat-button-toggle-group,body .mat-button-toggle-standalone{
+    border-radius: 0;
+    border:1px solid #e0e0e0;
+    box-shadow: none;
+  }
+  
+  mat-button-toggle-group /deep/ .mat-button-toggle{
+    color: #333;
+    font-size: 14px;
+    font-family: 'maven_proregular';
+  }
+  
+  mat-button-toggle-group /deep/ .mat-button-toggle .mat-button-toggle-label-content{
+    line-height: 24px;
+    padding: 0 15px;
+  }
+  
+  mat-button-toggle-group /deep/ .mat-button-toggle-checked{
+    background: #2aaae1;
+    color: #fff;
+  }
+  
+  mat-button-toggle-group /deep/ .mat-button-toggle-checked .mat-button-toggle-label{
+    color: #fff;
+  }
+.genericTab .mat-tab-link {
+  color: #666666;
+  font-size: 15px;
+  padding: 15px 13px;
+  text-decoration: none;
+  height: auto;
+  opacity: inherit;
+  min-width: auto;
+  border-bottom: 3px solid #fff;
+  font-family: 'maven_proregular';
+}
+
+  .genericTab .mat-tab-link.active {
+    color: #000;
+    border-bottom: 3px solid #29aae2;
+  }
+
+
+  .lightBlueContainer {
+    background-color: #eff5ff;
+    padding:30px 10px;
+  }
+
+  .active_status {
+    border-radius: 50%;
+    color: #03a83a;
+    margin-right: 0.3125rem;
+  }
+    
+  .inactive_status {
+    border-radius: 50%;
+    color: #ffe400;
+    margin-right: 0.3125rem;
+  }
+
+
+.lighText{
+  color: #9b9b9b;
+}
+
+.active_status {
+  border-radius: 50%;
+  color: #03a83a;
+  margin-right: 0.3125rem;
+}
+  
+  .inactive_status {
+    border-radius: 50%;
+    color: #ffe400;
+    margin-right: 0.3125rem;
+  }
+
+h2  mat-checkbox .mat-checkbox-label{
+  font-size: 1.375rem;
+}
+
+  /*-Css - Breadcrumb */
+  .customBreadcrumb span:first-child {
+    margin-right: 1.1px;
+    color: #2aaae1;
+  }
+
+  .customBreadcrumb span:last-child {
+    font-size: 12px;
+  }
+  
+  .customBreadcrumb span {
+    font-size: 0.8125rem;
+    color: #333;
+  }
+  
+  .mandatoryInfo{
+    float:right;
+  }
+  
+  .mandatoryInfo:before {
+    content: "*";
+    color: red;
+    padding-right: 5px;
+    font-size: 1rem;
+  }
+  /*-End Css - Breadcrumb */
+  
+  .semiboldText {
+  }
+  
+  .disableFields{
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .disableFields *{
+    cursor: not-allowed;
+  }
+
+.elpsisContent{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top:30%;
+}
+
+.h5 {
+  color: #333333;
+  font-size: 1.125rem;
+}
+
+.reviewTitle {
+  font-family: 'maven_promedium';
+  padding-top: 2rem;
+  font-size: 18px;
+}
+
+.reviewSection {
+  background: #eff5ff;
+  padding: 2rem 2.2rem 2rem 2.2rem;
+  margin-top: 2.4rem;
+}
+
+.h6 {
+  font-size: 1.125rem;
+}
+
+.nameNote {
+  white-space: nowrap;
+  font-size: 0.8125rem;
+  display: block;
+  text-align: right;
+  color: #666;
+}
+
+.alignItemCenter {
+  align-items: center;
+}
+
+.mat-select-panel {
+  margin-top: 40px;
+}
+
+/*Css - Status:Active, Inactive*/
+.statusCheck {
+  font: 1.125rem 'Proxima Nova Semibold';
+  display: inline-flex;
+}
+
+.infoNote {
+  font-size: 0.8125rem;
+  color: #666;
+}
+
+/*Css- Warning Messages */
+
+.warningMsgs {
+  font-size: 0.8125rem;
+  color: #a3a3a3;
+  vertical-align: middle;
+}
+
+  .warningMsgs .fa-info-circle:before {
+    content: "\F05A";
+    font-size: 1.2rem;
+    padding-right: 0.4rem;
+    vertical-align: middle;
+  }
+
+/*End Css- Warning Messages */
+
+/*Contract template And Hotel Management - Facilities & Services And Amenities Checkbox*/
+.checkAll {
+  color: #333333;
+}
+
+  .checkAll .mat-checkbox-frame {
+    background-color: white;
+    border-radius: 0;
+  }
+
+.optionsTxt {
+  color: #000000;
+  font-size: 0.9375rem;
+  font-family: 'maven_proregular';
+}
+
+  .optionsTxt .mat-checkbox-label {
+    color: #000000;
+    font-size: 0.9375rem;
+  }
+
+.optionsList {
+  color: #666;
+  font-size: 0.9375rem;
+  font-family: 'maven_proregular';
+}
+
+
+/*End Contract template And Hotel Management - Facilities & Services And Amenities Checkbox*/
+
+.paddingLeft42px{
+  padding-left: 42px;
+}
+
+.paddingLeft30px{
+  padding-left: 30px;
+}
+
+.paddingLeft15px{
+  padding-left: 15px !Important;
+}
+
+.flexNone.genericTable .mat-cell,.flexNone.genericTable .mat-header-cell{
+  flex: inherit;
+}
+
+.policyNameTh{
+  width: 25%;
+}
+
+.policyDetailsTh{
+  width: 45%;
+}
+
+.policyChildDetailsTh{
+  width: 60%;
+}
+
+.policyStatusTh{
+  width: 15%;
+}
+
+.policyActionTh{
+  width: 15%;
+}
+
+/*Room Type Common Css*/
+.h4 {
+  font-size: 1.375rem;
+  font-family: 'montserratregular';
+}
+
+.addButton {
+  background-color: #fff;
+  border-color: #4168a1;
+  float: right;
+  color: #4168a1;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+  .addButton:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+
+  .genericSmallButton {
+    background-color: #fff;
+    border-color: #4168a1;
+    float: right;
+    color: #4168a1;
+    font-size: 0.875rem;
+    text-align: left;
+  }
+  
+    .genericSmallButton:focus {
+      outline: 0;
+      box-shadow: none;
+    }
+
+.icon-multiply {
+  position: relative;
+  max-width: 60px;
+}
+
+  .icon-multiply:after {
+    color: #666;
+    font: 18px arial, sans-serif;
+    content: 'X';
+    position: absolute;
+    top: 21px;
+    left: 24px;
+  }
+
+/*End Room Type Common Css*/
+
+/*Contract template And Hotel Management - Create Children & Extra Bed Policy*/
+.headingText {
+  color: #666;
+}
+
+.ageSet {
+  background: #eff5ff;
+  padding: 1.5rem 2rem 1.5rem 2rem;
+}
+
+.ageSetText {
+  color: #666;
+  font-size: 1.125rem;
+}
+
+.hotelNameTH {
+  width: 30%;
+}
+
+.guestsTH {
+  width: 15%;
+}
+
+.bedsTH {
+  width: 15%;
+}
+
+.maxChildrenTH {
+  width: 20%;
+}
+
+.extraBedsTH {
+  width: 20%;
+}
+
+/*End Contract template And Hotel Management - Create Children & Extra Bed Policy*/
+
+/*Css - Generic ToolTip*/
+.tooltipInfo .fa.fa-info-circle, .userStatusTH .fa.fa-info-circle {
+  color: #4168a1;
+  font-size: 1.1875rem;
+  margin-left: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.hoverInfo {
+  position: absolute;
+  background: #feffe8;
+  border: 1px solid #f5e08e;
+  display: none;
+  padding: .45rem;
+  font: 0.875rem proxima Nova;
+  border-radius: 2px;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+  left: 31px;
+  width: 220px;
+  top: -8px;
+}
+
+  .hoverInfo:before, .hoverInfo:after {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+
+  .hoverInfo:after {
+    border-right-color: #feffe8;
+    border-width: 11px;
+    margin-top: -11px;
+    left: -17px;
+  }
+
+  .hoverInfo:before {
+    border-right-color: #f5e08e;
+    border-width: 7px;
+    margin-top: -7px;
+  }
+
+.tooltipInfo {
+  display: inline-block;
+  position: relative;
+}
+
+  .tooltipInfo:hover .hoverInfo {
+    display: block;
+  }
+
+/*End Css - Generic ToolTip*/
+
+/*Contract template And Hotel Management - Amenities*/
+
+.checklists {
+  border-top: 1px solid #ebebeb;
+  padding: 1rem 0 1rem 0;
+}
+
+.amenitiesSection {
+  padding: 17px 40px 10px 40px;
+  background-color: #eff5ff;
+}
+
+.genericCheckBox .mat-checkbox-label {
+  color: #333;
+}
+/*End Contract template And Hotel Management - Amenities*/
+
+
+h2.semiBold mat-checkbox .mat-checkbox-label{
+  font-size: 18px;
+}
+
+body .genericCheckboxLabel{
+  font-family: 'maven_proregular';
+}
+
+.genericSelctChips.selectedCheckbox{
+  background: #eff5ff;
+  border:1px solid #4168a1;
+}
+
+
+body .mealTypeCheckbox{
+  border: 1px solid #d0d0d0;
+  background-color: #fff;
+  border-radius: 5px;
+  display: block;
+  padding: 0px !important;
+}
+
+.currencySelect{
+  display:flex;
+  width: 165px;
+}
+
+.mealTypeCheckbox .mat-checkbox-layout {
+  vertical-align: initial !important;
+  margin-bottom: 0;
+  padding: 7px 30px 7px 20px;
+}
+
+body .mealTypeCheckbox .mat-checkbox-frame {
+  border-radius: 12px;
+  padding: 0.6rem;
+  background: #fff;
+  border: 1px solid #fff !important;
+}
+
+body .mealTypeCheckbox  .mat-checkbox-checkmark {
+  top: 2px;
+  left: 2px;
+  position: absolute;
+  width: 83%;
+}
+
+body .mealTypeCheckbox .checkedOption .mat-checkbox-inner-container {
+  display: inline-block;
+}
+
+body .mat-checkbox-checked.mealTypeCheckbox{
+border:1px solid #2aaae1 !important;
+background-color: #eff5ff !important;
+padding: 0 !important;
+}
+
+
+.breakFastSelection{
+  display: inline-flex;
+}
+
+/*Hotel Management - Create New Promotion*/
+
+.marketSelect {
+  background: #eff5ff;
+  padding: 1rem 2rem 2rem 2rem;
+}
+
+/*End Hotel Management - Create New Promotion*/
+
+.toMinWidth{
+  max-width: 80px;
+}
+
+.borderTop {
+  border-top: 1px solid #ebebeb;
+}
+
+.topSpace {
+  padding-top: 38px;
+}
+
+.thinIcon {
+  font-family: serif;
+}
+
+
+textarea {
+  resize: none;
+}
+
+.clear {
+  clear: both;
+  overflow: hidden;
+  height: 0;
+}
+
+.mat-checkbox-layout{
+  margin-bottom: 0;
+}
+
+
+body .mat-form-field-hide-placeholder .mat-select-placeholder,body .mat-input-placeholder{
+  color: #666;
+}
+
+.customeRow{
+  margin-left: -30px;
+}
+
+.customeRow .col-lg-1,.customeRow  .col-lg-10,.customeRow  .col-lg-11,.customeRow  .col-lg-12,.customeRow  .col-lg-2,.customeRow  .col-lg-3,.customeRow  .col-lg-4,.customeRow  .col-lg-5,.customeRow  .col-lg-6,.customeRow  .col-lg-7,.customeRow  .col-lg-8,.customeRow  .col-lg-9,.customeRow  .col-lg-auto,.customeRow  .col-md,.customeRow  .col-md-1,.customeRow  .col-md-10,.customeRow  .col-md-11,.customeRow  .col-md-12,.customeRow  .col-md-2,.customeRow  .col-md-3,.customeRow  .col-md-4,.customeRow  .col-md-5,.customeRow  .col-md-6,.customeRow  .col-md-7,.customeRow  .col-md-8,.customeRow  .col-md-9,.customeRow  .col-md-auto{
+  padding-right:30px;
+  padding-left:30px;
+ }
+
+ /*** Small devices (landscape phones, 576px and up) ***/
+ @media (min-width: 1280px) and (max-width: 1400px) {
+.col-lg-3   {
+  flex:0 0 33.333333%;
+  max-width:33.333333%;
+}
+
+ }
+
+
+.contactTable td{
+  padding-bottom: 12px; 
+}
+
+.innerPageWrapper{
+  padding-right: 15px;
+}
+
+body hr{
+  border-top:1px solid #ababab;
+}
+
+/*** New Css ***/
+.ProximaFontFamily {
+  font-family: 'Proxima Nova', Georgia, sans-serif !important;
+}
+
+.noOutlineOnFocus button:focus {
+  outline: none;
+}
+
+.borderBottomWhite {
+  border-bottom: 2px solid #fff;
+}
+
+input[type='number'].hideUpDownArrow {
+  -moz-appearance: textfield;
+}
+/* Webkit browsers like Safari and Chrome */
+input[type=number].hideUpDownArrow::-webkit-inner-spin-button,
+input[type=number].hideUpDownArrow::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.placeholderColorGray .mat-select-placeholder {
+  color: #666;
+}
+
+/*-- Generic Popover Css-- */
+
+body .mat-dialog-container {
+  padding: 0;
+  width: auto;
+}
+
+.genericPopover .mat-checkbox-frame {
+  border-radius: 0;
+}
+
+.popoverTitle {
+  color: #fff;
+  margin-top: .5rem;
+}
+
+.popoverHeader {
+  background: #4168a1;
+  display: flex;
+  padding: 5px 16px 5px;
+}
+
+.genericPopover .close {
+  opacity: 1;
+  font-family: initial;
+  color: #fff;
+  font-size: 44px;
+}
+
+.genericPopover {
+  width: 100%;
+  padding: 0 15px 22px 15px;
+  overflow: hidden;
+}
+
+  .genericPopover .close:hover {
+    text-shadow: none;
+    opacity: 1;
+  }
+
+  .genericPopover .close:focus {
+    outline: none;
+  }
+
+  .genericPopover .close .mat-button-focus-overlay {
+    background: none;
+  }
+
+  .genericPopover .custom-file {
+    width: 100%;
+    cursor: pointer;
+  }
+
+.popoverCheckbox {
+  color: #666666;
+  font-size: 15px;
+}
+
+.genericPopover .custom-file-control:lang(en):empty::after {
+  content: "";
+}
+
+/*-- End Generic Popover Css-- */
+
+
+.inlineGroup {
+  display: table;
+}
+
+  .inlineGroup .inlineColumn {
+    display: table-cell;
+  }
+
+.elementSelection {
+  width: 30px;
+}
+
+.width99Percent {
+  width: 99%;
+}
+
+.marginLeft10 {
+  margin-left: 10px;
+}
+
+.modalHeading {
+  padding-bottom: 10px;
+  overflow: hidden;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.modalContent {
+  padding-top: 25px;
+}
+
+.modalHeader {
+  font-size: 20px;
+  color: #333;
+  font-family: 'montserratmedium';
+}
+
+.closeIcon .fa-times-thin:before {
+  content: '\D7';
+  font-size: 2.9rem;
+  color: #000;
+  position: relative;
+  top: -12px;
+}
+
+.closeIcon {
+  cursor: pointer;
+  height: 25px;
+}
+
+.showSnackBar.mat-snack-bar-container {
+  position: relative;
+  top: 135px;
+  background: #f1ffe8;
+  border: 1px solid #b1e593;
+  color: #55a029;
+  min-width: auto;
+  max-width: 100%;
+}
+
+  .showSnackBar.mat-snack-bar-container .mat-simple-snackbar {
+    justify-content: left;
+  }
+
+    .showSnackBar.mat-snack-bar-container .mat-simple-snackbar::before {
+      content: url(assets/Check.png);
+      height: 20px;
+      top: -5px;
+      position: relative;
+      left: -12px;
+    }
+
+.paddingLeft15px {
+  padding-left: 15px !Important;
+}
+
+.paddingLeft20px {
+  padding-left: 20px;
+}
+
+.paddingLeft30px {
+  padding-left: 30px;
+}
+
+.blueBackground {
+  background-color: #eff5ff;
+}
+
+.darkBackground {
+  background: #ebebeb;
+}
+
+/*Create new user/agent css*/
+
+.lineBreak {
+  border-top: 2px solid #fff;
+}
+
+.image-upload input {
+  display: none;
+}
+
+.image-upload label {
+  position: absolute;
+  top: 119px;
+  right: 45px;
+  cursor: pointer;
+}
+
+.deletePhoto.mat-raised-button {
+  background: #fff;
+  min-width: 0;
+  padding: 0 7px;
+  position: absolute;
+  top: 12px;
+  left: 137px;
+  box-shadow: none !important;
+}
+
+  .deletePhoto.mat-raised-button .fa-times-thin {
+    color: #333;
+    font-size: 31px;
+    vertical-align: middle;
+    transform: scale(1.1);
+  }
+
+.deletePhoto .fa-times-thin:before {
+  content: '\00d7';
+}
+
+.userImage {
+  font-size: 164px;
+  position: relative;
+  color: #d8d8d8;
+}
+
+/*End Create new user/agent css*/
+
+.marginLeftMinus30px{
+  margin-left: -30px;
+}
+
+.marginRightMinus30px{
+  margin-right: -30px;
+}
+
+.marginBottom10px {
+  margin-bottom: 10px;
+}
+
+.checkBoxDiv {
+  width: 20px;
+  min-height: 1px;
+}
+
+.widthCalculate30 {
+  width: calc(100% - 30px);
+}
+
+.mat-icon .fa-calendar {
+  color: #2aaae1;
+  line-height: 1px;
+  font-size: 20.01px;
+}
+
+.userIcon {
+  font-size: 44px;
+  color: #d8d8d8;
+  display: table !important;
+}
+
+  .darkGreyText{
+  color: #333;
+}
+
+.lightGreyText{
+  color: #666;
+}
+
+.borderTopDark{
+  border-top:1px solid #ababab;
+}
+
+.mavenProMedium{
+  font-family: 'maven_promedium';
+}
+
+.paddingRight15px{
+  padding-right: 15px;
+}
+
+.roomRateText{
+  font-size: 13px;
+  color: #666;  
+}
+
+.policyDetailsTh h6{
+  font-size: 15px;
+  color: #333;
+  font-family: 'maven_promedium';
+}
+
+.countryList .mat-pseudo-checkbox {
+  visibility: hidden;
+}
+
+.modalContainer {
+  padding: 30px 20px;
+}
+
+
+body .defaultTable tr,body .defaultTable tr td,body .defaultTable th{
+  background: none !important;
+  border: none  !important;
+  padding:0;
+}
+
+.mainHeading.customBreadcrumb span:last-child { 
+  color: #666666;
+  font-size: 12px;
+  position: relative;
+  top: 16px;  
+  font-family: 'maven_proregular';
+}
+
+.lightGrey{
+  color: #acacac;
+}
+
+.backgroundNone{
+  background: none !important;
+}
+
+.profileList .backgroundNone *{
+  background: none !important;
+}
+
+body .breakFastSelection .mat-checkbox-inner-container{
+  display: none;
+}
+
+body .breakFastSelection .mat-checkbox-checked .mat-checkbox-inner-container{
+  display: inline-block;
+}
+
+.checkBoxList.facilitiesServicesList,.facilitiesServicesList{
+  padding-left: 60px !important;
+  margin-right: -44px;
+}
+
+body .mat-expansion-panel-content{
+  font-family: 'maven_proregular';
+}
+
+.facilitiesServicesList  h5{
+  font-family: 'maven_promedium';
+  color: #333;
+  font-size: 18px;
+}
+
+.paddingTop50px{
+  padding-top: 50px !important;
+}
+
+.paddingBottom50px{
+  padding-bottom: 50px !important;
+}
+
+.transparent-circle {
+  border: 1.2px solid #2aaae1;
+  height: 26px;
+  width: 26px;
+  border-radius: 20px;
+  position: relative;
+  background: white;
+  cursor: pointer;
+}
+
+  .transparent-circle .fa-times-thin:before {
+    content: '\D7';
+    font-size: 1.9rem;
+    color: #2aaae1;
+    position: absolute;
+    top: -3px;
+    right: 3px;
+  }
+
+  .transparent-circle span:before {
+    content: '+';
+    font-size: 1.9rem;
+    color: #2aaae1;
+    position: absolute;
+    top: -10px;
+    right: 4px;
+  }
+
+
+.serachField {
+  position: relative;
+}
+
+.serachField .fa{
+  color: #2aaae1;
+  position: absolute;
+  right: -1px;
+  top: -10px;
+  font-size: 19px;
+  z-index: 1000;
+  padding: 10px 0 10px 10px;
+  background: #fff;
+}
+
+.genericTable td.dottedBorderBottom {
+  border-bottom: 1px dotted #ebebeb;
+}

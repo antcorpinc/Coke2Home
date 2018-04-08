@@ -1,0 +1,496 @@
+<div class="container-fluid">
+  <div class="mt-5">
+    <h2 class="mb-5">Contract Terms</h2>
+    <form [formGroup]="contractTermsForm">
+      <h2 class="mb-4">Top-up Terms &amp; Conditions</h2>
+      <div class="formSections pt-0 borderBottomNone" formArrayName="contractTermsGroupArray" *ngFor="let contractTermsGroup of contractTermsGroupArray.controls; let i=index">
+
+        <!-- Order: 1 -->
+        <div class="row" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 1">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-checkbox formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+                  {{contractTermsGroupArray.controls[i].get("description").value}}
+                </mat-checkbox>
+              </div>
+              <div class="col-md-12" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+                {{contractTermsGroupArray.controls[i].get("description").value}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 paddingLeft42px">
+                <div class="row">
+                  <div class="col-md-9 pr-0">
+                    <mat-form-field class="disableFields">
+                      <input matInput placeholder="Room Size" type="text" disabled/>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3 pl-0">
+                    <mat-form-field class="disableFields">
+                      <mat-select placeholder="IDR" disabled="true">
+                        <ng-container>
+                          <mat-option>Please Select</mat-option>
+                        </ng-container>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Order: 1 -->
+
+        <!-- Order: 2 -->
+        <div class="row mt-2" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 2">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-checkbox formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+                  {{contractTermsGroupArray.controls[i].get("description").value}}
+                </mat-checkbox>
+              </div>
+              <div class="col-md-12" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+                {{contractTermsGroupArray.controls[i].get("description").value}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 paddingLeft42px">
+                <div class=row>
+                  <div class="col-md-6">
+                    <mat-form-field class="disableFields">
+                      <input matInput [matDatepicker]="startdate" placeholder="Start Date" disabled>
+                      <mat-datepicker-toggle matSuffix [for]="startdate"></mat-datepicker-toggle>
+                      <mat-datepicker #startdate></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="disableFields">
+                      <input matInput [matDatepicker]="enddate" placeholder="End Date" disabled>
+                      <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
+                      <mat-datepicker #enddate></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- Order: 2 -->
+
+        <!-- Order: 3 -->
+        <div class="row mt-2" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 3">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-checkbox formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+                  {{contractTermsGroupArray.controls[i].get("description").value}}
+                </mat-checkbox>
+              </div>
+              <div class="col-md-12" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+                {{contractTermsGroupArray.controls[i].get("description").value}}
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- Order: 3 -->
+
+        <!-- Order: 4 -->
+        <div class="row mt-2" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 4">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-checkbox formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+                  {{contractTermsGroupArray.controls[i].get("description").value}}
+                </mat-checkbox>
+              </div>
+              <div class="col-md-12" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+                {{contractTermsGroupArray.controls[i].get("description").value}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 paddingLeft42px">
+                <div class=row>
+                  <div class="col-md-6">
+                    <mat-form-field class="disableFields">
+                      <mat-select placeholder="Every" disabled>
+                        <mat-option>Select</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- Order: 4 -->
+
+        <!-- Order: 5 -->
+        <div class="row mt-2" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 5">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-checkbox formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+                  {{contractTermsGroupArray.controls[i].get("description").value}}
+                </mat-checkbox>
+              </div>
+              <div class="col-md-12" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+                {{contractTermsGroupArray.controls[i].get("description").value}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 paddingLeft42px">
+                <div class=row>
+                  <div class="col-md-6">
+                    <mat-form-field class="disableFields">
+                      <mat-select placeholder="Balance <" disabled>
+                        <mat-option>Select</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- Order: 5 -->
+
+        <!-- Order: 6 -->
+        <div class="row mt-2" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 6">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-checkbox formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+                  {{contractTermsGroupArray.controls[i].get("description").value}}
+                </mat-checkbox>
+              </div>
+              <div class="col-md-12" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+                {{contractTermsGroupArray.controls[i].get("description").value}}
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- Order: 6 -->
+
+        <!-- Order: 7 -->
+        <div class="row mt-2" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 7">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-checkbox formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+                  {{contractTermsGroupArray.controls[i].get("description").value}}
+                </mat-checkbox>
+              </div>
+              <div class="col-md-12" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+                {{contractTermsGroupArray.controls[i].get("description").value}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 paddingLeft42px">
+                <div class=row>
+                  <div class="col-md-6">
+                    <mat-form-field class="disableFields">
+                      <input matInput placeholder="Incentive" disabled>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="disableFields">
+                      <mat-select placeholder="Select" disabled>
+                        <mat-option>Select</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- Order: 7 -->
+
+        <!-- Order: 8 -->
+        <div class="row mt-2" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 8">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-checkbox formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+                  {{contractTermsGroupArray.controls[i].get("description").value}}
+                </mat-checkbox>
+              </div>
+              <div class="col-md-12" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+                {{contractTermsGroupArray.controls[i].get("description").value}}
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- Order: 8 -->
+
+        <!-- Order: 9 -->
+        <div class="row mt-2" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 9">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-checkbox formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+                  {{contractTermsGroupArray.controls[i].get("description").value}}
+                </mat-checkbox>
+              </div>
+              <div class="col-md-12" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+                {{contractTermsGroupArray.controls[i].get("description").value}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 paddingLeft42px">
+                <div class=row>
+                  <div class="col-md-6">
+                    <mat-form-field class="disableFields">
+                      <input matInput placeholder="Reduction" disabled>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- Order: 9 -->
+
+        <!-- Order: 10 -->
+        <div class="row mt-2" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 10">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-checkbox formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+                  {{contractTermsGroupArray.controls[i].get("description").value}}
+                </mat-checkbox>
+              </div>
+              <div class="col-md-12" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+                {{contractTermsGroupArray.controls[i].get("description").value}}
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- Order: 10 -->
+
+        <!-- Order: 11 -->
+        <div class="formSections borderBottomNone borderTop"  [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 11">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-checkbox class="headerCheckbox" formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+                  <h2 class="mb-0">
+                    {{contractTermsGroupArray.controls[i].get("description").value}}
+                  </h2>
+                </mat-checkbox>
+              </div>
+              <div class="col-md-12">
+                <h2 class="mb-0" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+                  {{contractTermsGroupArray.controls[i].get("description").value}}
+                </h2>
+              </div> 
+            </div>
+
+          <div class="paddingLeft30px">
+
+            <h5 class="font-weight-bold mb-3">Incentive Target</h5>
+            <div class="mt-2 row lightBlueContainer position-relative ml-0 mr-0 mb-5">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-3">
+                    <mat-form-field class="disableFields">
+                      <mat-select placeholder="Period" disabled>
+                        <mat-option>Select</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="disableFields">
+                          <input matInput placeholder="Room Nights (Range)" disabled="true">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                        <mat-form-field class="disableFields">
+                          <input matInput placeholder="To" disabled="true">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="disableFields">
+                          <input matInput placeholder="Incentive Type" disabled="true">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                        <mat-form-field class="disableFields">
+                          <input matInput placeholder="IDR" disabled="true">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1 alignItemCenter">
+                      <span class="btn transparent-circle disableFields" title="Delete" disabled><i aria-hidden="true" class="fa fa-times-thin"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h5 class="font-weight-bold mb-3">Hotel</h5>
+            <div class="mt-2 row lightBlueContainer position-relative ml-0 mr-0">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field class="disableFields">
+                      <input matInput placeholder="Scheme" disabled="true">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field class="disableFields">
+                      <mat-select placeholder="Incentive Period" disabled>
+                        <mat-option>Select</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <div class=row>
+                      <div class="col-md-6">
+                        <mat-form-field class="disableFields">
+                          <input matInput [matDatepicker]="IncentiveValidityFrom" placeholder="Incentive Validity From" disabled>
+                          <mat-datepicker-toggle matSuffix [for]="IncentiveValidityFrom"></mat-datepicker-toggle>
+                          <mat-datepicker #IncentiveValidityFrom></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                        <mat-form-field class="disableFields">
+                          <input matInput [matDatepicker]="IncentiveValidityFromTo" placeholder="Incentive Validity To" disabled>
+                          <mat-datepicker-toggle matSuffix [for]="IncentiveValidityFromTo"></mat-datepicker-toggle>
+                          <mat-datepicker #IncentiveValidityFromTo></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <p>Incentive is accumulative and will be claimed</p>
+                    <mat-form-field class="disableFields">
+                      <mat-select placeholder="Select Basis" disabled>
+                        <mat-option>Select</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <p>Balance of unclaimed rooms will be carried forward to the following</p>
+                    <mat-form-field class="disableFields">
+                      <mat-select placeholder="Select Basis" disabled>
+                        <mat-option>Select</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Order: 11 -->
+
+        <!-- Order: 12 -->
+        <div class="row bookerHeader" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 12">
+          <div class="col-md-12">
+            <mat-checkbox class="headerCheckbox" formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+              <h5 class="font-weight-bold mb-0">
+                {{contractTermsGroupArray.controls[i].get("description").value}}
+              </h5>
+            </mat-checkbox>
+          </div> 
+          <div class="col-md-12">
+            <h5 class="font-weight-bold mb-0" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+              {{contractTermsGroupArray.controls[i].get("description").value}}
+            </h5>
+          </div>  
+          <div class="paddingLeft42px col-md-12">
+            <div class="mt-2 row lightBlueContainer position-relative ml-0 mr-0">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field class="disableFields">
+                      <input matInput placeholder="Scheme IDR" disabled="true">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <div class=row>
+                      <div class="col-md-6">
+                        <mat-form-field class="disableFields">
+                          <input matInput [matDatepicker]="from" placeholder="Incentive Validity From" disabled>
+                          <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+                          <mat-datepicker #from></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                        <mat-form-field class="disableFields">
+                          <input matInput [matDatepicker]="to" placeholder="Incentive Validity To" disabled>
+                          <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+                          <mat-datepicker #to></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2">
+                    <mat-checkbox class="disableFields" disabled>Deduct Net Rates</mat-checkbox>
+                  </div>
+                  <div class="col-md-2">
+                    <mat-checkbox class="disableFields" disabled>Claim to Hotel</mat-checkbox>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- Order: 12 -->
+
+        <!-- Order: 13 -->
+        <div class="formSections pb-0 borderBottomNone borderTop" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 13">
+          <mat-checkbox class="headerCheckbox" formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+            <h2 class="mb-0">
+              {{contractTermsGroupArray.controls[i].get("description").value}}
+            </h2>
+          </mat-checkbox>
+          <h2 class="mb-0" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+            {{contractTermsGroupArray.controls[i].get("description").value}}
+          </h2>
+        </div> 
+        <!-- Order: 13 -->
+
+        <!-- Order: 14 -->
+        <div class="formSections pb-0 borderBottomNone borderTop" [formGroupName]="i" *ngIf="(contractTermsGroupArray.controls[i].get('order').value) === 14">
+          <mat-checkbox class="headerCheckbox" formControlName="isSelected" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === true">
+            <h2 class="mb-0">
+              {{contractTermsGroupArray.controls[i].get("description").value}}
+            </h2>
+          </mat-checkbox>
+          <h2 class="mb-0" *ngIf="(contractTermsGroupArray.controls[i].get('isConfigurable').value) === false">
+            {{contractTermsGroupArray.controls[i].get("description").value}}
+          </h2>
+          <div class="row">
+            <mat-form-field class="disableFields col-md-11">
+              <textarea rows="5" cols="200" matInput disabled></textarea>
+            </mat-form-field>
+            <div class="col-md-1 alignItemCenter">
+              <span class="btn transparent-circle mr-2 disableFields" disabled><span></span></span>
+            </div>
+          </div>
+        </div> 
+        <!-- Order: 14 -->
+
+      </div>
+
+      <div class="col-md-12 pl-3 controlButtons mb-4">
+        <button class="mr-2 btn activeButton" title="Save" (click)="saveContractTerms()">Save</button>
+        <button class="btn defaultButton" title="Cancel" (click)="backToList()">Cancel</button>
+        <button class="btn activeButton float-right" title="Save & Publish" (click)="saveAndPublishContractTerms()">Save & Publish</button>
+      </div>
+    </form>
+  </div>
+</div>

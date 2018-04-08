@@ -1,0 +1,49 @@
+<div class="row mb-4 alignItemCenter pt-1">
+  <div class="col-md-8">
+    <h2>Child &amp; Extra Bed Policy</h2>
+  </div>
+  <div class="col-md-3 text-right controlButtons" *ngIf="childAndExtrabedPolicyList === null && !isRead">
+    <button type="submit" title='Create New Policy' class="btn defaultButton genericButton genericSmallButton mat-raised-button" (click)='createchildextrabedpolicy()' [disabled]="noRoomsPresent">
+      <i class="fa fa-plus mr-2" aria-hidden="true"></i>Create New Policy</button>
+  </div>
+</div>
+<mat-table #table [dataSource]="dataSource" class="genericTable mb-4 flexNone">
+  <ng-container matColumnDef="policyName">
+    <mat-header-cell class="policyNameTh ProximaFontFamily" *matHeaderCellDef> Policy Name </mat-header-cell>
+    <mat-cell class="policyNameTh" *matCellDef="let element"> Default Child & Extra Bed Policy
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="details">
+    <mat-header-cell class="policyChildDetailsTh ProximaFontFamily" *matHeaderCellDef> Details </mat-header-cell>
+    <mat-cell class="policyChildDetailsTh" *matCellDef="let element">
+      <span *ngIf="element.minChildAge != null && element.maxChildAge != null">Min. child age is {{element.minChildAge}} and max. child age is {{element.maxChildAge}}.</span>
+      <span *ngIf="element.minChildAge === null && element.maxChildAge === null">Children are not allowed for this property.</span>
+      <br>
+      <span *ngIf="element.cotPriceTypeId === null">Cots are not allowed for this property.</span>
+      <span *ngIf="element.cotPriceTypeId === isFree">Any child up to and including {{element.maxInfantAge}} years old stays for Free when using an available cot.
+      </span>
+      <span *ngIf="element.cotPriceTypeId === isPaid">Cot for child up to and including {{element.maxInfantAge}} years old will be charged {{currencyCode}} {{element.cotPrice}}
+        per use.</span>
+      <br> Extra Bed -
+      <span *ngIf="element.isExtraBedAllowed">Yes</span>
+      <span *ngIf="!element.isExtraBedAllowed">No</span>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <mat-header-cell class="policyActionTh ProximaFontFamily" *matHeaderCellDef> </mat-header-cell>
+    <mat-cell class="policyActionTh placeholderColorGray" *matCellDef="let element">
+      <mat-select *ngIf="!isRead" placeholder='Actions' (change)="GoPolicyUpdate($event)">
+        <mat-option value="{{hotelId}}-edit"> Edit </mat-option>
+      </mat-select>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<div style="color:orange" *ngIf="noRoomsPresent">
+  Room type is not created for this property, Create Room type first.
+</div>
+<br>
+<div style="color:orange" *ngIf="!noRoomsPresent && noDataAvailable">
+  No Child & Extra Bed Policy is created.
+</div>

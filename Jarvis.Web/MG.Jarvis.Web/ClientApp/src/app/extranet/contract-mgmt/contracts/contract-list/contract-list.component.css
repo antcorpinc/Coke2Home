@@ -1,0 +1,76 @@
+.genericTable th:nth-child(1), .genericTable tr td:nth-child(1) {
+  width: 2%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.genericTable th:nth-child(2), .genericTable tr td:nth-child(2) {
+  width: 15%;
+}
+.genericTable th:nth-child(3), .genericTable tr td:nth-child(3) {
+  width: 15%;
+}
+.genericTable th:nth-child(4), .genericTable tr td:nth-child(4) {
+  width: 10%;
+}
+.genericTable th:nth-child(5), .genericTable tr td:nth-child(5) {
+  width: 11%;
+}
+.genericTable th:nth-child(6), .genericTable tr td:nth-child(6) {
+  width: 14%;
+}
+.genericTable th:nth-child(7), .genericTable tr td:nth-child(7) {
+  width: 13%;
+}
+.genericTable th:nth-child(8), .genericTable tr td:nth-child(8) {
+  width: 10%;
+}
+.genericTable th:nth-child(9), .genericTable tr td:nth-child(9) {
+  width: 10%;
+}
+
+.extraRowsCount {
+  background-color: #2aaae1;
+  padding: 5px;
+  color: #fff;
+}
+
+.extraRowsCount span {
+  font-size: 15px;
+}
+
+.fa-angle-down, .fa-angle-up {
+  font-size: 20px;
+  color: #2aaae1;
+}
+
+.page-size {
+  display: flex;
+  float: right;
+  position: relative;
+  font-size: 13.5px;
+  width: 66px;
+  margin-top: 0.1875rem;
+}
+
+.page-size label {
+  display: inline-block;
+  margin: 0 .5rem .5rem 0;
+  line-height: 2rem;
+  white-space: nowrap;
+}
+
+.page-size mat-select {
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.page-size select::-ms-expand {
+  display: none;
+}
+
+.contractsPagination {
+  font-size: 0.875rem;
+  display: inline-block;
+  margin: 0 17rem 0 18rem;
+}

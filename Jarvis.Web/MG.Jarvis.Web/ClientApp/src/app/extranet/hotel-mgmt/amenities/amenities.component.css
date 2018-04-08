@@ -1,0 +1,37 @@
+.hotelsName {
+  vertical-align: middle;
+  padding: 0.55rem 2rem 0.55rem 0.8rem;
+  background: #fff;
+  color: #666;
+  border-radius: .25rem;
+  font-size: 0.875rem;
+  position: relative;
+  border: 1px solid #ebebeb;
+  margin:0 10px 10px 0;
+  display: inline-block;
+
+}
+
+.hotelsName:after {
+  content: 'X';
+  position: absolute;
+  top: 7.5px;
+  left: 162px;
+  font-size: 0.9375rem;
+}
+
+.selectedRooms {
+  vertical-align: middle;
+  color: #333;
+  font-family: Proxima Nova Semibold;
+  font-size: 1rem;
+}
+
+.checkBoxList {
+  padding: 20px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.amenitiesType .checkBoxList:last-child {
+  border-bottom: none;
+}

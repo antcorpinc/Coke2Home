@@ -1,0 +1,86 @@
+.container {
+    max-height: 775px;
+}
+
+.col-md-5 .d-block {
+    margin-bottom: 0.5rem;
+}
+
+.col-md-2 button {
+    height: 35px;
+    width: 35px;
+    font-size: 24px;
+    color: #fff;
+    background-color: #2aaae1;
+    border-width: 0px;
+}
+
+.countryList {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.continentList {
+    max-height: 70px;
+    overflow-y: auto;
+}
+
+.col-md-5 {
+    max-height: 640px;
+}
+
+.mat-card {
+    height: 560px;
+}
+
+.arrowsButtons {
+    position: relative;
+    top: 40%;
+    left: 40%;
+}
+
+.selectedCountry {
+    background-color: #26a9df;
+    color: #fff;
+}
+
+.unselectedCountry {
+    background-color: transparent;
+    color: #000;
+}
+
+.continentList button {
+    padding: 6px 10px;
+    min-width: auto;
+    line-height: 20px;
+}
+
+.continentList button .mat-button-wrapper {
+    font-size: 14px;
+    font-family: 'montserratregular';
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.countryList .mat-list-text {
+    font-size: 15px;
+    font-family: 'montserratregular';
+    color: #666;
+}
+
+.continentListContainer {
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.arrowsButtons button:first-child, .arrowsButtons button:last-child {
+    background-color: #8b9095;
+}
+
+.mat-selection-list  mat-list-option[aria-selected="true"]{
+    background: #2aaae1;
+    color: #fff;
+  }
+  .continentList .cdk-focused{
+    background: #2aaae1;
+    color: #fff;
+  }

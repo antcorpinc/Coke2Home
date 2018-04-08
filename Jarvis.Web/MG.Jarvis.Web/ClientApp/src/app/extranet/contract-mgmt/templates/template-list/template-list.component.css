@@ -1,0 +1,13 @@
+.genericTable mat-header-cell, .genericTable mat-row mat-cell {
+    width: 28%;
+}
+
+.genericTable mat-header-cell:last-child, .genericTable mat-row mat-cell:last-child {
+    width: 16%;
+}
+.highlight:nth-child(2){
+  background-color: #b1e593; /* #55a029;*/
+}
+.templateNameError {
+  margin: -10px 0 15px 0 ;
+}

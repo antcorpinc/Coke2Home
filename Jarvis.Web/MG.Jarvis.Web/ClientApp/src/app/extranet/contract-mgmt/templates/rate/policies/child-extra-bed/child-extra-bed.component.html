@@ -1,0 +1,137 @@
+<div class="container-fluid">
+  <div class="mt-5">
+    <h1 class="mainHeading">Create New Children & Extra Bed Policy</h1>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="formSections pb-3">
+          <div class="row">
+            <div class="form-group col-md-12 col-lg-12">
+              <h2>Child</h2>
+              <h6 class="h6">Do you allow children at your property?
+              </h6>
+              <span class="pb-3 infoNote d-block font-italic pt-1">(You can specify the ages and prices later)</span>
+              <mat-button-toggle-group class="disableFields">
+                <mat-button-toggle [value]="true" disabled="true">
+                  Yes
+                </mat-button-toggle>
+                <mat-button-toggle [value]="false" disabled="true">
+                  No
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-12 pt-4 mb-0">
+              <h6 class="h6 required disabledLabel">What age are children allowed?</h6>
+              <div class="row">
+                <div class="col-md-2">
+                  <mat-form-field class="disableFields">
+                    <mat-select placeholder="Min. Age">
+                      <mat-option>Select</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-2">
+                  <mat-form-field class="disableFields">
+                    <mat-select placeholder="Max. Age">
+                      <mat-option>Select</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="formSections">
+          <div class="row">
+            <div class="form-group col-md-12 pt-0 pb-0 mb-0">
+              <h2>Cot & Extra Bed Options</h2>
+              <h6 class="h6 pt-3 mt-2 pb-2">Can you provide cots in any of your rooms/units (upon request)</h6>
+              <mat-button-toggle-group class="disableFields">
+                <mat-button-toggle [value]="true" disabled="true">
+                  Yes
+                </mat-button-toggle>
+                <mat-button-toggle [value]="false" disabled="true">
+                  No
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+              <h2 class="pt-4 mt-2">Cots</h2>
+              <h6 class="h6 headingText">Set your prices and age restrictions for cots.</h6>
+              <div class="ageSet mt-3">
+
+
+                <div class="row">
+                  <div class="form-group col-md-3">
+                    <mat-form-field class="disableFields">
+                      <mat-select placeholder="Age Upto" required disabled>
+                        <mat-option>Select</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <mat-form-field class="disableFields">
+                      <mat-select placeholder="Price" required disabled>
+                        <mat-option>Free</mat-option>
+                        <mat-option>Paid</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <mat-form-field class="disableFields">
+                      <input matInput placeholder="Enter Price" />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="formSections">
+          <div class="row">
+            <div class="form-group col-md-12 pt-0 pb-0 mb-0">
+              <h2>Extra Beds</h2>
+              <h6 class="h6 headingText pb-2">Can you provide extra beds in any of your rooms/ units (upon request)?</h6>
+              <mat-button-toggle-group class="disableFields">
+                <mat-button-toggle [value]="true" disabled="true">
+                  Yes
+                </mat-button-toggle>
+                <mat-button-toggle [value]="false" disabled="true">
+                  No
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+        </div>
+
+        <div class="formSections borderBottomNone">
+          <div class="row">
+            <div class="form-group col-md-12 pt-2">
+              <h2>Maximum Children and Extra Beds per Room/Units</h2>
+              <h6 class="h6 headingText pt-2">Set maximum children and extra beds per room/units.</h6>
+              <table class="table genericTable mt-4">
+                <thead>
+                  <tr>
+                    <th class="hotelNameTH align-middle">Name</th>
+                    <th class="guestsTH">Total Number of Guest</th>
+                    <th class="bedsTH align-middle">Beds</th>
+                    <th class="maxChildrenTH requiredLabel align-middle">Maximum Children</th>
+                    <th class="extraBedsTH requiredLabel align-middle">Extra Beds</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 controlButtons mb-4 pl-0">
+      <button title="Save" type="button" class="btn activeButton" (click)="savePolicy()">Save</button>
+      <button title="Cancel" type="button" class="btn defaultButton" (click)="backToList()">Cancel</button>
+      <button class="btn activeButton float-right" title="Save & Continue" type="button" (click)="saveandContinue()">Save & Continue</button>
+    </div>
+  </div>
+</div>

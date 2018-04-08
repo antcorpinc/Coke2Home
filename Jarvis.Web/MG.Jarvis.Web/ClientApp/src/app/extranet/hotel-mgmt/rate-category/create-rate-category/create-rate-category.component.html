@@ -1,0 +1,138 @@
+
+    <div class="customBreadcrumb mb-4"><span>Rate Category </span><span>&gt; Create New Rate Category</span></div> 
+    <h1 class="mainHeading customBreadcrumb">Create New Rate Category<span class="mandatoryInfo float-right">Indicates Mandatory Fields</span></h1>
+    <div class ="row">
+        <div class="col-md-8">
+        <div class="row formSections borderBottomNone pb-0">
+        <div class="col-md-12 form-group mb-0">
+            <h5 class="statusCheck mb-0">
+          Rate Category Status
+          <div class="form-group hotelStatus ml-2">
+            <div class="form-check form-check-inline">
+            <mat-checkbox>Active</mat-checkbox>
+            </div>
+          </div>
+        </h5>
+        </div>
+        </div>
+        
+        <div class="row formSections pt-0 mt-0 pb-4">
+            <div class="form-group col-md-6">
+            <mat-form-field class="example-full-width">
+            <input matInput placeholder="What is the name of your rate category?" id="name" required/>
+            </mat-form-field>
+            <span class="nameNote">This Name is just of you. Not displayed to Customers</span>
+            </div>
+          </div>
+          
+        <div class="row formSections mb-0 pb-3">
+            <div class="form-group col-md-12">
+            <h2 class="pb-2 requiredLabel">Which room types?</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                    <mat-checkbox class="pl-0 roomCheckBox">Haven - Double or Twin Room</mat-checkbox>
+                    </div>
+                    <div class="col-md-6">
+                    <mat-checkbox class="pl-0 roomCheckBox">Haven - Double sunroof</mat-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row formSections mb-0 pb-3">
+            <div class="form-group col-md-12">
+            <h2 class="pb-2">Which cancellation policy?</h2>
+                <mat-radio-group>
+                <mat-radio-button value="1">General<div class="tooltipInfo"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="hoverInfo">General</span></div></mat-radio-button>
+                <mat-radio-button value="2">Special Conditions<div class="tooltipInfo"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="hoverInfo">Special Conditions</span></div></mat-radio-button>
+                <mat-radio-button value="3">Non - Refundable<div class="tooltipInfo"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="hoverInfo">Non Refundable</span></div></mat-radio-button>
+                <mat-radio-button value="4">Special Conditions<div class="tooltipInfo"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="hoverInfo">Special Conditions</span></div></mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        
+        <div class="row formSections mb-0 pb-3">	
+            <div class="form-group col-md-12">
+            <h2 class="pb-2">Which meal types?</h2>
+                <mat-radio-group>
+                <mat-radio-button value="1">Room Only</mat-radio-button>
+                <mat-radio-button value="2">Bed & Breakfast</mat-radio-button>
+                <mat-radio-button value="3">Half Board</mat-radio-button>
+                <mat-radio-button value="4">All Inclusive</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+        
+        <div class="col-md-4">
+        <div class="reviewSection">
+            <h2 class="pb-2 pt-1 mb-2">Review Rate Category</h2>
+            <h6 class="reviewTitle pt-1">Name</h6>
+            <span class="pb-4">Standard Summer Rates</span>
+            
+            <h6 class="reviewTitle">Rate Management</h6>
+            <span class="pb-4">XML</span>
+            
+            <h6 class="reviewTitle">Rooms using this rate</h6>
+            <span class="pb-4">
+                <ul class="pl-0 ml-0 mb-0">
+                <li>Haven - Double or Twin room</li>
+                <li>Haven - Double Sunroof</li>
+                </ul>
+            </span>
+            
+            <h6 class="reviewTitle">Policy</h6>
+            <span class="pb-4">
+                General
+            </span>
+            
+            <h6 class="reviewTitle">Room Types</h6>
+            <span class="pb-4">
+                Breakfast
+            </span>
+        </div>
+        </div>
+        </div>
+        
+        <div class="row formSections mb-0 pb-2 borderBottomNone">	
+            <div class="form-group col-md-8">
+            <h2 class="pb-2">Which market?</h2>
+            <mat-form-field>
+                  <mat-select placeholder="Canada, Europe" name="marketSelect">
+                  <mat-option>Select</mat-option>
+                  </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-1 pl-4 pt-5 mt-3">
+            OR
+            </div>
+            <div class="col-md-3 pl-0 pt-4 mt-3">
+            <mat-form-field>
+                  <mat-select placeholder="Create New Market" name="newMarket">
+                  <mat-option>Select</mat-option>
+                  </mat-select>
+                  </mat-form-field>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="marketSelect">
+                <h6 class="reviewTitle">Market details</h6>
+                    <mat-form-field>
+                    <textarea placeholder="Applicable Countries" rows="5" cols="70" maxlength="1200" matInput></textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                    <textarea placeholder="Excluded Countries" rows="5" cols="70" maxlength="1200" matInput></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+             <div class="col-md-12 controlButtons paddingTop50px pb-4 mb-1">
+                <button title="Save" type="submit" class="genericButton activeButton mat-raised-button mat-primary"  mat-raised-button>Save</button>
+                <button title="Cancel" type="submit" class="genericButton defaultButton" mat-raised-button>Cancel</button>                      
+             </div>
+          </div>
+          

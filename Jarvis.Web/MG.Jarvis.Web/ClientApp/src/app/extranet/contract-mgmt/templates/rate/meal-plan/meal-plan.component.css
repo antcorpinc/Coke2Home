@@ -1,0 +1,24 @@
+
+.breakfastDetails{
+    font-size:1.125rem;
+    display: block;
+}
+
+.mealPlanContainer .checklists {
+	border-bottom: 1px solid #ebebeb;
+}
+
+.first{
+	border-top: 1px solid #ebebeb;
+}
+
+.mealPlanRules{
+font-size: 0.8125rem;
+    color: #666;
+}
+
+.currencySelect{
+    display:flex;
+    width: 165px;
+}
+

@@ -1,0 +1,11 @@
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Web\obj\Debug\netcoreapp2.0\MG.Jarvis.Web.csprojResolveAssemblyReference.cache
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Web\bin\Debug\netcoreapp2.0\MG.Jarvis.Web.deps.json
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Web\bin\Debug\netcoreapp2.0\MG.Jarvis.Web.runtimeconfig.json
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Web\bin\Debug\netcoreapp2.0\MG.Jarvis.Web.runtimeconfig.dev.json
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Web\bin\Debug\netcoreapp2.0\MG.Jarvis.Web.dll
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Web\bin\Debug\netcoreapp2.0\MG.Jarvis.Web.pdb
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Web\obj\Debug\netcoreapp2.0\MG.Jarvis.Web.csproj.CoreCompileInputs.cache
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Web\obj\Debug\netcoreapp2.0\MG.Jarvis.Web.AssemblyInfoInputs.cache
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Web\obj\Debug\netcoreapp2.0\MG.Jarvis.Web.AssemblyInfo.cs
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Web\obj\Debug\netcoreapp2.0\MG.Jarvis.Web.dll
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Web\obj\Debug\netcoreapp2.0\MG.Jarvis.Web.pdb

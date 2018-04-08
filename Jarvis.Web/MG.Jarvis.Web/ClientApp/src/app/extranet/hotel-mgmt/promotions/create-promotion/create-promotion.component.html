@@ -1,0 +1,337 @@
+
+
+
+  <!--<form>
+    <div class="row">
+      <!--<div class="col-md-12 infoMsg">
+      <i class="fa fa-asterisk" aria-hidden="true"></i>Indicates Mandatory Field
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h1 class="mainHeading">Rate Category</h1>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right controlButtons">
+            <button  class="btn defaultButton" title="Create New Template" 
+            type="button" (click)="createRateCategory()">
+              Create New Rate Category</button>
+          </div>
+    </div>
+  </form>-->
+
+  <div class="customBreadcrumb mb-4"><span>Promotions </span><span>&gt; Create New Promotion</span><span class="mandatoryInfo float-right">Indicates Mandatory Fields</span></div> 
+  <h1 class="mainHeading">Create New Promotion</h1>
+<div class ="row">
+      <div class="col-md-8">
+      <div class="row formSections borderBottomNone pb-0">
+      <div class="col-md-12 form-group mb-0">
+          <h5 class="statusCheck mb-0">
+        Promotion Status
+        <div class="form-group hotelStatus ml-2">
+          <div class="form-check form-check-inline">
+          <mat-checkbox>Active</mat-checkbox>
+          </div>
+        </div>
+      </h5>
+      </div>
+      </div>
+  
+  <div class="row formSections pt-0 mt-0 pb-4">
+          <div class="form-group col-md-6">
+          <mat-form-field class="example-full-width">
+          <input matInput placeholder="What is the name of your promotion?" id="name" required/>
+          </mat-form-field>
+          <span class="nameNote">This Name is just of you. Not displayed to Customers</span>
+          </div>
+        </div>
+    
+    <div class="row formSections mb-0 pb-3">
+          <div class="col-md-12">
+			  <h2 class="pb-4">Select promotion type</h2>
+			   <div class="row">
+			   <div class="col-md-12">
+				<mat-chip-list>
+				<div class="row w-100 pb-5">
+				  <div class="col-md-4">
+				  <mat-chip class="genericChip">
+				  <img class="mt-3 pt-1" src="assets/promotionIcon/basicDeal.png">
+				  <h2 class="d-block mt-2 pt-1">Basic Deal</h2>		  
+				  </mat-chip>
+				  </div>
+				  <div class="col-md-4">
+				  <mat-chip class="genericChip">
+				  <img class="mt-3 pt-1" src="assets/promotionIcon/lastMinute.png">
+				  <h2 class="d-block mt-2 pt-1">Last Minute</h2>  			  
+				  </mat-chip>
+				  </div>
+				  <div class="col-md-4">
+				  <mat-chip class="genericChip">	
+				  <img class="mt-3 pt-1" src="assets/promotionIcon/earlyBirds.png">
+				  <h2 class="d-block mt-2 pt-1">Early Birds</h2>
+				  </mat-chip>
+				  </div>
+			  </div>
+			  <div class="row w-100 pb-4 mb-2">
+				<div class="col-md-4">
+				<mat-chip class="genericChip">
+						<img class="mt-3 pt-1" src="assets/promotionIcon/dealOfTheDay.png">
+						<h2 class="d-block mt-2 pt-1">Deal of the Day</h2>
+				  </mat-chip>
+				  </div>
+				  <div class="col-md-4">
+				  <mat-chip class="genericChip">
+						<img class="mt-3 pt-1" src="assets/promotionIcon/freeNights.png">
+						<h2 class="d-block mt-2 pt-1">Free Nights</h2>
+				  </mat-chip>
+				  </div>
+				  
+				  <div class="col-md-4">
+				  <mat-chip class="genericChip">
+						<img class="mt-3 pt-1" src="assets/promotionIcon/basicDeal.png">
+						<h2 class="d-block mt-2 pt-1">Opaque</h2>
+					
+				  </mat-chip>
+				  </div>
+				  </div>
+			
+			  </mat-chip-list>
+    </div>
+    </div>
+	 </div>
+    </div>
+
+    
+    <div class="row formSections mb-0 pb-3">
+          <div class="form-group col-md-12">
+    <h2 class="pb-2 requiredLabel">Conditions for guests to use this promotion?</h2>
+    <label>Least number of nights your guests need to stay to use this promotion</label>
+      <div class="row">
+        <div class="col-md-4">
+        <mat-form-field class="d-flex">
+            <mat-select placeholder="Matched to your chosen rate ?">
+            <mat-option>Select</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <div class="row formSections mb-0 pb-3">
+          <div class="form-group col-md-12">
+    <h2 class="requiredLabel">How much of a discount do you want to give?</h2>
+     <div class="row">
+            <div class="col-md-2">
+            <mat-form-field>
+              <mat-select placeholder="10">
+              <mat-option>Select</mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+            <div class="col-md-2">
+            <mat-form-field>
+              <mat-select placeholder="%">
+              <mat-option>Select</mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="row formSections mb-0 pb-3">
+          <div class="form-group col-md-12">
+    <h2 class="requiredLabel">Which Rates?</h2>
+    <label>The discount will be deducted from the rate(s) you select here.</label>
+        <mat-radio-group>
+        <mat-radio-button value="1">Standard Rate</mat-radio-button>
+        <mat-radio-button value="2">Room Only</mat-radio-button>
+        <mat-radio-button value="3">Non-Refundable</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    
+     <div class="row formSections mb-0 pb-3">
+      <div class="form-group col-md-12">
+      <h2 class="requiredLabel">Which Rooms?</h2>
+      <label>The discount will be applied to these room(s)</label>
+      <span class="sectionNote d-block pb-2">This section is dependent on the above Rate selection.</span>
+          <mat-checkbox class="d-block">Haven – Double or Twin Room</mat-checkbox>
+          <mat-checkbox class="d-block">Haven – Double Sunroof</mat-checkbox>
+          <mat-checkbox class="d-block">Haven – Double with Balcony</mat-checkbox>
+          <mat-checkbox class="d-block">Haven – Double Beach Front</mat-checkbox>
+          <mat-checkbox class="d-block">Haven – Double Gardenfacing</mat-checkbox>
+        </div>
+    </div>
+    
+    <div class="row formSections mb-0 pb-3">
+      <div class="form-group col-md-12">
+      <h2 class="pb-2 requiredLabel">Stay Period?</h2>
+      <label>Your discount will apply to stays on the following date(s):</label>
+       <div class="row">
+        <div class="col-md-4 pb-4">
+          <div class="row">
+          <div class="col-md-6">
+            <mat-form-field>
+            <input matInput [matDatepicker]="startdate" placeholder="From"> 
+            <mat-datepicker-toggle matSuffix [for]="startdate"></mat-datepicker-toggle>
+            <mat-datepicker #startdate></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field>
+            <input matInput [matDatepicker]="enddate" placeholder="To">
+            <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
+            <mat-datepicker #enddate></mat-datepicker>
+            </mat-form-field>
+          </div>
+          </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12">				  
+          <h2 class="pb-2">Discounted rate available only on:</h2>
+             <mat-checkbox class="pr-4">Mon</mat-checkbox>
+             <mat-checkbox class="pr-4">Tue</mat-checkbox>
+             <mat-checkbox class="pr-4">Wed</mat-checkbox>
+             <mat-checkbox class="pr-4">Thu</mat-checkbox>
+             <mat-checkbox class="pr-4">Fri</mat-checkbox>
+             <mat-checkbox class="pr-4">Sat</mat-checkbox>
+             <mat-checkbox class="pr-4">Sun</mat-checkbox>
+        </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row formSections mb-0 pb-3">
+      <div class="form-group col-md-12">
+        <h2 class="pb-2">Non-refundable promotion</h2>
+            <mat-checkbox>Add a non-refundable policy to your promotion and decrease cancellations.</mat-checkbox>
+      <h2 class="pb-2 pt-4 requiredLabel">Booking Period</h2>
+      <label>Guests can see this promotion on the following dates:</label>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="row">
+          <div class="col-md-6">
+            <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="From">	 
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field>
+            <input matInput [matDatepicker]="picker1" placeholder="To">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+          </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+            <h2 class="pb-2 pt-4 requiredLabel">Set the timing for your promotion</h2>
+            <mat-checkbox>Limit your promotions to the following hours, based on your local time.</mat-checkbox>
+             </div>
+          </div>
+          <div class="row alignItemCenter">
+            <div class="col-md-2 pr-0">
+            <mat-form-field>
+            <mat-select placeholder="11:00">
+            <mat-option>Select</mat-option>
+            </mat-select>
+            </mat-form-field>
+            </div>
+          <div class="col-md-1 text-center toMinWidth">To</div>
+            <div class="col-md-2 pl-0">
+            <mat-form-field>
+            <mat-select placeholder="23:00">
+            <mat-option>Select</mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row formSections mb-0 pb-2 borderBottomNone">	
+          <div class="form-group col-md-8">
+          <h2 class="pb-2">Which market?</h2>
+          <mat-form-field>
+                <mat-select placeholder="Canada, Europe" name="marketSelect">
+                <mat-option>Select</mat-option>
+                </mat-select>
+                </mat-form-field>
+          </div>
+          <div class="col-md-1 pl-4 pt-5 mt-3">
+          OR
+          </div>
+          <div class="col-md-3 pl-0 pt-4 mt-3">
+          <mat-form-field>
+                <mat-select placeholder="Create New Market" name="newMarket">
+                <mat-option>Select</mat-option>
+                </mat-select>
+                </mat-form-field>
+          </div>
+      </div>
+      
+      <div class="row">
+          <div class="col-md-8">
+              <div class="marketSelect">
+              <h6 class="reviewTitle">Market details</h6>
+                  <mat-form-field>
+                  <textarea placeholder="Applicable Countries" rows="5" cols="70" maxlength="1200" matInput></textarea>
+                  </mat-form-field>
+                  <mat-form-field>
+                  <textarea placeholder="Excluded Countries" rows="5" cols="70" maxlength="1200" matInput></textarea>
+                  </mat-form-field>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+         <div class="col-md-4">
+      <div class="reviewSection">
+          <h2 class="pb-2 pt-1 mb-2">Review Promotion</h2>
+          <h6 class="reviewTitle pt-1">Name</h6>
+          <span class="pb-4">Standard Summer Promotion</span>
+          
+          <h6 class="reviewTitle">Discount</h6>
+          <span class="pb-4">10% Off</span>
+          
+          <h6 class="reviewTitle">Details</h6>
+          <span class="pb-4">
+              <ol class="pl-3 mb-0">
+        <li>Basic Deal</li>
+        <li>Minimum stay</li>
+              </ol>
+          </span>
+    <span class="infoNote pl-3">Matched to your chosen rate</span>
+          
+          <h6 class="reviewTitle">Rooms and Rates</h6>
+          <span class="d-block">
+              Haven – Double or Twin Room
+          </span>
+    <span class="infoNote">Standard</span>
+          
+          <h6 class="reviewTitle">Dates</h6>
+          <span class="pb-4">
+              15-Sept-17 on every day
+          </span>
+      </div>
+      </div>
+</div>
+  <div class="row">
+           <div class="col-md-12 controlButtons pt-5">
+            <button title="Save" type="submit" class="genericButton activeButton"  mat-raised-button>Save</button>
+            <button title="Cancel" type="reset" class="genericButton defaultButton" mat-raised-button>Cancel</button>                
+           </div>
+        </div>
+   

@@ -1,0 +1,533 @@
+<div class="container-fluid">
+    <!-- <form [formGroup]="hotelInfoForm" (ngSubmit)="saveHotelInfo()" > -->
+        <form [formGroup]="hotelInfoForm">
+  <div class="mt-5">
+    <div class="mt-4">
+      <h1 class="mainHeading">Hotel Info</h1>
+
+        <div class="formSections pb-0 borderBottomNone">
+          <!--  <h5 class="semiBold">
+       Hotel Status
+      <div class="form-group hotelStatus">
+        <div class="form-check form-check-inline">
+          <mat-checkbox>Active</mat-checkbox>
+        </div>
+      </div>
+    </h5> -->
+        </div>
+        <div class="formSections pt-3 pb-1">
+          <h5 class="semiBold">Hotel Details</h5>
+          <!-- <label>Hotel ID: CA00000001</label> -->
+          <div class="row">
+            <div class="inlineGroup col-md-4 col-lg-3">
+                <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="hotelnameStatus[0]['isConfigurable']"  class="matCheckBox" formControlName="hotelName"></mat-checkbox></div>
+              <!-- <label>Name</label> -->
+              <div class="inlineColumn">
+                <mat-form-field >
+                  <input placeholder="Name" matInput required disabled/>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="inlineGroup col-md-4 col-lg-3">
+                <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="chainStatus[0]['isConfigurable']"  class="matCheckBox" formControlName="chain" (change)="onChainChange($event)"></mat-checkbox></div>
+              <!-- <label>Chain</label> -->
+              <div class="inlineColumn">
+                <mat-form-field >
+                  <mat-select [disabled]="true" placeholder="Chain" >
+                    <mat-option [value]="null">Select</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                </div>
+            </div>
+            <div class="inlineGroup col-md-4 col-lg-3">
+                <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="brandStatus[0]['isConfigurable']"  class="matCheckBox" formControlName="brand" ></mat-checkbox></div>
+              <!-- <label>Brand</label> -->
+              <div class="inlineColumn">
+                <mat-form-field >
+                  <mat-select [disabled]="true" placeholder="Brand">
+                    <mat-option [value]="null">Select</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="inlineGroup  col-md-4 col-lg-3">
+                <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="typeStatus[0]['isConfigurable']" class="matCheckBox" formControlName="type"></mat-checkbox></div>
+              <!--*ngIf="isName" class="genericLabel" -->
+              <div class="inlineColumn">
+                <mat-form-field >
+                  <mat-select [disabled]="true" placeholder="Type">
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="inlineGroup  col-md-4 col-lg-3">
+                <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="add1Status[0]['isConfigurable']" class="matCheckBox" formControlName="address1"></mat-checkbox></div>
+              <!-- <label>Address1</label> -->
+              <div class="inlineColumn">
+                <mat-form-field >
+                  <input matInput required disabled  placeholder="Address1"/>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="inlineGroup  col-md-4 col-lg-3">
+                <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="add2Status[0]['isConfigurable']" class="matCheckBox" formControlName="address2"></mat-checkbox></div>
+              <!-- <label>Address2</label> -->
+              <div class="inlineColumn">
+                <mat-form-field >
+                  <input matInput required disabled  placeholder="Address2"/>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="inlineGroup  col-md-4 col-lg-3">
+                <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="countryStatus[0]['isConfigurable']" class="matCheckBox" formControlName="country"></mat-checkbox></div>
+              <!-- <label>Country</label> -->
+              <div class="inlineColumn">
+                <mat-form-field >
+                  <mat-select [disabled]="true" required  placeholder="Country">
+                    <mat-option [value]="null">Select</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="inlineGroup  col-md-4 col-lg-3">
+                <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="cityStatus[0]['isConfigurable']" class="matCheckBox" formControlName="city"></mat-checkbox></div>
+              <!-- <label>City</label> -->
+              <div class="inlineColumn">
+                <mat-form-field >
+                  <mat-select [disabled]="true" placeholder="City" required>
+                    <mat-option [value]="null">Select</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="inlineGroup  col-md-4 col-lg-3">
+                <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="zipStatus[0]['isConfigurable']" [checked]="zipStatus[0]['isSelected']" class="matCheckBox" formControlName="zip"></mat-checkbox></div>
+                <!-- <label>Zip Code</label> -->
+              <div class="inlineColumn">
+                <mat-form-field >
+                  <input matInput placeholder="Zip Code" required disabled/>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="inlineGroup col-md-4 col-lg-3">
+              <div class="mapLocator">
+                  <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="latlongStatus[0]['isConfigurable']" class="matCheckBox" formControlName="latlong"></mat-checkbox></div>
+                  <!-- <label>Latitude / Longitude</label> -->
+                <div class="inlineColumn">
+                  <mat-form-field >
+                    <input matInput placeholder="Latitude / Longitude" required disabled/>
+                    <span class="input-group-addon">
+                      <button [disabled]="true" >
+                        <i aria-hidden="true" class="fa fa-map-marker"></i>
+                      </button>
+                    </span>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- Form section cosed-->
+        </div>
+        <!-- Row div cosed-->
+
+        <div class="formSections pt-3 pb-1">
+          <div class="row">
+            <div class="inlineGroup  col-md-4 col-lg-3">
+                <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="starratingStatus[0]['isConfigurable']"  class="matCheckBox" formControlName="starrating"></mat-checkbox></div>
+                <!-- <label>Star Rating</label> -->
+              <div class="inlineColumn">
+                <mat-form-field >
+                  <mat-select placeholder="Star Rating" required>
+                    <mat-option></mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="inlineGroup  col-md-4 col-lg-3">
+                <div class="inlineColumn elementSelection"><mat-checkbox *ngIf="mgpointsStatus[0]['isConfigurable']" class="matCheckBox" formControlName="mgpoints"></mat-checkbox></div>
+                <!-- <label>MG Points</label> -->
+              <div class="inlineColumn">
+                <mat-form-field >
+                  <input matInput placeholder="MG Points">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formSections pb-0 pt-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="float-left">
+                  <mat-checkbox *ngIf="shortdescriptionStatus[0]['isConfigurable']"  class="matCheckBox" formControlName="shortdescription"></mat-checkbox>
+              </div>
+              <div class="float-left marginLeft10 widthCalculate30">
+                  <h2>
+                    Hotel Short Description
+                      <!-- <label>Hotel Short Description</label> -->
+                  </h2>
+                <mat-form-field >
+                  <textarea [disabled]="true" matInput placeholder="Hotel Short Description" rows="5" cols="200" maxlength="500" required></textarea>
+                </mat-form-field>
+                <p class="small text-right">Max. 500 characters</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+                <div class="float-left">
+                    <mat-checkbox *ngIf="longdescriptionStatus[0]['isConfigurable']"  class="matCheckBox" formControlName="longdescription"></mat-checkbox>
+                </div>
+                <div class="float-left marginLeft10 widthCalculate30">
+                  <h2>
+                      Hotel Long Description
+                      <!-- <label>Hotel Long Description</label> -->
+                  </h2>
+                  <mat-form-field >
+                    <textarea [disabled]="true" matInput placeholder="Hotel Long Description"></textarea>
+                  </mat-form-field>
+                  <p class="small text-right">Max. 1200 characters</p>
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="formSections pb-0 borderBottomNone">
+            <h2>
+              <mat-checkbox *ngIf="contactStatus[0]['isConfigurable']"  class="matCheckBox" formControlName="contactdetails">Contact Details</mat-checkbox>
+             <!-- <label>Contact Details</label> -->
+            </h2>
+          <div class="row mt-4">
+            <div class="form-group col-md-12 mb-0 paddingLeft45">
+              <table class="table genericTable borderTopZero mb-0 contactTable">
+                <thead>
+                  <tr>
+                    <th class="border-top-0 primaryContactTh">Set as Primary</th>
+                    <th class="border-top-0 contactContactTh">Contact Person</th>
+                    <th class="border-top-0 titleContactTh">Designation</th>
+                    <th class="border-top-0 emailContactTh">Email</th>
+                    <th class="border-top-0 contactNumberContactTh">Contact Number</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="align-middle">
+                      <mat-radio-group >
+                        <mat-radio-button [disabled]="true"></mat-radio-button>
+                      </mat-radio-group>
+                    </td>
+                    <td>
+                      <mat-form-field >
+                        <input matInput placeholder="" disabled/>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field >
+                        <mat-select [disabled]="true" placeholder="">
+                          <mat-option [value]="undefined" disabled="true">Select</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field >
+                        <input matInput placeholder="" disabled/>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field >
+                        <input matInput placeholder="" disabled/>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="align-middle">
+                      <mat-radio-group >
+                        <mat-radio-button disabled="true"></mat-radio-button>
+                      </mat-radio-group>
+                    </td>
+                    <td>
+                      <mat-form-field >
+                        <input matInput placeholder="" disabled/>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field >
+                        <mat-select disabled="true" placeholder="">
+                          <mat-option>Select</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field >
+                        <input matInput placeholder="" disabled/>
+                      </mat-form-field>
+                    </td>
+                    <td class="addContact">
+                      <mat-form-field >
+                        <input matInput placeholder="" disabled/>
+                      </mat-form-field>
+
+                      <button class="btn btn-default buttonStacked" title="Add" type="button" disabled="true">
+                        <span class="fa-stack">
+                          <i class="fa fa-circle-thin fa-stack-2x text-primary"></i>
+                          <i class="fa fa-plus fa-stack-1x fa-inverse text-primary"></i>
+                        </span>
+                      </button>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="formSections pb-4 pt-4">
+          <div class="row">
+            <div class="form-group col-md-4  col-lg-4 paddingLeft45">
+              <mat-form-field >
+                <input matInput placeholder="Website" disabled/>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-4  col-lg-4 paddingLeft45">
+              <mat-form-field >
+                <input matInput placeholder="Email (Reservation)" disabled/>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-4  col-lg-4 paddingLeft45">
+              <mat-form-field >
+                <input matInput placeholder="Telephone (Reservation)" disabled/>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="formSections pb-1">
+            <h2>
+              <mat-checkbox *ngIf="paymentStatus[0]['isConfigurable']"  class="matCheckBox" formControlName="paymentdetails">Payment Details</mat-checkbox>
+              <!-- <label>Payment Details</label> -->
+            </h2>
+          <div class="row">
+            <div class="col-md-4  col-lg-4 paddingLeft45">
+              <label for="paymentMethod" class="d-block">Payment Method</label>
+              <div class="row">
+                <div class="col-md-5">
+                  <mat-radio-group >
+                    <mat-radio-button disabled="true"></mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-4 col-lg-4 paddingLeft45">
+              <mat-form-field >
+                <mat-select placeholder="Currency" required disabled="true">
+                  <mat-option>Select</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-4  col-lg-4 paddingLeft45">
+              <label class="d-block" for="rateType">Rate Type</label>
+              <div class="row">
+                <div class="col-md-2">
+                  <mat-radio-group >
+                    <mat-radio-button disabled="true"></mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="formSections">
+          <h2>
+            <mat-checkbox *ngIf="extranetStatus[0]['isConfigurable']"  class="matCheckBox" formControlName="extranetdetails">Extranet Details</mat-checkbox>
+            <!-- <label>Extranet Details</label> -->
+          </h2>
+          <div class="row">
+            <div class="form-group col-md-4  col-lg-4  mb-0 paddingLeft45">
+              <p>Extranet Account Access</p>
+              <mat-button-toggle-group >
+                <mat-button-toggle [value]="true" disabled="true">
+                  Yes
+                </mat-button-toggle>
+                <mat-button-toggle [value]="false" disabled="true">
+                  No
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+            <div class="form-group col-md-4  col-lg-4  mb-0 paddingLeft45">
+              <p>Channel Manager Connectivity</p>
+              <mat-button-toggle-group >
+                <mat-button-toggle [value]="true" disabled="true">
+                  Yes
+                </mat-button-toggle>
+                <mat-button-toggle [value]="false" disabled="true">
+                  No
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+            <div class="form-group col-md-4 mb-0 paddingLeft45">
+              <mat-form-field class="mt-4 ">
+                <mat-select placeholder="Channel Manager" required disabled="true">
+                  <mat-option></mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <!-- Checkin Check Out-->
+        <div class="formSections">
+            <!-- <div class="lightBlueContainer pb-2 pl-4 pr-4"> -->
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="float-left">
+                      <mat-checkbox *ngIf="checkincheckoutStatus[0]['isConfigurable']"  class="matCheckBox" formControlName="checkincheckout"></mat-checkbox>
+                  </div>
+                  <div class="float-left marginLeft10 widthCalculate30">
+                    <h2>
+                        Check In Check Out
+                          <!-- <label>Check In Check Out</label> -->
+                      </h2>
+                    <div class="row">
+                      <div class="col-md-6 checkInCheckoutBorderRight pr-5">
+                        <div class="row">
+                          <div class="col-md-12"><h5 class="requiredLabel semiBold mb-5">Check-in</h5></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field >
+                              <mat-select disabled="true" placeholder="From" id="checkinfrom" name="checkinfrom">
+                                <mat-option value="undefined" disabled="true" hidden>Select</mat-option>
+                                <mat-option >checkinfrom.Value</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                            <mat-form-field >
+                              <mat-select disabled="true" placeholder="To (Optional)" id="checkinto" name="checkinto" >
+                                <mat-option [value]="null">Select</mat-option>
+                                <mat-option>checkinto.Value</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 pl-5">
+                        <div class="row">
+                            <div class="col-md-12"><h5 class="requiredLabel semiBold mb-5">Check-out</h5></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field >
+                              <mat-select disabled="true" placeholder="From (Optional)" id="checkoutfrom" name="checkoutfrom">
+                                <mat-option [value]="null">Select</mat-option>
+                                <mat-option >checkoutfrom.Value</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                            <mat-form-field >
+                            <mat-select disabled="true" placeholder="To" id="checkoutto" name="checkoutto">
+                            <mat-option value="undefined" disabled="true" hidden>Select</mat-option>
+                            <mat-option>checkoutto.Value</mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        <!-- </div> -->
+        </div>
+        <div class="pt-4 pb-4">
+          <div class="row">
+           <div class="col-md-12">
+              <div class="float-left">
+                  <mat-checkbox *ngIf="taxesStatus[0]['isConfigurable']"  class="matCheckBox" formControlName="taxes"></mat-checkbox>
+              </div>
+              <div class="float-left marginLeft10 widthCalculate30">
+                <h2>
+                  Taxes
+                <!-- <h2>
+                  <label>Taxes</label>
+                </h2> -->
+                </h2>
+                <p>
+                  Rates will be considered all INCLUSIVE unless the below section is completed
+                </p>
+                <table class="table genericTable mb-4">
+                  <thead>
+                    <tr>
+                      <th class="taxtesTypeTh">Type</th>
+                      <th class="taxtesRoomTh">Per Room/Person</th>
+                      <th class="taxtesAmountTh">Amount</th>
+                      <th class="taxtesRatesTh">Included in Rates</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="typeLabel taxesLabel">
+                        <label></label>
+                      </td>
+                      <td class="taxesLabel">
+                        <mat-form-field >
+                          <mat-select disabled="true">
+                            <mat-option></mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </td>
+                      <td class="taxesLabel taxesAmountLabel">
+                        <mat-form-field >
+                          <input matInput id="amount" disabled/>
+                          <span class="percentageIcon">&nbsp;%</span>
+                        </mat-form-field>
+                      </td>
+                      <td class="taxesLabel">
+                        <mat-form-field >
+                          <mat-select disabled="true">
+                            <mat-option [value]="true">Yes</mat-option>
+                            <mat-option [value]="false">No</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <input matInput placeholder="templateName" formControlName="templateName" style="    visibility: hidden"/>
+
+        <div class="controlButtons mb-4">
+          <button title="Save" type="submit" class="btn activeButton" [disabled]="!hotelInfoForm.valid" (click)="saveHotelInfo()">Save</button>
+          <button title="Cancel" type="button" class="btn defaultButton" (click)="backToList()">Cancel</button>
+          <button title="Continue" class="btn activeButton float-right" [disabled]="!hotelInfoForm.valid" type="submit" (click)="saveandContinue()">Save & Continue</button>
+        </div>
+
+    </div>
+    <!-- </mat-tab>
+<mat-tab label="Facilities and Services">Content 2</mat-tab>
+</mat-tab-group> -->
+
+  </div>
+  </form>
+</div>

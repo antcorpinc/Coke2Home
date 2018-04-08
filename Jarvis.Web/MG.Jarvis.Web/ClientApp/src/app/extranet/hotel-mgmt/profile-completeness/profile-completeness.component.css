@@ -1,0 +1,114 @@
+.checklistContainer .progress-bar {
+  width: 75%;
+  height: .4rem;
+  background-color: #5cc77f;
+  position: relative;
+  border-radius: .25rem;
+}
+
+.checklists {
+  border-top: .0625rem solid #ebebeb;
+  padding: 10px 0;
+  align-items: center;
+  margin-left: 0.3rem;
+}
+
+div.checklists.last {
+  border-bottom: .0625rem solid #ebebeb;
+  margin-bottom: 4.5rem;
+}
+
+.transparent-circle {
+  border: 1.2px solid red;
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.checklist-icon .fa-times-thin:before {
+  content: '\D7';
+  font-size: 2.1rem;
+  color: red;
+  position: absolute;
+  top: -4.1px;
+  right: 3.8px;
+}
+
+.checklist-icon i.fa.fa-times-thin {
+  display: block;
+  -webkit-transform: scale(1.1,1.1);
+  transform: scale(1.1,1.1);
+}
+
+
+.progress-text i.fa.fa-caret-up {
+  color: #aaaaaa;
+  font-size: 1.2rem;
+}
+
+.circle-checked {
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  border: 1.45px solid #5cc77f;
+}
+
+.checklistContainer .progress {
+  height: .4rem;
+  margin-bottom: 5.9rem;
+  overflow: visible;
+}
+
+.progress-text {
+  position: absolute;
+  right: -2.2rem;
+  top: 0.5rem;
+  left: inherit;
+  line-height: 1rem;
+}
+
+.checkmark:after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 0.9rem;
+  border: solid #5cc77f;
+  border-width: 0 1.49px 1.49px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin: 0.32rem 0 0 0.63rem;
+}
+
+span.upArrow {
+  display: block;
+  margin-left: 0.4rem;
+  text-align: center;
+}
+
+span.percent-txt {
+  margin-left: 0.8rem;
+  font-size: .9375rem;
+  color: #333;
+  line-height: 0.9rem;
+}
+
+.checklist-txt {
+  color: #333333;
+  font-size: 1rem;
+  text-align: justify;
+  display: flex;
+  align-items: center;
+}
+
+.checklist-icon {
+  margin-right: 1.25rem;
+}
+
+.checklist-add a {
+  text-align: right;
+  font-size: .8125rem;
+  color: #4168a1;
+  float: right;
+  text-decoration: none;
+}

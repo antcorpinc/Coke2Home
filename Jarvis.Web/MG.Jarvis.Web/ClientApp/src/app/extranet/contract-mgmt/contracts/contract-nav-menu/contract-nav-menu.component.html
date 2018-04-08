@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <div class="mt-4 pt-2">
+      <div class="customBreadcrumb mb-4">
+          <span>Contracts </span><span>&gt; {{breadcrumbs}} Contract {{ contractTypeName}}</span>
+      </div>
+    <h1 class="mainHeading mb-4 customBreadcrumb">{{breadcrumbs}} Contract<span class="mandatoryInfo float-right">Indicates Mandatory Fields</span></h1>
+    <p class="mt-0 mb-4 pb-1 lightGrey">Complete below steps to create your new contract</p>
+    <form [formGroup]="createContract">
+    <div class="row mb-4 pb-1">
+      <div class="col-md-12">
+        <div class="lightBlueContainer pb-2 pl-4 pr-4">
+          <div class="row customeRow">
+            <div class="col-md-12">
+              <div class="row">
+                  <div class="form-group col-md-6 mb-0">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Contract Name" formControlName="contractNameEntered"
+                          required  [disabled]="isNameEditable" (keyup)="contractBasicDetails()" (change)="contractBasicDetails()" maxlength="150"/>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                      <mat-form-field>
+                        <span class="font-weight-bold requiredLabel mr-3" matPrefix>Start Date</span>
+                        <mat-datepicker-toggle matSuffix [for]="sdate"></mat-datepicker-toggle>
+                        <input matInput [matDatepicker]="sdate" placeholder="DD-MMM-YY" formControlName="startDate" (dateInput)="dateChangeEvent('startDate', $event)" (dateChange)="dateChangeEvent('startDate', $event)">
+                        <mat-datepicker #sdate></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                      <mat-form-field>
+                        <span class="font-weight-bold requiredLabel mr-3" matPrefix>End Date</span>
+                        <input matInput [matDatepicker]="enddate" placeholder="DD-MMM-YY" [min]="createContract.get('startDate').value"formControlName="endDate" (dateInput)="dateChangeEvent('endDate', $event)" (dateChange)="dateChangeEvent('endDate', $event)">
+                        <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
+                        <mat-datepicker #enddate></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div *ngIf="showMenuChips">
+    <div class="mb-4">
+      <mat-chip-list *ngIf="isDisabledTab" class="genericProcessFlow">
+        <mat-chip *ngFor=" let chip of chipsList; let i=index" [selected]="chip.selected" [color]="chip.chipcolor" disabled>
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-stack-1x fa-inverse">{{i+1}}</i>
+          </span>{{chip.chipname}}</mat-chip>
+      </mat-chip-list>
+      <mat-chip-list *ngIf="!isDisabledTab" class="genericProcessFlow">
+        <mat-chip *ngFor=" let chip of chipsList; let i=index" (click)="changeChip(chip, chipsList)" [selected]="chip.selected" [color]="chip.chipcolor"
+          [routerLink]="[chip.routerLink]">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-stack-1x fa-inverse">{{i+1}}</i>
+          </span>{{chip.chipname}}</mat-chip>
+      </mat-chip-list>
+    </div>
+    <div class="pb-1">
+    <nav mat-tab-nav-bar *ngIf="showhotelinfo" id="hotelinfo" class="genericTab mb-4">
+      <a mat-tab-link routerLinkActive="active" label="Hotel Info" [routerLink]="['hoteldetails']">Hotel Info</a>
+      <a *ngIf="!isDisabledTab" mat-tab-link routerLinkActive="active" label="Facilities and Services" [routerLink]="['facilitiesservices']">Facilities and Services</a>
+      <a *ngIf="isDisabledTab && contractDataService.showFacility" mat-tab-link routerLinkActive="active" label="Facilities and Services">Facilities and Services</a>
+    </nav>
+    <nav mat-tab-nav-bar *ngIf="showRate" id="rate" class="genericTab mb-4">
+      <a *ngIf="!isDisabledTab" mat-tab-link routerLinkActive="active" label="room type" [routerLink]="['roomtype']">Room Type</a>
+      <a *ngIf="!isDisabledTab && contractDataService.showamenity" mat-tab-link routerLinkActive="active" label="amenities" [routerLink]="['amenities']">Amenities</a>
+      <a *ngIf="!isDisabledTab" mat-tab-link routerLinkActive="active" label="mealplan" [routerLink]="['mealplan']">Meal Plan</a>
+      <a *ngIf="!isDisabledTab" mat-tab-link routerLinkActive="active" label="Policies" [routerLink]="['childpolicy']">Policies</a>
+      <a *ngIf="!isDisabledTab" mat-tab-link routerLinkActive="active" label="rate category" [routerLink]="['ratecategory']">Rate Category</a>
+
+      <a *ngIf="isDisabledTab" mat-tab-link routerLinkActive="active" label="room type">Room Type</a>
+      <a *ngIf="isDisabledTab" mat-tab-link routerLinkActive="active" label="amenities">Amenities</a>
+      <a *ngIf="isDisabledTab" mat-tab-link routerLinkActive="active" label="mealplan">Meal Plan</a>
+      <a *ngIf="isDisabledTab" mat-tab-link routerLinkActive="active" label="Policies">Policies</a>
+      <a *ngIf="isDisabledTab" mat-tab-link routerLinkActive="active" label="rate category">Rate Category</a>
+    </nav>
+    </div>    
+    </div>
+  </div>
+</div>

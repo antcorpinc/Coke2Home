@@ -1,0 +1,219 @@
+<div class="paddingRight15px">
+  <form [formGroup]="childAndExtrabedPolicyForm" (ngSubmit)="saveChildAndExtraBedPolicy()">
+    <div class="customBreadcrumb mb-4">
+      <span>Policies </span>
+      <span>&gt; Create New Policy</span>
+    </div>
+    <h1 class="mainHeading customBreadcrumb">Create New Child & Extra Bed Policy<span class="mandatoryInfo float-right">Indicates Mandatory Fields</span></h1>
+    <div class="row">
+      <div class="col-md-9">
+        <div class="formSections pt-4">
+          <div class="row">
+            <div class="form-group col-md-12 col-lg-12">
+              <h2>Child</h2>
+              <h6 class="h6 pb-0 pt-3 darkGreyText">Do you allow children at your property?
+              </h6>
+              <span class="pb-4 nameNote d-block pt-0 text-left">(You can specify the ages and prices later)</span>
+
+              <mat-button-toggle-group formControlName="isChildrenAllowed" (change)="onChildAgeSelect();flagPolicyAsEdited()">
+                <mat-button-toggle [value]="true">
+                  Yes
+                </mat-button-toggle>
+                <mat-button-toggle [value]="false">
+                  No
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-12 pt-4 mb-0">
+              <h6 class="h6 pb-3 darkGreyText requiredLabel">What age are children allowed?</h6>
+              <div class="row customeRow">
+                <div class="col-md-3">
+                  <mat-form-field>
+                    <mat-select placeholder="Min. Age" formControlName="minChildAge" (change)="flagPolicyAsEdited()" required>
+                      <mat-option [value]="i" *ngFor="let i of minMaxAge">{{i}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3">
+                  <mat-form-field>
+                    <mat-select placeholder="Max. Age" formControlName="maxChildAge" (change)="flagPolicyAsEdited()" required>
+                      <mat-option [value]="i" *ngFor="let i of minMaxAge">{{i}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                  <mat-error *ngIf="childAndExtrabedPolicyForm.errors && childAndExtrabedPolicyForm.errors.isGreater">
+                    Min.Age should not be greater than Max.Age.
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="formSections row">
+          <div class="form-group col-md-12 pt-0">
+            <h2>Cot & Extra Bed Options</h2>
+            <h6 class="h6 pb-3 pt-2 darkGreyText">Can you provide cots in any of your rooms/units (upon request)</h6>
+            <mat-button-toggle-group (change)="onCotSelect();flagPolicyAsEdited()" formControlName="isExtraCotAllowed">
+              <mat-button-toggle [value]="true">
+                Yes
+              </mat-button-toggle>
+              <mat-button-toggle [value]="false">
+                No
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+            <h2 class="pt-4 mt-2 pb-3">Cots</h2>
+            <h6 class="h6 pb-3 pt-2 darkGreyText">Set your prices and age restrictions for cots.</h6>
+            <div class="ageSet mt-3">
+              <div class="row">
+                <div class="col-md-3 mb-0">
+                  <mat-form-field>
+                    <mat-select placeholder="Age Upto" formControlName="maxInfantAge" (change)="flagPolicyAsEdited()" required>
+                      <mat-option [value]="1">1</mat-option>
+                      <mat-option [value]="2">2</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <mat-form-field>
+                    <mat-select placeholder="Price" (change)="isFreeOrPaid()" formControlName="cotPriceTypeId" (change)="flagPolicyAsEdited()"
+                      required>
+                      <mat-option [value]="isFree">Free</mat-option>
+                      <mat-option [value]="isPaid">Paid</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div *ngIf="childAndExtrabedPolicyForm.get('cotPriceTypeId').value === isPaid" class="form-group mb-0 col-md-3 currencySelect">
+                  <span class="d-inline mt-3 mr-2">{{currencyCode}}</span>
+                  <mat-form-field>
+                    <input matInput pattern="[0-9]*" min="0" placeholder="Enter Price" formControlName="cotPrice" (change)="flagPolicyAsEdited()"
+                      required/>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="formSections row">
+          <div class="col-md-12 pt-2">
+            <h2>Extra Beds</h2>
+            <h6 class="h6 pb-3 pt-2 darkGreyText">Can you provide extra beds in any of your rooms/ units (upon request)</h6>
+            <mat-button-toggle-group (change)="onExtraBedSelect();flagPolicyAsEdited()" formControlName="isExtraBedAllowed">
+              <mat-button-toggle [value]="true">
+                Yes
+              </mat-button-toggle>
+              <mat-button-toggle [value]="false">
+                No
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </div>
+        <div class="formSections borderBottomNone row pb-3">
+          <div class="form-group col-md-12 pt-2">
+            <h2>Maximum Children and Extra Beds per Room/Units</h2>
+            <h6 class="h6 pb-3 pt-2 darkGreyText">Set maximum children and extra beds per room/units.</h6>
+            <table class="table genericTable mt-12">
+              <thead>
+                <tr>
+                  <th class="hotelNameTH align-middle">Name</th>
+                  <th class="guestsTH">Total Number of Guest</th>
+                  <th class="bedsTH align-middle">Beds</th>
+                  <th class="maxChildrenTH requiredLabel align-middle">Maximum Children</th>
+                  <th class="extraBedsTH requiredLabel align-middle">Extra Beds</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container formArrayName="maxChildAndExtraBedPerRoomList" *ngFor="let room of maxChildAndExtraBedPerRoomList.controls; index as i">
+                  <tr [formGroupName]="i">
+                    <input type="hidden" formControlName="roomId" value="{{childAndExtrabedPolicyArray[0].maxChildAndExtraBedPerRoomList[i].roomId}}"
+                      class="field left" readonly>
+                    <td>
+                      <mat-form-field>
+                        <input matInput type="text" formControlName="roomName" value="{{childAndExtrabedPolicyArray[0].maxChildAndExtraBedPerRoomList[i].roomName}}"
+                          class="field left" readonly>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field>
+                        <input matInput type="text" formControlName="noOfGuest" value="{{childAndExtrabedPolicyArray[0].maxChildAndExtraBedPerRoomList[i].noOfGuest}}"
+                          class="field left" readonly>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field>
+                        <input matInput type="text" formControlName="bedCount" (change)="flagPolicyAsEdited()" value="{{childAndExtrabedPolicyArray[0].maxChildAndExtraBedPerRoomList[i].bedCount}}"
+                          class="field left" readonly>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field>
+                        <mat-select placeholder="Select" formControlName="maxChildren" (change)="flagPolicyAsEdited()" required>
+                          <mat-option [value]="i" *ngFor="let i of bedsAndChildrenPerRoom">{{i}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field>
+                        <mat-select placeholder="Select" formControlName="extraBedCount" required>
+                          <mat-option [value]="i" *ngFor="let i of bedsAndChildrenPerRoom">{{i}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="5">
+                      <div class="row" *ngIf="childAndExtrabedPolicyForm.controls.maxChildAndExtraBedPerRoomList['controls'][i].errors && this.childAndExtrabedPolicyForm.controls.maxChildAndExtraBedPerRoomList['controls'][i].errors.isGreater">
+                        <mat-error>
+                          Max.Children Selected should be Less than Number of guests.
+                        </mat-error>
+                      </div>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 pt-4">
+        <div class="reviewSection pt-4 mt-0">
+          <h2 class="pb-2 pt-1 mb-2">Review Policy</h2>
+          <h6 class="semiBold reviewTitle pt-1" *ngIf="!childAndExtrabedPolicyForm.valid">Policy Not Setup</h6>
+          <div *ngIf="childAndExtrabedPolicyForm.valid">
+            <div>
+              <h6 class="semiBold reviewTitle pt-1">Child</h6>
+              <span class="pb-4" *ngIf="childAndExtrabedPolicyForm.get('isChildrenAllowed').value === false;else childAgeSelected">Children are not allowed for this property.</span>
+              <ng-template #childAgeSelected class="pb-4">Min. child age is {{childAndExtrabedPolicyForm.get('minChildAge').value}} and max. child age is {{childAndExtrabedPolicyForm.get('maxChildAge').value}}.</ng-template>
+            </div>
+            <hr>
+            <div>
+              <h6 class="semiBold reviewTitle pt-1">Cots Policy</h6>
+              <span *ngIf="childAndExtrabedPolicyForm.get('isExtraCotAllowed').value === false" class="pb-4">Cots are not allowed for this property.</span>
+              <span *ngIf="childAndExtrabedPolicyForm.get('cotPriceTypeId').value === isFree" class="pb-4">Any Child up to and including {{childAndExtrabedPolicyForm.get('maxInfantAge').value}} years stays for free
+                using an available cot.</span>
+              <span *ngIf="childAndExtrabedPolicyForm.get('cotPriceTypeId').value === isPaid" class="pb-4">Cot for child up to and including {{childAndExtrabedPolicyForm.get('maxInfantAge').value}} years old will be
+                charged {{childAndExtrabedPolicyForm.get('cotPrice').value}} per use.
+              </span>
+            </div>
+            <hr>
+            <div>
+              <h6 class="semiBold reviewTitle pt-1">Extra Beds</h6>
+              <span class="pb-4" *ngIf="childAndExtrabedPolicyForm.get('isExtraBedAllowed').value">Yes</span>
+              <span class="pb-4" *ngIf="!childAndExtrabedPolicyForm.get('isExtraBedAllowed').value">No</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 controlButtons pb-4 mb-1">
+      <button title="Save" type="submit" class="genericButton activeButton mat-raised-button mat-primary" [disabled]="!childAndExtrabedPolicyForm.valid" mat-raised-button>Save</button>
+      <button title="Cancel" type="button" class="genericButton defaultButton" (click)="cancelPolicy()" mat-raised-button>Cancel</button>
+    </div>
+  </form>
+</div>

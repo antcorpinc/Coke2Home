@@ -1,0 +1,29 @@
+<div class="modalContainer">
+<div class="modalHeading">
+    <span class="float-left modalHeader">Copy</span>
+    <span class="closeIcon float-right"><i aria-hidden="true" class="fa fa-times-thin"></i></span>
+</div>
+<div class="modalContent">
+    <form [formGroup]="copyTemplateForm" (ngSubmit)="createTemplateCopy()">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field>
+                    <input matInput placeholder="Template Name" (change)="uniqueTemplateError()" (keyup)="uniqueTemplateError()" formControlName="newTemplateName" name="newTemplateName" required/>
+                </mat-form-field>
+            </div>
+            <div class="col-md-12 templateNameError">
+              <mat-error *ngIf="uniqueNameError">
+                  Template name already exists.
+              </mat-error>
+          </div>
+        </div>
+        <p>Note: The Template Name shown is a suggestion. You can edit the Template Name now, or later after the template is
+            copied.
+        </p>
+        <div class="controlButtons mt-5">
+            <button type="submit" mat-raised-button title="copy" class="genericButton activeButton mat-primary mat-raised-button" [disabled]="copyTemplateForm.invalid">Copy</button>
+            <button type="button" mat-raised-button title="cancel" class="genericButton defaultButton mat-raised-button" (click)="dialogRef.close(null)">Cancel</button>
+        </div>
+    </form>
+</div>
+</div>

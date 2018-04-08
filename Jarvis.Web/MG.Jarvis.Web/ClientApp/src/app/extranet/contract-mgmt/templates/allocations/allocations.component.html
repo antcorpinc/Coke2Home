@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="formSections">
+      <h1 class="mainHeading mb-3">Allocations</h1>
+          <div class="row pb-3">
+            <div class="col-md-4">
+              <div class="lightBlueContainer pb-2 pl-4 pr-4">
+                <div class="row">
+                  <div class="col-md-8">
+                    <mat-form-field>
+                        <input matInput placeholder="Pooled Allotment" disabled="true"/>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                      <button title="Apply" type="button" class="pl-3 pr-3 btn addButton float-none" disabled>Apply</button>
+                      <button title="Clear" type="button" class="btn btn-link pl-3 pr-3" disabled>Clear</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <table class="table genericTable mt-4">
+            <thead>
+              <tr>
+                <th class="requiredLabel">Rate Category</th>
+                <th class="requiredLabel">Room Type</th>
+                <th class="requiredLabel">Dates</th>
+                <th class="requiredLabel">Days</th>
+                <th class="requiredLabel">Type</th>
+                <th class="requiredLabel">Allotment</th>
+                <th>Bed Type &amp; Rates (IDR)</th>
+              </tr>
+            </thead>
+          </table>
+
+          <div class="row mt-5">
+            <div class="col-md-12 controlButtons mb-4">
+              <button title="Save" class="btn activeButton" (click)="saveAllocation()">Save</button>
+              <button title="Cancel" class="btn defaultButton" (click)="backToList()">Cancel</button>
+              <button class="btn activeButton float-right" title="Save &amp; Continue" (click)="saveAndContinueAllocation()">Save &amp; Continue</button>
+            </div>
+          </div>
+
+  </div>
+  </div>

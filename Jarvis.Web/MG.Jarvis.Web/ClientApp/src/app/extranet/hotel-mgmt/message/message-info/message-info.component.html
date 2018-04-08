@@ -1,0 +1,72 @@
+<h1 class="mainHeading mb-1 customBreadcrumb">Create New Message<span class="mandatoryInfo float-right">Indicates Mandatory Fields</span></h1>
+<form [formGroup]="messageForm" (ngSubmit)="saveMessage()">
+  <div class="formSections pb-0 borderBottomNone pb-3 pt-4">
+    <div class="alignItemCenter">
+      <span>Message Status</span>
+      <div class="form-group hotelStatus">
+        <mat-checkbox formControlName="isActive" (change)="flagMessageAsEdited()">Active</mat-checkbox>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-3 customeRow">
+    <div class="col-md-4 form-group col-lg-3">
+      <mat-form-field>
+        <input matInput placeholder="Message Title" name="messageTitle" formControlName="messageTitle" (change)="flagMessageAsEdited()"
+          required>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row customeRow">
+    <div class="col-md-4 form-group col-lg-3">
+      <mat-form-field>
+        <mat-select placeholder="Message Type" formControlName="messageTypeId" (change)="flagMessageAsEdited()" required>
+          <mat-option [value]="null">Select</mat-option>
+          <mat-option *ngFor="let messageType of messageTypes" [value]="messageType.id">{{messageType.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row customeRow">
+    <div class="col-md-4 form-group col-lg-3">
+      <div class="row customeRow marginLeftMinus30px marginRightMinus30px">
+        <div class="col-md-6 form-group ">
+          <mat-form-field>
+            <input matInput [matDatepicker]="startdate" placeholder="Start Date" formControlName="startDate" [min]="(msgOperation === create) ? (messageForm.get('startDate').value || todaysDate) : minDate"
+              (dateChange)="flagMessageAsEdited()" required>
+            <mat-datepicker-toggle matSuffix [for]="startdate">
+                <mat-icon matDatepickerToggleIcon>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </mat-icon>    
+            </mat-datepicker-toggle>
+            <mat-datepicker #startdate></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 form-group ">
+          <mat-form-field>
+            <input matInput [matDatepicker]="enddate" placeholder="End Date" formControlName="endDate" [min]="messageForm.get('startDate').value || todaysDate"
+              (dateChange)="flagMessageAsEdited()" required>
+            <mat-datepicker-toggle matSuffix [for]="enddate">
+                <mat-icon matDatepickerToggleIcon>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </mat-icon>    
+            </mat-datepicker-toggle>
+            <mat-datepicker #enddate></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row customeRow">
+    <div class="col-md-12 form-group">
+      <mat-form-field>
+        <textarea rows="5" cols="200" matInput placeholder="Description" formControlName="messageDescription" (change)="flagMessageAsEdited()"
+          maxlength="500" required></textarea>
+      </mat-form-field>
+      <p class="small text-right lightGrey">Max. 500 characters</p>      
+    </div>
+  </div>
+  <div class="mt-4 controlButtons mb-4">
+    <button title="Save" type="submit" class="genericButton activeButton mat-raised-button mat-primary" mat-raised-button [disabled]="messageForm.invalid">Save</button>
+    <button title="Cancel" type="button" class="genericButton defaultButton" mat-raised-button (click)="cancelMessage()">Cancel</button>
+  </div>
+</form>

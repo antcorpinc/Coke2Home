@@ -1,0 +1,20 @@
+<div class="menu-item"
+  [ngClass]="{'router-link-active': isActiveRoute  }"
+  [routerLink]="item.route"
+  >
+
+  <span><span class="{{ item.icon }}"></span>{{ item.text }}</span>
+
+  <i *ngIf="item.submenu && !parentIsPopup"
+  class="fa fa-angle-down"></i>
+  <span *ngIf="item.submenu && parentIsPopup"
+  class="glyphicon glyphicon-menu-right"></span>
+</div>
+
+  <fw-popup-menu *ngIf="mouseInPopup || mouseInItem"
+                 [menu]='item.submenu'
+                 (mouseleave)="onPopupMouseLeave($event)"
+                 (mouseenter)="onPopupMouseEnter($event)"
+                 [style.left.px]="popupLeft"
+                 [style.top.px]="popupTop">
+  </fw-popup-menu>

@@ -1,0 +1,13 @@
+:host {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  top: 45px !important;
+  background: #2aaae1;
+  z-index: 100000;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+  min-width:211px;
+}

@@ -1,0 +1,362 @@
+.globalSearch {
+  position: relative;
+}
+
+  .globalSearch .searchButton {
+    position: absolute;
+    right: 0;
+    top: 6px;
+    background: none;
+    border: none;
+    color: #2aaae1;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 4px 17px 0 0;
+  }
+
+.hotelCodeTh {
+  width: 10%;
+}
+
+.hotelNameTh {
+  width: 18%;
+}
+
+.contactPersonTh {
+  width: 14%;
+}
+
+.contactNumberTh {
+  width: 14%;
+}
+
+.EmailTh {
+  width: 14%;
+}
+
+.LocationTh {
+  width: 10%;
+}
+
+.StatusTh {
+  width: 9%;
+}
+
+.ActionTh {
+  width: 11%;
+}
+
+.title-Bar {
+  background-color: #ebebeb;
+  color: #333;
+  font-size: 0.875rem;
+}
+
+  .title-Bar .fa.fa-caret-down.fa-sm {
+    position: absolute;
+    top: 13.5px;
+  }
+
+  .title-Bar .fa.fa-sort-asc {
+    position: absolute;
+    top: 17px;
+  }
+
+  .title-Bar .fa.fa-sort-desc {
+    top: 9.45px;
+    position: absolute;
+  }
+
+
+  .title-Bar .fa.fa-sort {
+    color: #fff;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 17px;
+    vertical-align: middle;
+}
+
+.white-space {
+  height: 15px;
+}
+
+.transparent-circle {
+  border: 1px solid #2aaae1;
+  height: 30px;
+  width: 30px;
+  border-radius: 1.25rem;
+  position: relative;
+  background: white;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hotelTitle {
+  background-color:none !important;
+  color: #000;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0.4rem;
+  font-family: 'maven_promedium';
+}
+
+  .hotelTitle .transparent-circle {
+    display: inline-block;
+    border: 1.2px solid #2aaae1;
+    height: 31px;
+    width: 31px;
+    border-radius: 1.25rem;
+    position: relative;
+    margin-right: 1rem;
+  }
+
+.transparent-circle .fa-minus:before {
+  content: "\F068";
+  position: absolute;
+  color: #2aaae1;
+  top: 26%;
+  left: 30%;
+}
+
+.transparent-circle .fa-plus:before {
+  content: "\F067";
+  position: absolute;
+  top: 26%;
+  left: 30%;
+  color: #2aaae1;
+}
+
+.transparent-circle.del {
+  margin-left: 0.5rem;
+}
+
+.profileList a {
+  color: #2aaae1;
+}
+
+.profileList td,
+.profileList th {
+  vertical-align: middle !important;
+}
+
+.profileList td {
+  border-bottom: 1px solid #e9ecef;
+  border-top: none;
+}
+
+td.email {
+  color: #2aaae1;
+}
+
+.page-size {
+  display: flex;
+  float: right;
+  position: relative;
+  font-size: 13.5px;
+  width: 66px;
+  margin-top: 0.1875rem;
+}
+
+.page-size label {
+  display: inline-block;
+  margin: 0 .5rem .5rem 0;
+  line-height: 2rem;
+  white-space: nowrap;
+}
+
+.hotelPagination {
+  font-size: 0.875rem;
+  display: inline-block;
+  margin: 0 17rem 0 18rem;
+}
+
+.page-size mat-select {
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.page-size select::-ms-expand {
+  display: none;
+}
+
+.transparent-square {
+  pointer-events: none;
+  height: 27px;
+  width: 25px;
+  position: absolute;
+  background: #4168a1;
+  display: inline-block;
+  left: 4.7rem;
+}
+
+  .transparent-square i.fa.fa-caret-down {
+    font-size: 17px;
+    color: white;
+    margin: 0.35rem 0 0 0.5rem;
+  }
+
+.hotelDetails {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+tr.hotelDetails.ng-star-inserted {
+  border-bottom: 1px solid #ebebeb;
+}
+
+.bodyContainer .form-control,
+textarea,
+.custom-select {
+  border-radius: 0;
+  border: 1px solid #ced4da;
+  color: #333;
+  padding: 0.2rem 0.5625rem;
+  font-size: 0.875rem;
+}
+
+.currentPage {
+  display: inline-block;
+  color: #5a5a5a;
+  line-height: 2.1875rem;
+  font-size: 0.875rem;
+}
+
+.profileList tr th .fa-sort-asc,
+.profileList tr th .fa-sort-desc,
+.profileList tr th .fa-caret-down {
+  font-size: 19px;
+  color: #fff;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.profileList tr.ng-star-inserted {
+  border-bottom: 15px solid #fff;
+}
+
+  .profileList tr.ng-star-inserted.hotelDetails {
+    border-bottom: none;
+  }
+
+pagination-controls /deep/ .ngx-pagination .current {
+  color: #2aaae1;
+  font-family: 'maven_proregular';
+  background: #fff;
+}
+
+.PaginationControls{
+  text-align: center;
+}
+/*Pagination next*/
+
+pagination-controls /deep/ li.pagination-next.ng-star-inserted {
+  font-size: 0.1rem;
+  color: #4168a1;
+  background: #2aaae1;
+  padding: 8px 0 1px 0px !important;
+  line-height: 12px;
+  position: relative;
+}
+
+  pagination-controls /deep/ li.pagination-next.ng-star-inserted.disabled {
+    font-size: 0.2rem;
+    background: #2aaae1;
+    padding: 6px 8px 0 7px !important;
+    line-height: 23px;
+    position: relative;
+    opacity: 0.5;
+  }
+
+  pagination-controls /deep/ li.pagination-next.ng-star-inserted a.ng-star-inserted:before {
+    content: '\F0Da';
+    font: 21px FontAwesome;
+    display: inline-block;
+    color: #fff;
+    position: absolute;
+    left: 14px;
+    top: 3px;
+  }
+
+  pagination-controls /deep/ li.pagination-next.ng-star-inserted.disabled:before {
+    content: '\F0Da';
+    font: 21px FontAwesome;
+    display: inline-block;
+    color: #fff;
+    position: absolute;
+    left: 14px;
+    top: 4px;
+  }
+
+
+/*Pagination previous*/
+
+pagination-controls /deep/ li.pagination-previous.disabled.ng-star-inserted {
+  font-size: 0.2rem;
+  color: #b3c3d9;
+  background: #b3c3d9;
+  padding: 6px 6px 0 15px !important;
+  position: relative;
+  line-height: 23px;
+}
+
+  pagination-controls /deep/ li.pagination-previous.disabled.ng-star-inserted:before {
+    content: '\F0D9';
+    font: 21px FontAwesome;
+    display: inline-block;
+    left: 34%;
+    color: #fff;
+    position: absolute;
+    top: 11%;
+  }
+
+pagination-controls /deep/ li.pagination-previous.ng-star-inserted {
+  color: #4168a1;
+  background: #4168a1;
+  font-size: 0.2rem;
+  line-height: 16px;
+  padding-top: 6px;
+  position: relative;
+}
+
+  pagination-controls /deep/ li.pagination-previous.ng-star-inserted a.ng-star-inserted {
+    position: relative;
+  }
+
+    pagination-controls /deep/ li.pagination-previous.ng-star-inserted a.ng-star-inserted:before {
+      content: '\F0D9';
+      font: 21px FontAwesome;
+      display: inline-block;
+      color: #fff;
+      position: absolute;
+      bottom: 4px;
+      left: 10px;
+    }
+
+pagination-controls /deep/ .ngx-pagination a:hover,
+.ngx-pagination button:hover {
+  background: none;
+}
+
+
+.title-Bar th {
+  position: relative;
+}
+
+td.hotelTitle {
+  padding: 0.45rem !important;
+}
+
+::ng-deep .globalSearch .ui-state-default {
+    border: 1px solid #fff !important;
+}
+
+::ng-deep .globalSearch .ui-inputtext:enabled:hover {
+    border-color: #fff;
+}
+
+::ng-deep .globalSearch .ui-inputtext.ui-state-focus,::ng-deep .globalSearch .ui-inputtext:focus {
+    box-shadow: none;
+}
+
+

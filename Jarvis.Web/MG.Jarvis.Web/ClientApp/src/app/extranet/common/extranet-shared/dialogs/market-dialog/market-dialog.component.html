@@ -1,0 +1,91 @@
+<div class="modalContainer">
+  <div class="modalHeading">
+    <span class="float-left modalHeader">{{ title }}</span>
+    <span class="closeIcon float-right" (click)="dialogRef.close(false)">
+      <i aria-hidden="true" class="fa fa-times-thin"></i>
+    </span>
+  </div>
+  <div class="modalContent">
+    <div class="container p-0">
+      <form [formGroup]="marketForm" (ngSubmit)="saveMarket()" >
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-5  mb-2">
+              <span class="d-block">Applicable Countries</span>
+              <mat-card class="mb-3 noOutlineOnFocus p-0">
+                <div class="pr-3 pt-2 pl-3 pb-2 continentListContainer">
+                  <div class="continentList">
+                    <button type="button" mat-button (click)="this.isIncludedSelected = false"> All </button>
+                    <button type="button" mat-button *ngFor="let continent of continents" (click)="getContinentOfIncludedCountries(continent.name)"> {{continent.name}} </button>
+                  </div>
+                </div>
+                <div class="pr-2 pt-3 pl-2 pb-3">
+                  <div class="pl-3 pr-3">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Search by Country" [(ngModel)]="searchbox" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </div>
+                  <div class="countryList mt-4">
+                    <mat-selection-list #includedCountries *ngFor="let country of (isIncludedSelected ? showIncludedCountries : includedCountries)| searchCountry: searchbox;index as i"
+                      class="p-0">
+                      <mat-list-option (click)="selectIncludedCountries(country)" [value]="country.countryName">{{country.countryName}}</mat-list-option>
+                    </mat-selection-list>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <div class="col-md-2 float-left">
+              <div class="arrowsButtons">
+                <button type="button" class="d-block" (click)="excludeAllCountries()">
+                  <i class="fa fa-angle-double-right"></i>
+                </button>
+                <button type="button" class="d-block mt-4" (click)="addexcludedCountries()">
+                  <i class="fa fa-angle-right"></i>
+                </button>
+                <button type="button" class="d-block mb-4 mt-1" (click)="addincludedCountries()">
+                  <i class="fa fa-angle-left"></i>
+                </button>
+                <button type="button" class="d-block" (click)="includeAllCountries()">
+                  <i class="fa fa-angle-double-left"></i>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-5  mb-2">
+              <span class="d-block">Excluded Countries</span>
+              <mat-card class="mb-3 noOutlineOnFocus p-0">
+                <div class="pr-3 pt-2 pl-3 pb-2 continentListContainer">
+                  <div class="continentList">
+                    <button type="button" mat-button (click)="this.isExcludedSelected = false"> All </button>
+                    <button type="button" mat-button *ngFor="let continent of continents" (click)="getContinentOfExcludedCountries(continent.name)"> {{continent.name}} </button>
+                  </div>
+                </div>
+                <div class="pr-2 pt-3 pl-2 pb-3">
+                  <div class="pl-3 pr-3">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Search by Country" [(ngModel)]="searchbox2" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </div>
+                  <div class="countryList mt-4">
+                    <mat-selection-list #excludedCountries *ngFor="let country of (isExcludedSelected ? showExcludedCountries : excludedCountries) | searchCountry: searchbox2;index as i">
+                      <mat-list-option (click)="selectExcludedCountries(country)" [value]="country.countryName">{{country.countryName}}</mat-list-option>
+                    </mat-selection-list>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter Market Name" formControlName="marketName" required>
+      </mat-form-field>
+      <div>{{isBlankError}}</div> <div>{{ isMarketNameExistError }}</div>
+      <div class="controlButtons mt-5">
+        <button type="submit" title="Save Market" mat-raised-button class="genericButton activeButton mat-primary mat-raised-button" [disabled]="(!marketForm.valid)">Save Market</button>
+        <button type="button" title="Cancel" mat-raised-button class="genericButton defaultButton mat-raised-button" mat-raised-button (click)="dialogRef.close(false)">Cancel</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Api.BackOffice\obj\Debug\netcoreapp2.0\MG.Jarvis.Api.BackOffice.csprojResolveAssemblyReference.cache
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Api.BackOffice\obj\Debug\netcoreapp2.0\MG.Jarvis.Api.BackOffice.csproj.CoreCompileInputs.cache
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Api.BackOffice\obj\Debug\netcoreapp2.0\MG.Jarvis.Api.BackOffice.AssemblyInfoInputs.cache
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Api.BackOffice\obj\Debug\netcoreapp2.0\MG.Jarvis.Api.BackOffice.AssemblyInfo.cs

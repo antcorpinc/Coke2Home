@@ -1,0 +1,429 @@
+
+<!-- <form [formGroup]="hotelDetailsContractGroup"> -->
+<!-- <input matInput placeholder="contractNameEntered" formControlName="contractNameEntered" style="    visibility: hidden"/>
+<input matInput placeholder="startDate" formControlName="startDate" style=" visibility: hidden"/>
+<input matInput placeholder="EndDate" formControlName="endDate" style="visibility: hidden"/> -->
+
+
+<div class="container-fluid">
+<h1 class="mainHeading mb-4 customBreadcrumb">Hotel Info</h1>
+<form [formGroup]="hotelDetailsContractGroup">
+  <input class="d-none" matInput placeholder="contractNameEntered" formControlName="contractNameEntered" style="visibility: hidden" />
+  <input class="d-none" matInput placeholder="startDate" formControlName="startDate" style=" visibility: hidden" />
+  <input class="d-none" matInput placeholder="EndDate" formControlName="endDate" style="visibility: hidden" /> 
+
+  <div class="formSections pt-3 pb-4 borderBottomNone" *ngIf="isSelectedName || isSelectedChain || isSelectedBrand || isSelectedType || isSelectedStarRating || isSelectedMgPoints">
+    <h5 class="semiBold mb-5">Hotel Details</h5>
+    <div class="row customeRow">
+      
+      <div class="form-group col-md-4 col-lg-3 serachField" *ngIf="isSelectedName">
+        <mat-form-field>
+          <input matInput placeholder="Search by Name" formControlName="hotelName" [matAutocomplete]="auto" required />
+          
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name" (onSelectionChange)="searchHotel($event, option.id)">
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+          <!-- <button type="submit" class="searchButton">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button> -->
+          <i aria-hidden="true" class="fa fa-search"></i>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4 col-lg-3" *ngIf="isSelectedChain">
+        <mat-form-field>
+          <mat-select formControlName="hotelChainId" placeholder="Chain" disabled>
+            <mat-option *ngFor="let chain of hotelChainList" [value]="chain.hotelChainId">{{chain.hotelChainName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4 col-lg-3" *ngIf="isSelectedBrand">
+        <mat-form-field>
+          <mat-select formControlName="hotelBrandId" placeholder="Brand" disabled>
+            <mat-option *ngFor="let brand of hotelBrandList" [value]="brand.hotelBrandId">{{brand.hotelBrandName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group  col-md-4 col-lg-3" *ngIf="isSelectedType">
+        <mat-form-field>
+          <mat-select formControlName="hotelTypeId" placeholder="Type" required disabled>
+            <mat-option *ngFor="let type of hotelTypeList" [value]="type.hotelTypeId">{{type.hotelTypeName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group  col-md-4 col-lg-3" *ngIf="isSelectedStarRating">
+        <mat-form-field>
+          <mat-select formControlName="starRatingId" placeholder="Star Rating" required disabled>
+            <mat-option *ngFor="let starRating of starRatingList" [value]="starRating.hotelStarRatingId">{{starRating.hotelStarRatingName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-group  col-md-4 col-lg-3" *ngIf="isSelectedMgPoints">
+        <mat-form-field>
+          <input  matInput formControlName="mgPoint" placeholder="MG Points" type="number" min="1" max="99" readonly>
+        </mat-form-field>
+      </div>
+
+
+
+    </div>
+    <!-- Form section cosed-->
+  </div>
+  <!-- Row div cosed-->
+
+  <div class="formSections pt-5 pb-4 borderTop" *ngIf = "isSelectedAddress1 || isSelectedAddress2 || isSelectedCountry || isSelectedCity || isSelectedZip || isSelectedLatLong">
+    <div class="row customeRow">
+            <div class="form-group  col-md-4 col-lg-3" *ngIf="isSelectedAddress1">
+        <mat-form-field>
+          <input  matInput placeholder="Address 1" formControlName="address1" maxlength="500" required readonly/>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group  col-md-4 col-lg-3" *ngIf="isSelectedAddress2">
+        <mat-form-field>
+          <input  matInput placeholder="Address 2" formControlName="address2" maxlength="500" readonly/>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group  col-md-4 col-lg-3" *ngIf="isSelectedCountry">
+        <mat-form-field>
+          <mat-select formControlName="countryId" placeholder="Country" required disabled>
+            <mat-option *ngFor="let country of countriesList" [value]="country.countryId">{{country.countryName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group  col-md-4 col-lg-3" *ngIf="isSelectedCity">
+        <mat-form-field>
+          <mat-select formControlName="cityId" placeholder="City" required disabled>
+            <mat-option *ngFor="let city of citiesList" [value]="city.cityId">{{city.cityName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group  col-md-4 col-lg-3" *ngIf="isSelectedZip">
+        <mat-form-field>
+          <input  matInput placeholder="Zipcode" formControlName="zipCode" maxlength="7" required readonly/>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4 col-lg-3" *ngIf="isSelectedLatLong">
+        <div class="mapLocator">
+          <mat-form-field>
+            <input matInput placeholder="Latitude / Longitude" formControlName="latLong" required readonly />
+            <span class="input-group-addon">
+              <button class="">
+                <i _ngcontent-c24="" aria-hidden="true" class="fa fa-map-marker"></i>
+              </button>
+            </span>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+  <div class="formSections pb-4 pt-4" *ngIf="isSelectedShortDescription || isSelectedLongDescription">
+    <div class="row mt-3 customeRow" *ngIf="isSelectedShortDescription">
+        <div class="col-md-12">
+          <mat-form-field>
+            <textarea  matInput formControlName="shortDescription" placeholder="Hotel Short Description" rows="5" cols="200" maxlength="500" required readonly></textarea>
+          </mat-form-field>
+          <p class="small text-right lightGrey">Max. 500 characters</p>
+
+        </div>
+      </div>
+      <div class="row mt-3 customeRow" *ngIf="isSelectedLongDescription">
+        <div class="col-md-12">
+          <mat-form-field>
+            <textarea  matInput formControlName="longDescription" placeholder="Hotel Long Description" rows="5"
+              cols="70" maxlength="1200" readonly></textarea>
+          </mat-form-field>
+          <p class="small text-right lightGrey">Max. 1200 characters</p>
+        </div>
+      </div>
+</div>
+
+  <div class="formSections pb-0 pt-5" *ngIf="isSelectedCheckinCheckout">
+
+
+    <div class="row  mt-0 customeRow pb-4 customeRow">
+      <div class="col-md-4 checkInCheckoutBorderRight form-group col-lg-3">
+        <div class="row customeRow mb-4">
+          <div class="col-md-12">
+            <h5 class="requiredLabel semiBold mb-4">Check-in</h5>
+          </div>
+        </div>
+        <div class="row customeRow">
+          <div class="col-md-12">
+            <mat-form-field>
+              <mat-select placeholder="From" formControlName="checkInFrom" required disabled>
+                <mat-option *ngFor="let checkinfrom of checkInCheckOut" [value]="checkinfrom.Value">{{checkinfrom.Value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 form-group col-lg-3">
+        <div class="row customeRow pr-5 mb-4">
+          <div class="col-md-12">
+            <h5 class="requiredLabel semiBold mb-4">Check-out</h5>
+          </div>
+        </div>
+        <div class="row customeRow">
+          <div class="col-md-12">
+            <mat-form-field>
+              <mat-select placeholder="To" formControlName="checkOutTo" disabled required>
+                <mat-option *ngFor="let checkoutto of checkInCheckOut" [value]="checkoutto.Value">{{checkoutto.Value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isSelectedContactDetails">
+    <div class="formSections pb-0 borderBottomNone pt-5 paddingRight15px">
+      <h2 class="pb-1">Contact Details</h2>
+      <div class="row mt-4">
+        <div class="form-group col-md-12 mb-0">
+          <table class="table genericTable borderTopZero mb-0 contactTable">
+            <thead>
+              <tr>
+                <th class="border-top-0 primaryContactTh">Set as Primary</th>
+                <th class="border-top-0 contactContactTh">Contact Person</th>
+                <th class="border-top-0 titleContactTh">Designation</th>
+                <th class="border-top-0 emailContactTh">Email</th>
+                <th class="border-top-0 contactNumberContactTh">Contact Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container formArrayName="contactDetails" *ngFor="let contact of contactDetails.controls; let i =index">
+                <ng-container [formGroupName]="i">
+                  <tr>
+                    <td class="align-middle">
+                      <mat-radio-group formControlName="rowSelected">
+                        <mat-radio-button [value]="i" disabled></mat-radio-button>
+                      </mat-radio-group>
+                    </td>
+                    <td>
+                      <mat-form-field>
+                        <input matInput formControlName="contactPerson" placeholder="" [readonly]="contractType !== mgStatic" required/>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field>
+                        <mat-select placeholder="" formControlName="designationId" [disabled]="contractType !== mgStatic" required>
+                          <mat-option [value]="null">Select</mat-option>
+                          <mat-option *ngFor="let contactTitle of contactPersonTitleList" [value]="contactTitle.designationId">{{contactTitle.title}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field>
+                        <input matInput placeholder="" formControlName="emailAddress" type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                          [readonly]="contractType !== mgStatic" required/>
+                      </mat-form-field>
+                    </td>
+                    <td class="addContact">
+                      <mat-form-field>
+                        <input matInput placeholder="" formControlName="contactNumber" pattern="[0-9+-]*" maxlength="18" [readonly]="contractType !== mgStatic"
+                          required/>
+                      </mat-form-field>
+
+                      <ng-container *ngIf="i === (contactDetails.controls.length - 1)">
+                        <button title="Add" type="button" class="buttonStacked" mat-raised-button [disabled]="contractType !== mgStatic" (click)="addContact()"><span class="fa-stack">
+                        <i class="fa fa-circle-thin fa-stack-2x text-primary"></i>
+                        <i class="fa fa-plus fa-stack-1x fa-inverse text-primary"></i>
+                      </span></button>
+                      </ng-container>
+                    </td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="formSections pb-4 pt-4">
+      <div class="row customeRow">
+        <div class="form-group col-md-4  col-lg-3">
+          <mat-form-field>
+            <input matInput formControlName="website" placeholder="Website" pattern="(\w*\W*)?\w*(\.(\w)+)+(\W\d+)?(\/\w*(\W*\w)*)*"
+              [readonly]="contractType !== mgStatic" required/>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-4  col-lg-3">
+          <mat-form-field>
+            <input matInput formControlName="reservationEmail" placeholder="Email (Reservation)" pattern="\w+@\w+\.\w+(,\s*\w+@\w+\.\w+)*"
+              [readonly]="contractType !== mgStatic" required/>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-4  col-lg-3">
+          <mat-form-field>
+            <input matInput formControlName="reservationContactNo" placeholder="Telephone (Reservation)" type="tel" pattern="[0-9+-]+(,\s*[0-9+-]+)*"
+              [readonly]="contractType !== mgStatic" required/>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="formSections pb-1 pt-5" formGroupName="hotelPaymentMethodRelation" *ngIf="contractType === mgStatic && isSelectedPaymentDetails">
+    <h2>Payment Details</h2>
+    <label for="paymentMethod" class="d-block semiBold mb-3 mt-4 pt-2">Payment Method</label>    
+    <div class="row alignItemCenter pb-4 customeRow">
+      <div class="col-md-4  col-lg-4">
+        <div class="row customeRow">
+          <!-- <label for="paymentMethod" class="d-block">Payment Method</label> -->
+          <div class="col-md-5" *ngFor="let paymentMethod of paymentMethodList">
+            <mat-radio-group formControlName="paymentMethodId">
+              <mat-radio-button [value]="paymentMethod.id" disabled>{{paymentMethod.name}}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4  col-lg-4">
+        <mat-form-field>
+          <mat-select placeholder="Currency" formControlName="currencyId" required disabled>
+            <mat-option [value]="null">Select</mat-option>
+            <mat-option *ngFor="let currency of currencyList" [value]="currency.currencyId">{{currency.currencyName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4  col-lg-4">
+        <label class="d-block mb-4">Rate Type</label>
+        <div class="row customeRow">
+          <div class="col-md-4" *ngFor="let rateType of rateTypeList">
+            <mat-radio-group formControlName="rateTypeId">
+              <mat-radio-button [value]="rateType.id" disabled>{{rateType.name}}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="formSections pt-5" *ngIf="contractType === mgStatic && isSelectedExtranetDetails">
+    <h2>Extranet Details</h2>
+    <div class="row mt-4 pt-2 pb-2 customeRow">
+      <div class="form-group col-md-4  col-lg-4  mb-0">
+        <p>Extranet Account Access</p>
+        <mat-button-toggle-group formControlName="isExtranetAccess" disabled>
+          <mat-button-toggle [value]="true">
+            Yes
+          </mat-button-toggle>
+          <mat-button-toggle [value]="false">
+            No
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="form-group col-md-4  col-lg-4  mb-0">
+        <p>Channel Manager Connectivity</p>
+        <mat-button-toggle-group formControlName="isChannelManagerConnectivity" disabled>
+          <mat-button-toggle [value]="true">
+            Yes
+          </mat-button-toggle>
+          <mat-button-toggle [value]="false">
+            No
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="form-group col-md-4 mb-0">
+        <mat-form-field class="mt-4">
+          <mat-select placeholder="Channel Manager" formControlName="channelManagerId" required disabled>
+            <mat-option *ngFor="let channelManager of channelManagerList" [value]="channelManager.id">{{channelManager.channelManager}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="pt-5 pb-4 paddingRight15px" *ngIf="contractType === mgStatic && isSelectedTaxes">
+    <h2>Taxes</h2>
+    <p>
+      Rates will be considered all INCLUSIVE unless the below section is completed
+    </p>
+    <table class="table genericTable mb-4">
+      <thead>
+        <tr>
+          <th class="taxtesTypeTh">Type</th>
+          <th class="taxtesRoomTh">Per Room/Person</th>
+          <th class="taxtesAmountTh">Amount</th>
+          <th class="taxtesRatesTh">Included in Rates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container formArrayName="taxDetails" *ngFor="let tax of taxDetails.controls; let i =index">
+          <ng-container [formGroupName]="i">
+            <tr>
+              <td class="typeLabel taxesLabel">
+                <label>{{tax.get('taxesType').value}}</label>
+              </td>
+              <td class="taxesLabel">
+                <mat-form-field>
+                  <mat-select formControlName="taxApplicabilityId" disabled>
+                    <mat-option *ngFor="let taxesApplicability of taxesApplicabilityList" [value]="taxesApplicability.id">{{taxesApplicability.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td class="taxesLabel taxesAmountLabel">
+                <mat-form-field>
+                  <input matInput formControlName="amount" pattern="^(\d\d?(\.\d\d?)?|100(\.00?)?)$" readonly/>
+                  <span class="percentageIcon">&nbsp;%</span>
+                </mat-form-field>
+              </td>
+              <td class="taxesLabel">
+                <mat-form-field>
+                  <mat-select formControlName="isIncludedInRates" disabled>
+                    <mat-option [value]="true">Yes</mat-option>
+                    <mat-option [value]="false">No</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row customeRow" *ngIf="contractType !== mgStatic">
+    <div class="form-group col-md-4  col-lg-4">
+      <mat-form-field>
+        <input matInput placeholder="Upload Contract File" />
+      </mat-form-field>
+      <span>Only .doc and .pdf file type is supported.</span>
+    </div>
+    <div class="form-group col-md-4  col-lg-4">
+      <button type="button">Browse</button>
+      <button type="button">Upload</button>
+    </div>
+  </div>
+
+  <div class="controlButtons borderTopDark paddingTop50px pb-4 mb-1 paddingRight15px">
+      <button title="Save" class="genericButton activeButton mat-raised-button mat-primary" [disabled]="!hotelDetailsContractGroup.valid" (click)="saveContract()">Save</button>
+      <button title="Cancel" class="genericButton defaultButton" (click)="backToList()">Cancel</button>
+      <!-- <button title="Continue" class="genericButton activeButton mat-raised-button mat-primary float-right" [disabled]="!hotelDetailsContractGroup.valid" >Save & Continue</button> -->
+      <button title="Continue" class="genericButton activeButton mat-raised-button mat-primary float-right" disabled>Save & Continue</button>
+  </div>
+  
+
+</form>
+
+</div>

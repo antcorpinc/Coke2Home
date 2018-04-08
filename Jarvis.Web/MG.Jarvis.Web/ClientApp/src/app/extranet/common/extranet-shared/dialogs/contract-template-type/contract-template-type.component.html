@@ -1,0 +1,70 @@
+<div class="modalContainer">
+    <div class="modalHeading">
+        <span class="float-left modalHeader">Contract and Template Type</span>
+        <span class="closeIcon float-right" (click)="dialogRef.close(false)">
+            <i aria-hidden="true" class="fa fa-times-thin"></i>
+        </span>
+    </div>
+    <form [formGroup]="contractTemplateForm" (ngSubmit)="openContract()">
+        <div class="modalContent">
+            <p class="semiBold marginBottom10px">Contract Type</p>
+            <mat-radio-group formControlName="contractType" name="contractType" (change)="isTemplateDisabled($event)" required>
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-radio-button [value]="3">MG</mat-radio-button>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-radio-button [value]="nonMg">Non MG</mat-radio-button>
+                    </div>
+                </div>
+            </mat-radio-group>
+
+            <p class="semiBold marginBottom10px mt-4">Template Type</p>
+            <mat-radio-group formControlName="templateType" name="templateType" (change)="isTemplateListDisabled($event)" required>
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-radio-button [value]="mgStatic">Static</mat-radio-button>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-radio-button [value]="mgDynamic">Dynamic</mat-radio-button>
+                    </div>
+                </div>
+            </mat-radio-group>
+            <div class="mb-3">
+                <div class="row mb-2 mt-4">
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <input type="text" placeholder="Search by template name" matInput formControlName="searchTemplate" (focus)="clearSelectedTemplate()"
+                                (keyup)="searchByTemplate()" (keydown.backspace)="checkInputCleared()">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <span>Select from below templates OR </span>
+                <span>
+                    <a href="/" onclick="return false;">Create New Custom Contract</a>
+                </span>
+                <div class="row templateContainer mr-1 mt-4">
+                    <div class="col-md-12">
+                        <div class="row pt-2">
+                            <div class="col-md-3 mb-3" [ngClass]="{'disabled': contractTemplateForm.get('templateType').value === mgDynamic || contractTemplateForm.get('contractType').value === nonMg}"
+                                *ngFor="let template of (!isSearch ? templates : filteredData)" (click)="selectTemplate(template.id)">
+                                <div class="text-center">
+                                    <span class="templateImage" [ngClass]="{'activeClass': template.id === selectedTemplateId}"></span>
+                                </div>
+                                <div class="text-center">
+                                    <span>{{template.name}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="controlButtons mt-5">
+                <button type="submit" title="OK" mat-raised-button class="genericButton activeButton mat-primary mat-raised-button" mat-raised-button
+                    [disabled]="contractTemplateForm.invalid || (contractTemplateForm.get('templateType').value === mgStatic && (!selectedTemplateId  || !isSelected))">Open</button>
+                <button type="button" title="Cancel" mat-raised-button class="genericButton defaultButton mat-raised-button" mat-raised-button
+                    (click)="dialogRef.close(false)">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

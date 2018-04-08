@@ -1,0 +1,475 @@
+<div class="container-fluid">
+  <div class="mt-5">
+    <h1 class="mainHeading">Room Amenities</h1>
+    <div class="row pb-3">
+      <div class="col-md-4">
+        <div class="globalSearch">
+          <input class="form-control" placeholder="Search by Amenities Name, Category etc." type="text" disabled>
+          <button class="searchButton" type="submit">
+          <i aria-hidden="true" class="fa fa-search"></i>
+        </button>
+        </div>
+      </div>
+    </div>
+    <h5 class="mt-4 mb-0 h5 semiboldText">Please select amenities that applies</h5>
+    <form [formGroup]="amenitiesForm">
+      <div formArrayName="amenitiesGroupArray" *ngFor="let amenityGroup of amenitiesGroupArray.controls; let i=index">
+
+        <!-- General -->
+        <div class="formSections pb-0 pt-4 borderBottomNone" [formGroupName]="i" *ngIf="(amenitiesGroupArray.controls[i].get('code').value) === '201'">
+          <mat-expansion-panel class="expandCollapseContainer" expanded='true' disabled>
+
+            <mat-expansion-panel-header class="panelHeader">
+              <mat-panel-title>
+                <div class="row iconHeading">
+                  <div class="col-md-1 pr-0 iconHolder">
+                    <img alt="" src="assets/AmenitiesIcon/generalIcon.png">
+                  </div>
+                  <div class="col-md-11 pl-2">
+                    <mat-checkbox class="checkAll" formControlName="isSelected" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === true">
+                      <h2 class="checkAll">
+                        {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                      </h2>
+                    </mat-checkbox>
+                    <h2 class="checkAll" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === false">
+                      {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                    </h2>
+                  </div>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row" formArrayName="roomFacilityTypes" *ngFor="let amenityType of getTypeArrayForGroup(i).controls; let j=index">
+              <div class="col-md-12" [formGroupName]="j">
+
+                <h5 class="pl-0 h5 semiboldText mb-3" *ngIf="(amenityType.get('facilityTypeName').value) != null">
+                  {{(amenityType.get('facilityTypeName').value)}}
+                </h5>
+
+                <div class="row">
+                  <div class="col-md-12 checkBoxList p-0 border-bottom-0">
+                    <div class="form-group borderTopNone p-0 border-bottom-0">
+                      <h6 class="h6 semiboldText mb-0">All</h6>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row checklists borderTopNone p-0">
+                  <div class="col-md-12 checkBoxList" formArrayName="facilityList" *ngFor="let amenity of getAmenityArrayForGroupAndType(i,j).controls; let k=index">
+                    <div class="form-group mb-0" [formGroupName]="k">
+                        <h6 class="h6 semiboldText mb-0">
+                          {{amenity.get("name").value}}
+                        </h6>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+          </mat-expansion-panel>
+        </div>
+        <!-- General -->
+
+        <!-- Bathroom -->
+        <div class="formSections pb-0 pt-4 borderBottomNone" [formGroupName]="i" *ngIf="(amenitiesGroupArray.controls[i].get('code').value) === '202'">
+          <mat-expansion-panel class="expandCollapseContainer" expanded='true' disabled>
+
+            <mat-expansion-panel-header class="panelHeader">
+              <mat-panel-title>
+                <div class="row iconHeading">
+                  <div class="col-md-1 pr-0 iconHolder">
+                    <img alt="" src="assets/AmenitiesIcon/bathroomIcon.png">
+                  </div>
+                  <div class="col-md-11 pl-2">
+                    <mat-checkbox class="checkAll" formControlName="isSelected" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === true">
+                      <h2 class="checkAll">
+                        {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                      </h2>
+                    </mat-checkbox>
+                    <h2 class="checkAll" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === false">
+                      {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                    </h2>
+                  </div>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row" formArrayName="roomFacilityTypes" *ngFor="let amenityType of getTypeArrayForGroup(i).controls; let j=index">
+              <div class="col-md-12" [formGroupName]="j">
+
+                <h5 class="pl-0 h5 semiboldText mb-3" *ngIf="(amenityType.get('facilityTypeName').value) != null">
+                  {{(amenityType.get('facilityTypeName').value)}}
+                </h5>
+
+                <div class="row">
+                  <div class="col-md-12 checkBoxList p-0 border-bottom-0">
+                    <div class="form-group borderTopNone p-0 border-bottom-0">
+                      <h6 class="h6 semiboldText mb-0">All</h6>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row checklists borderTopNone p-0">
+                  <div class="col-md-12 checkBoxList" formArrayName="facilityList" *ngFor="let amenity of getAmenityArrayForGroupAndType(i,j).controls; let k=index">
+                    <div class="form-group mb-0" [formGroupName]="k">
+                        <h6 class="h6 semiboldText mb-0">
+                          {{amenity.get("name").value}}
+                        </h6> 
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+          </mat-expansion-panel>
+        </div>
+        <!-- Bathroom -->
+
+        <!-- Media And Technology -->
+        <div class="formSections pb-0 pt-4 borderBottomNone" [formGroupName]="i" *ngIf="(amenitiesGroupArray.controls[i].get('code').value) === '203'">
+          <mat-expansion-panel class="expandCollapseContainer" expanded='true' disabled>
+
+            <mat-expansion-panel-header class="panelHeader">
+              <mat-panel-title>
+                <div class="row iconHeading">
+                  <div class="col-md-1 pr-0 iconHolder">
+                    <img alt="" src="assets/AmenitiesIcon/mediaIcon.png">
+                  </div>
+                  <div class="col-md-11 pl-2">
+                    <mat-checkbox class="checkAll" formControlName="isSelected" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === true">
+                      <h2 class="checkAll">
+                        {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                      </h2>
+                    </mat-checkbox>
+                    <h2 class="checkAll" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === false">
+                      {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                    </h2>
+                  </div>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row" formArrayName="roomFacilityTypes" *ngFor="let amenityType of getTypeArrayForGroup(i).controls; let j=index">
+              <div class="col-md-12" [formGroupName]="j">
+
+                <h5 class="pl-0 h5 semiboldText mb-3" *ngIf="(amenityType.get('facilityTypeName').value) != null">
+                  {{(amenityType.get('facilityTypeName').value)}}
+                </h5>
+
+                <div class="row">
+                  <div class="col-md-12 checkBoxList p-0 border-bottom-0">
+                    <div class="form-group borderTopNone p-0 border-bottom-0">                    
+                      <h6 class="h6 semiboldText mb-0">All</h6>                    
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row checklists borderTopNone p-0">
+                  <div class="col-md-12 checkBoxList" formArrayName="facilityList" *ngFor="let amenity of getAmenityArrayForGroupAndType(i,j).controls; let k=index">
+                    <div class="form-group mb-0" [formGroupName]="k">                      
+                        <h6 class="h6 semiboldText mb-0">
+                          {{amenity.get("name").value}}
+                        </h6>                     
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+          </mat-expansion-panel>
+        </div>
+        <!-- Media And Technology -->
+
+        <!-- Food & Drink -->
+        <div class="formSections pb-0 pt-4 borderBottomNone" [formGroupName]="i" *ngIf="(amenitiesGroupArray.controls[i].get('code').value) === '204'">
+          <mat-expansion-panel class="expandCollapseContainer" expanded='true' disabled>
+
+            <mat-expansion-panel-header class="panelHeader">
+              <mat-panel-title>
+                <div class="row iconHeading">
+                  <div class="col-md-1 pr-0 iconHolder">
+                    <img alt="" src="assets/AmenitiesIcon/foodIcon.png">
+                  </div>
+                  <div class="col-md-11 pl-2">
+                    <mat-checkbox class="checkAll" formControlName="isSelected" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === true">
+                      <h2 class="checkAll">
+                        {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                      </h2>
+                    </mat-checkbox>
+                    <h2 class="checkAll" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === false">
+                      {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                    </h2>
+                  </div>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row" formArrayName="roomFacilityTypes" *ngFor="let amenityType of getTypeArrayForGroup(i).controls; let j=index">
+              <div class="col-md-12" [formGroupName]="j">
+
+                <h5 class="pl-0 h5 semiboldText mb-3" *ngIf="(amenityType.get('facilityTypeName').value) != null">
+                  {{(amenityType.get('facilityTypeName').value)}}
+                </h5>
+
+                <div class="row">
+                  <div class="col-md-12 checkBoxList p-0 border-bottom-0">
+                    <div class="form-group borderTopNone p-0 border-bottom-0">
+                        <h6 class="h6 semiboldText mb-0">All</h6> 
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row checklists borderTopNone p-0">
+                  <div class="col-md-12 checkBoxList" formArrayName="facilityList" *ngFor="let amenity of getAmenityArrayForGroupAndType(i,j).controls; let k=index">
+                    <div class="form-group mb-0" [formGroupName]="k">                     
+                        <h6 class="h6 semiboldText mb-0">
+                          {{amenity.get("name").value}}
+                        </h6>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+          </mat-expansion-panel>
+        </div>
+        <!-- Food & Drink -->
+
+        <!-- Services & Extras -->
+        <div class="formSections pb-0 pt-4 borderBottomNone" [formGroupName]="i" *ngIf="(amenitiesGroupArray.controls[i].get('code').value) === '205'">
+          <mat-expansion-panel class="expandCollapseContainer" expanded='true' disabled>
+
+            <mat-expansion-panel-header class="panelHeader">
+              <mat-panel-title>
+                <div class="row iconHeading">
+                  <div class="col-md-1 pr-0 iconHolder">
+                    <img alt="" src="assets/AmenitiesIcon/servicesIcon.png">
+                  </div>
+                  <div class="col-md-11 pl-2">
+                    <mat-checkbox class="checkAll" formControlName="isSelected" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === true">
+                      <h2 class="checkAll">
+                        {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                      </h2>
+                    </mat-checkbox>
+                    <h2 class="checkAll" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === false">
+                      {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                    </h2>
+                  </div>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row" formArrayName="roomFacilityTypes" *ngFor="let amenityType of getTypeArrayForGroup(i).controls; let j=index">
+              <div class="col-md-12" [formGroupName]="j">
+
+                <h5 class="pl-0 h5 semiboldText mb-3" *ngIf="(amenityType.get('facilityTypeName').value) != null">
+                  {{(amenityType.get('facilityTypeName').value)}}
+                </h5>
+
+                <div class="row">
+                  <div class="col-md-12 checkBoxList p-0 border-bottom-0">
+                    <div class="form-group borderTopNone p-0 border-bottom-0">
+                        <h6 class="h6 semiboldText mb-0">All</h6> 
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row checklists borderTopNone p-0">
+                  <div class="col-md-12 checkBoxList" formArrayName="facilityList" *ngFor="let amenity of getAmenityArrayForGroupAndType(i,j).controls; let k=index">
+                    <div class="form-group mb-0" [formGroupName]="k">
+                        <h6 class="h6 semiboldText mb-0">
+                          {{amenity.get("name").value}}
+                        </h6>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+          </mat-expansion-panel>
+        </div>
+        <!-- Services & Extras -->
+
+        <!-- Outdoor & View -->
+        <div class="formSections pb-0 pt-4 borderBottomNone" [formGroupName]="i" *ngIf="(amenitiesGroupArray.controls[i].get('code').value) === '206'">
+          <mat-expansion-panel class="expandCollapseContainer" expanded='true' disabled>
+
+            <mat-expansion-panel-header class="panelHeader">
+              <mat-panel-title>
+                <div class="row iconHeading">
+                  <div class="col-md-1 pr-0 iconHolder">
+                    <img alt="" src="assets/AmenitiesIcon/outdoorIcon.png">
+                  </div>
+                  <div class="col-md-11 pl-2">
+                    <mat-checkbox class="checkAll" formControlName="isSelected" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === true">
+                      <h2 class="checkAll">
+                        {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                      </h2>
+                    </mat-checkbox>
+                    <h2 class="checkAll" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === false">
+                      {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                    </h2>
+                  </div>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row" formArrayName="roomFacilityTypes" *ngFor="let amenityType of getTypeArrayForGroup(i).controls; let j=index">
+              <div class="col-md-12" [formGroupName]="j">
+
+                <h5 class="pl-0 h5 semiboldText mb-3" *ngIf="(amenityType.get('facilityTypeName').value) != null">
+                  {{(amenityType.get('facilityTypeName').value)}}
+                </h5>
+
+                <div class="row">
+                  <div class="col-md-12 checkBoxList p-0 border-bottom-0">
+                    <div class="form-group borderTopNone p-0 border-bottom-0">
+                        <h6 class="h6 semiboldText mb-0">All</h6>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row checklists borderTopNone p-0">
+                  <div class="col-md-12 checkBoxList" formArrayName="facilityList" *ngFor="let amenity of getAmenityArrayForGroupAndType(i,j).controls; let k=index">
+                    <div class="form-group mb-0" [formGroupName]="k">
+                        <h6 class="h6 semiboldText mb-0">
+                          {{amenity.get("name").value}}
+                        </h6> 
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+          </mat-expansion-panel>
+        </div>
+        <!-- Outdoor & View -->
+
+        <!-- Accessibility -->
+        <div class="formSections pb-0 pt-4 borderBottomNone" [formGroupName]="i" *ngIf="(amenitiesGroupArray.controls[i].get('code').value) === '207'">
+          <mat-expansion-panel class="expandCollapseContainer" expanded='true' disabled>
+
+            <mat-expansion-panel-header class="panelHeader">
+              <mat-panel-title>
+                <div class="row iconHeading">
+                  <div class="col-md-1 pr-0 iconHolder">
+                    <img alt="" src="assets/AmenitiesIcon/accessibilityIcon.png">
+                  </div>
+                  <div class="col-md-11 pl-2">
+                    <mat-checkbox class="checkAll" formControlName="isSelected" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === true">
+                      <h2 class="checkAll">
+                        {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                      </h2>
+                    </mat-checkbox>
+                    <h2 class="checkAll" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === false">
+                      {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                    </h2>
+                  </div>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row" formArrayName="roomFacilityTypes" *ngFor="let amenityType of getTypeArrayForGroup(i).controls; let j=index">
+              <div class="col-md-12" [formGroupName]="j">
+
+                <h5 class="pl-0 h5 semiboldText mb-3" *ngIf="(amenityType.get('facilityTypeName').value) != null">
+                  {{(amenityType.get('facilityTypeName').value)}}
+                </h5>
+
+                <div class="row">
+                  <div class="col-md-12 checkBoxList p-0 border-bottom-0">
+                    <div class="form-group borderTopNone p-0 border-bottom-0">
+                        <h6 class="h6 semiboldText mb-0">All</h6>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row checklists borderTopNone p-0">
+                  <div class="col-md-12 checkBoxList" formArrayName="facilityList" *ngFor="let amenity of getAmenityArrayForGroupAndType(i,j).controls; let k=index">
+                    <div class="form-group mb-0" [formGroupName]="k">
+                        <h6 class="h6 semiboldText mb-0">
+                          {{amenity.get("name").value}}
+                        </h6>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+          </mat-expansion-panel>
+        </div>
+        <!-- Accessibility -->
+
+        <!-- Entertainment & Family Services -->
+        <div class="formSections pb-0 pt-4 borderBottomNone" [formGroupName]="i" *ngIf="(amenitiesGroupArray.controls[i].get('code').value) === '208'">
+          <mat-expansion-panel class="expandCollapseContainer" expanded='true' disabled>
+
+            <mat-expansion-panel-header class="panelHeader">
+              <mat-panel-title>
+                <div class="row iconHeading">
+                  <div class="col-md-1 pr-0 iconHolder">
+                    <img alt="" src="assets/AmenitiesIcon/entertainmentIcon.png">
+                  </div>
+                  <div class="col-md-11 pl-2">
+                    <mat-checkbox class="checkAll" formControlName="isSelected" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === true">
+                      <h2 class="checkAll">
+                        {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                      </h2>
+                    </mat-checkbox>
+                    <h2 class="checkAll" *ngIf="(amenitiesGroupArray.controls[i].get('isConfigurable').value) === false">
+                      {{amenitiesGroupArray.controls[i].get("facilityGroupName").value}}
+                    </h2>
+                  </div>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row" formArrayName="roomFacilityTypes" *ngFor="let amenityType of getTypeArrayForGroup(i).controls; let j=index">
+              <div class="col-md-12" [formGroupName]="j">
+
+                <h5 class="pl-0 h5 semiboldText mb-3" *ngIf="(amenityType.get('facilityTypeName').value) != null">
+                  {{(amenityType.get('facilityTypeName').value)}}
+                </h5>
+
+                <div class="row">
+                  <div class="col-md-12 checkBoxList p-0 border-bottom-0">
+                    <div class="form-group borderTopNone p-0 border-bottom-0">
+                        <h6 class="h6 semiboldText mb-0">All</h6>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row checklists borderTopNone p-0">
+                  <div class="col-md-12 checkBoxList" formArrayName="facilityList" *ngFor="let amenity of getAmenityArrayForGroupAndType(i,j).controls; let k=index">
+                    <div class="form-group mb-0" [formGroupName]="k">
+                        <h6 class="h6 semiboldText mb-0">
+                          {{amenity.get("name").value}}
+                        </h6>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+          </mat-expansion-panel>
+        </div>
+        <!-- Entertainment & Family Services -->
+
+      </div>
+
+      <div class="controlButtons mt-5 mb-4">
+        <button title="Save" class="btn activeButton mr-2" (click)="saveAmenities()">Save</button>
+        <button title="Cancel" class="btn defaultButton" (click)="backToList()">Cancel</button>
+        <button title="Save & Continue" class="btn activeButton float-right"(click)="saveandContinue()">Save &Continue</button>
+      </div>
+    </form>
+  </div>
+  </div>

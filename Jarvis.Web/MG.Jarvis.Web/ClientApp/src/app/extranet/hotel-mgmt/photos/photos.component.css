@@ -1,0 +1,101 @@
+.image-container {
+    position: relative;
+    transition: all 0.3s ease;
+    border: 3px solid #fff;
+}
+
+.image-container:hover {
+	border: 3px solid #26a9df;
+}
+
+.image-container img{
+    cursor:pointer;	
+}
+
+.main-photo-text {
+   font-size: 0.9375rem;
+   vertical-align: middle;
+}
+
+.main-photo {
+	cursor: pointer;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    padding: 1px;
+    color: #fff;
+    font-size: 1.25rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.image-container:hover .overlay {
+    height: 38%;
+    display: inline-block;
+}
+
+.room-edit-del {
+    display: flex;
+	transition: all .2s ease-in-out;
+    font-size: 20px;
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    height: 0;
+    transition: .5s ease;
+    display: none;
+}
+
+.circleIcon {
+    border: 2px solid #fff;
+    padding: 1rem;
+    border-radius: 40px;
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    line-height: 0;
+    min-width: 0;
+  }
+  
+  .circleIcon .fa-times-thin:before {
+    content: '\D7';
+    font-size: 2rem;
+    color: #fff;
+    position: absolute;
+    top: -16px;
+    right: -9.5px;
+  }
+  
+   i.fa.fa-times-thin {
+    -webkit-transform: scale(1.1,1.1);
+    transform: scale(1.1,1.1);
+  }
+  
+.circleIcon .fa-pencil{
+    font-size: 1.1rem;
+    color: #fff;
+    position: absolute;
+    top: 7.9px;
+    right: 8.8px;
+  }
+
+.placeholder_img{
+	font-size: 2.9rem;
+	color: #969696;
+	background:#f4f4f4;
+	height: 100%;
+    width: 100%;
+	border: 2px dashed #c2c2c2;
+}

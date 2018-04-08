@@ -1,0 +1,48 @@
+<div *ngIf="!isCreate" class="MgUserprofile">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 pr-0">
+        <div class="card hovercard row">
+          <div class="col-md-9 userProfileDetails">
+            <div class="avatar d-none">
+                <img alt="" src="assets/hotels/Hilton-logo.jpg" title="Hilton">
+              </div>
+            <div class="info userDetails">
+              <div class="title">
+                <a>{{hotelName}}</a>
+              </div>
+              <div class="desc">{{hotelLocation}}</div>
+              <div class="hotelCode">ID: {{hotelcode}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">&nbsp;</div>
+    </div>
+  </div>
+</div>
+
+
+
+<div [ngClass]="{'container-fluid':true, 'hotelManagement':!isCreate}">
+  <div style="display:flex">
+    <div class="LeftnavSection" [ngClass]="{'leftSideBarOpen':isSideNavDisplay ,'leftSideBarClose': !isSideNavDisplay }">
+      <div class="sideBar" [ngStyle]="{'width': isSideNavDisplay ? '250px' : ''}">
+        <div class="NavLeftBar" [ngStyle]="{'display': isSideNavDisplay ? 'block' : 'none'}">
+          <app-hotel-nav-menu [operation]="operation">
+          </app-hotel-nav-menu>
+        </div>
+        <div class="expandButton">
+          <button class="btn" type="button" (click)="showNav()">
+            <i aria-hidden="true" [ngClass]="{'fa':true, 'fa-caret-left':isSideNavDisplay ,'fa-caret-right': !isSideNavDisplay }"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="rightContentSection"  [ngClass]="{'rightContainerOpen':isSideNavDisplay}">
+      <div class="body-style">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

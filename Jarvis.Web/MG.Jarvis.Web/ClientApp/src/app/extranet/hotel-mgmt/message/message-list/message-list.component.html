@@ -1,0 +1,83 @@
+<div class="innerPageWrapper">
+
+<h1 class="mainHeading mb-5">Message Setup</h1>
+<div class="row mb-2 customeRow">
+  <div class="col-md-5">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by Message Title, Message Type, Created By, Description">
+    </mat-form-field>
+  </div>
+  <div class="col-md-7 text-right controlButtons">
+    <button title="Create New Message" [hidden]='isRead' type="submit" class="btn defaultButton genericButton genericSmallButton mat-raised-button" mat-raised-button
+      (click)="createMessage()">
+      <i _ngcontent-c20="" aria-hidden="true" class="fa fa-plus mr-2"></i>Create New Message</button>
+  </div>
+</div>
+
+<div class="innerPageWrapper">
+<mat-table #messageTable [dataSource]="dataSource" matSort class="genericTable mb-4 flexNone">
+
+  <ng-container matColumnDef="messageTitle">
+    <mat-header-cell class="messageTitleTH ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Message Title </mat-header-cell>
+    <mat-cell class="messageTitleTH" *matCellDef="let element"> {{element.messageTitle}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="messageTypeName">
+    <mat-header-cell class="messageTypeTH ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Message Type </mat-header-cell>
+    <mat-cell class="messageTypeTH" *matCellDef="let element"> {{element.messageTypeName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="messageDescription">
+    <mat-header-cell class="messageDescriptionTH ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+    <mat-cell class="messageDescriptionTH position-relative" *matCellDef="let element">
+      <div class="elpsisContent paddingLeft20px" title="{{element.messageDescription}}">{{element.messageDescription}}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lastModifiedBy">
+    <mat-header-cell class="messageCreatedByTH ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Modified By </mat-header-cell>
+    <mat-cell class="messageCreatedByTH" *matCellDef="let element"> {{element.lastModifiedBy}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="startDate">
+    <mat-header-cell class="messageStartDateTH ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Start Date </mat-header-cell>
+    <mat-cell class="messageStartDateTH" *matCellDef="let element"> {{element.startDate | date : "dd-MMM-yy"}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="endDate">
+    <mat-header-cell class="messageEndDateTH ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> End Date </mat-header-cell>
+    <mat-cell class="messageEndDateTH" *matCellDef="let element"> {{element.endDate | date : "dd-MMM-yy"}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="isActive">
+    <mat-header-cell class="messageStatusTH ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+    <mat-cell class="messageStatusTH" *matCellDef="let element">
+      <ng-container *ngIf="element.isActive == true">
+        <i class="fa fa-circle active_status" aria-hidden="true"></i>Active</ng-container>
+      <ng-container *ngIf="!element.isActive">
+        <i class="fa fa-circle inactive_status" aria-hidden="true"></i>InActive</ng-container>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container *ngIf="!isRead" matColumnDef="actions" class="text-center">
+    <mat-header-cell class="messageActionTH ProximaFontFamily noOutlineOnFocus" *matHeaderCellDef mat-sort-header> </mat-header-cell>
+    <mat-cell class="messageActionTH placeholderColorGray" *matCellDef="let element">
+      <mat-select placeholder="Actions" name="Actions" [(ngModel)]="actions">
+        <mat-option value="{{element.messageId}}-edit" #edit (click)="GoMsgUpdate(edit.value)">Edit</mat-option>
+        <mat-option value="{{element.messageId}}-delete" #delete (click)="GoMsgDelete(delete.value)">Delete</mat-option>
+      </mat-select>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
+<div style="color:orange" *ngIf="noDataAvailable">
+  No Messages are created.
+</div>
+
+<mat-paginator *ngIf="!noDataAvailable" class="genericPagination" #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>
+</div>
+</div>

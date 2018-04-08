@@ -1,0 +1,85 @@
+<!-- Edit Modal -->
+<div class="genericPopover">
+    <div class="row">
+        <div class="col-md-10 popoverHeader">
+            <h5 class="h5 popoverTitle">Add/Edit Photos</h5>
+        </div>
+        <div class="col-md-2 popoverHeader">
+            <button mat-button [mat-dialog-close]="true" class="ml-4 pl-4 close" title="Close" (click)="dialogRef.close(false)">×</button>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+         <div class="row">
+            <div class="col-md-12">
+            <h6 class="semiboldText pt-4 pb-2">Select photo to upload</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <label class="custom-file">
+                    <input type="file" id="uploadFile" name="image" class="img">
+                    <span class="custom-file-control"></span>
+                </label>
+            </div>
+            <div class="col-md-3 controlButtons pl-0 pr-0">
+                 <button type="button" title="Upload" class="ml-5 pt-2 pb-2 genericButton activeButton" mat-raised-button>Upload</button>
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <span class="infoNote d-block pt-2 pb-4 mb-2">Minimum Size:600px/800px</span>
+        </div>
+    </div>
+    </div>
+    </div>
+     
+      <div class="row">
+            <div class="col-md-6">
+            
+                <mat-checkbox class="popoverCheckbox">Set as the main photo</mat-checkbox>
+                <h6 class="pt-3 pb-3 font-weight-bold">Select if this is a room photo</h6>
+
+                <mat-checkbox class="popoverCheckbox">Haven - Double or Twin room</mat-checkbox>
+
+
+                <mat-checkbox class="popoverCheckbox">Haven - Double with Balcony</mat-checkbox>
+
+
+                <mat-checkbox class="popoverCheckbox">Haven - Double Garden facing</mat-checkbox>
+
+
+                <mat-checkbox class="popoverCheckbox">Haven - Double Sunroof</mat-checkbox>
+				<mat-checkbox class="popoverCheckbox">Haven - Double Beach Front</mat-checkbox>
+                </div>
+        
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="placeholderSection">
+                            <img src="assets/photosAndVideos/img-placeholder.jpg" class="img-placeholder"/>
+                            <span class="d-block text-center mt-2 optionsList">Photo will be shown here</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-md-12 controlButtons mt-3">
+                                <button mat-raised-button title="Save and upload another Photo" class="float-left genericButton genericSmallButton defaultButton">Save and upload another Photo/Video</button>
+                            </div>
+                    </div>
+                </div>	
+                </div> 
+    <div class="row">
+        <div class="col-md-12">
+            <mat-dialog-actions>
+                <div class="controlButtons pb-3">
+                    <button title="Save" type="submit" class="genericButton activeButton" mat-raised-button 
+                    (click)="dialogRef.close(true)">Save</button>
+                    <button type="button" mat-button type="reset" title="Cancel" class="genericButton defaultButton" 
+                    (click)="dialogRef.close(false)">Cancel</button>
+                </div>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</div>

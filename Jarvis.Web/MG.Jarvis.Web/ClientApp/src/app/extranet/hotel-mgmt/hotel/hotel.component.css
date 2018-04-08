@@ -1,0 +1,144 @@
+/*** Side Bar ***/
+.sideBar {
+  border-left: 1px solid #e0e0e0;
+  position: fixed;
+  height: 100%;
+  -webkit-box-shadow: 4px 0px 7px 0px #ccc;
+  -moz-box-shadow: 4px 0px 7px 0px #ccc;
+  box-shadow: 4px 0px 7px 0px #ccc;
+  background: #fff;
+  z-index: 1;
+  padding-bottom: 215px;
+  display: flex;
+}
+
+.LeftNavBar {
+  height: 100%;
+  overflow: auto;
+  padding-bottom: 201px;
+}
+
+.expandButton {
+  display: flex;
+  align-items: center;
+  background: #ebebeb;
+}
+
+.NavLeftBar {
+  width: 100%;
+  padding-top: 47px;
+}
+
+
+.expandButton .fa.fa-caret-right, .expandButton .fa.fa-caret-left {
+  display: flex;
+  align-items: center;
+  left: 1px;
+  position: relative;
+  color: #fff;
+}
+
+.expandButton .btn {
+  box-shadow: none;
+  width: 10px;
+  height: 221px;
+  padding: 0;
+  border-radius: 0;
+  background: #026095;
+  display: flex;
+  cursor: pointer;
+}
+
+#hotelNav {
+  height: 100%;
+}
+
+.card.hovercard {
+  position: relative;
+  padding-top: 0;
+  overflow: hidden;
+  border: none;
+  flex-direction: row;
+}
+
+.userProfileDetails {
+  align-items: center;
+  display: flex;
+  text-align: left;
+}
+
+.userProfileDetails .avatar{
+  width: 100px;
+  margin-right: 10px;
+}
+
+.card.hovercard .avatar img {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 100%;
+}
+
+
+.card.hovercard .info .title, .card.hovercard .info .title a {
+  font-size: 0.9375rem;
+  vertical-align: middle;
+  font-weight: 500;
+  color: #333;
+}
+
+  .card.hovercard .info .title a:hover {
+    color: #333;
+  }
+
+  .card.hovercard .info .title a {
+    font-family: 'Proxima Nova Semibold';
+  }
+
+.card.hovercard .info .desc {
+  overflow: hidden;
+  font-size: 0.875rem;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  color: #666666;
+}
+
+.profileWrapper {
+  margin: 27px 20px 24px;
+}
+
+.MgUserprofile {
+  position: fixed;
+  left: 0;
+  top: 127px;
+  width: 100%;
+  z-index: 100;
+  background: #fff;
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.38);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.38);
+  box-shadow: 0px 0 7px 0px rgba(0,0,0,0.38);
+  padding: 5px 0;
+  min-height: 77px;
+}
+
+.hotelManagement {
+  padding-top: 78px;
+}
+
+.hotelCode {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+
+
+.rightContentSection{
+  padding-left: 40px;
+  width: 100%;
+  padding-top: 37px;
+}
+
+.rightContentSection.rightContainerOpen{
+  padding-left: 290px;
+}
+

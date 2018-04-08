@@ -1,0 +1,14 @@
+.usernameTH{
+	width:14%;
+}
+.empIDTH{width:12%;}
+.emailTH{width:14%;}
+.departmentTH{width:10%;}
+.applicationRoleTH{width: 14%;}
+.activationTH{width: 16%;}
+.userStatusTH{
+	width:10%; 
+	display:flex;
+	align-items: center;
+}
+.userActionTH{width:10%;}

@@ -1,0 +1,275 @@
+.form-group {
+  display: inline-block;
+}
+
+.amt {
+  width: 50%;
+  display: inline-block;
+}
+
+.buttons {
+  float: right;
+  margin-bottom: 15px;
+}
+
+textarea {
+  resize: none;
+}
+
+.clear {
+  clear: both;
+  overflow: hidden;
+  height: 0;
+}
+
+.hotelStatus {
+  margin-bottom: 0;
+}
+
+
+.hotelStatus {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+
+  .hotelStatus .form-check.form-check-inline {
+    margin: 0;
+  }
+
+  .hotelStatus .custom-control-description {
+    line-height: 1.7;
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+
+.mapLocator {
+  position: relative;
+}
+
+  .mapLocator .input-group-addon {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .mapLocator .input-group-addon button{
+    background: none;
+    border: none;
+  }
+
+    .mapLocator .input-group-addon .fa {
+      color: #4168a1;
+      font-size: 1.2rem;
+    }
+
+  .mapLocator .form-control {
+    padding-right: 34px;
+  }
+
+.custom-select {
+  background: url(../../../../../../assets/selectDropDown.png) no-repeat right .75rem center !important;
+}
+
+
+.LeftnavSection {
+  width: 23%;
+  margin-right: 40px;
+}
+
+.LeftnavSection {
+  width: 77%;
+}
+
+ /* .ng-valid[required], .ng-valid.required {
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+}  */
+
+/*
+input:invalid {
+  border-left: 5px solid #a94442;
+}  */
+
+/* .container-fluid.bodyContainer {
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+} */
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+.table th {
+  border-bottom: 0;
+}
+
+.typeLabel {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.taxtesTypeTh {
+  width: 16.7%;
+}
+
+.taxtesRoomTh {
+  width: 21.0%;
+}
+
+.taxtesAmountTh {
+  width: 10.5%;
+}
+
+.taxtesRatesTh {
+  width: 10.5%;
+}
+
+
+td.taxesLabel .mat-form-field{
+  width: 70%;
+}
+
+.taxesAmountLabel .percentageIcon{
+  position: absolute;
+  right: -20px;
+  top: 10px;
+}
+
+.onOffButton {
+  border: 1px solid #e0e0e0;
+}
+
+  .onOffButton .btn {
+    border-radius: 0;
+    font-size: 0.875rem;
+    box-shadow: none;
+    padding: 4px 18px;
+    border: none;
+  }
+
+    .onOffButton .btn.btn-default {
+      background: none;
+    }
+
+    .onOffButton .btn.btn-primary {
+      background: #4168a1;
+    }
+.mat-form-field{
+  margin-left: 24px;
+  margin-right: 75px;
+}
+
+.mat-form-field-infix{
+  width: 200px !important;
+}
+
+.mat-select-value{
+  color: #333;
+}
+
+mat-checkbox.mat-checkbox-checked /deep/  .mat-checkbox-background{
+  background: #4168a1;
+}
+
+mat-checkbox /deep/ .mat-checkbox-frame{
+  border: 1px solid #e2e2e2;
+}
+
+mat-button-toggle-group /deep/ .mat-button-toggle-label{
+  margin-bottom: 0;
+  color: #333;
+  font-size: 0.875em;
+}
+
+mat-button-toggle-group{
+  border-radius: 0;
+  border:1px solid #e0e0e0;
+  box-shadow: none;
+}
+
+mat-button-toggle-group /deep/ .mat-button-toggle{
+  color: #333;
+  font-size: 0.875em;
+}
+
+mat-button-toggle-group /deep/ .mat-button-toggle .mat-button-toggle-label-content{
+  line-height: 22px;
+  padding: 0 15px;
+}
+
+mat-button-toggle-group /deep/ .mat-button-toggle-checked{
+  background: #4168a1;
+  color: #fff;
+}
+
+mat-button-toggle-group /deep/ .mat-button-toggle-checked .mat-button-toggle-label{
+  color: #fff;
+}
+
+
+
+
+
+
+.primaryContactTh{
+  width: 5%;
+}
+
+.contactContactTh{
+  width: 22%;
+}
+
+.titleContactTh{
+  width: 25.2%;
+}
+
+.emailContactTh{
+  width: 28.2%;
+}
+
+.contactNumberContactTh{
+  width: 27.9%;
+}
+
+.addContact{
+  position: relative;
+}
+
+.addContact .btn.buttonStacked{
+  position: absolute;
+  right: 0;
+  top: 25px;
+}
+
+
+.addContact .text-primary{
+  color: #476da4 !important;
+}
+
+.contactTable td .mat-form-field{
+  width: 70%;
+}
+
+::ng-deep .matCheckBox label.mat-checkbox-layout{
+  margin-bottom: 0;
+}
+.genericLabel
+{
+  margin-bottom: 0;
+}
+
+.widthCalculate30 {
+  width: calc(100% - 30px);
+}
+
+.paddingLeft45 {
+  padding-left: 45px;
+}

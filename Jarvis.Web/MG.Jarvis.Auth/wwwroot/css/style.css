@@ -1,0 +1,98 @@
+﻿body {
+    background-color: #eeefef;
+}
+
+.loginHeader {
+    background-color: white !important;
+    border-color: white !important;
+    font-size: 2.5rem;
+}
+
+.loginBtn {
+    padding: 1rem 4rem 1rem 4rem;
+    font-size: 15px;
+    text-align: left;
+    margin-right: 2rem;
+    background-color: #4168a1 !important;
+    border-color: #4168a1 !important;
+}
+
+.loginHeader .panel-title {
+    font-size: 25px;
+    color: #333333;
+}
+
+.loginContainer .panel.panel-default {
+    border-color: white;
+    padding: 40px 122px 40px 122px;
+    margin: 0;
+}
+
+.loginContainer .panel {
+    webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.loginContainer .form-control {
+    border-radius: 0px;
+    font-size: 15px;
+    box-shadow: none;
+}
+
+.loginContainer .form-group {
+    margin-bottom: 0;
+}
+
+.form-group.password {
+    margin: 2.5rem 0 2.5rem 0;
+}
+
+.form-group.username {
+    margin-top: 1.5rem;
+}
+
+.icon {
+    margin-top: 10px;
+    display: block;
+    margin-bottom: 34px;
+}
+
+.loginContainer label {
+    font-size: 15px;
+    font-weight: normal;
+    color: #666;
+}
+
+.login-page {
+    margin-top: 17rem;
+}
+
+.loginContainer a {
+    font-size: 15px;
+    line-height: 4.5rem;
+    text-decoration: none;
+    color: #666;
+}
+
+.alert-danger {
+    width: 100%;
+}
+
+.loginContainer .panel-heading {
+    padding: 10px 0;
+}
+
+.loginContainer .panel-body {
+    padding: 0px;
+}
+
+.alert {
+    margin-bottom: 2.5rem;
+}
+
+.loginContainer {
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.40);
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.40);
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.40);
+    padding: 0;
+}

@@ -1,0 +1,56 @@
+<div class="container-fluid mealPlanContainer">
+  <div class="mt-5">
+    <h1 class="mainHeading">Meal Plan</h1>
+    <form>
+      <div class="formSections pb-3 pt-4" *ngFor="let meal of mealTypes">
+        <div>
+          <h2 class="semiBold">
+            <mat-checkbox class="semiBold" [disabled]="true" [checked]="meal.isSelected">{{meal.meal}}</mat-checkbox>
+          </h2>
+
+          <div>
+            <div>
+              <div class="row mb-5">
+                <div class="col-md-3">
+                  <div class="row">
+                    <div class="col-md-4 pr-0">
+                      <mat-form-field>
+                        <input matInput placeholder="" name="currency" disabled value="IDR">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-8 pl-0">
+                      <mat-form-field>
+                        <input matInput placeholder="" type="number" name="price" class="text-right hideUpDownArrow" disabled="true">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 text-right text-secondary small">
+                      Per person, per day
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h2 class="semiBold mb-4"> {{meal.meal}} Details</h2>
+              <div class="breakFastSelection pr-3 pb-3" *ngFor="let cuisine of cuisineTypes">
+                <div>
+                  <mat-checkbox class="pt-2 pb-2 pl-2 mr-2 mealTypeCheckbox" disabled>{{cuisine.cusine}}</mat-checkbox>
+                </div>
+              </div>
+            </div>
+
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controlButtons mb-4 mt-5">
+        <button title="Save" type="button" class="genericButton activeButton" mat-raised-button (click)="saveMealPlan()">Save</button>
+        <button title="Cancel" type="button" class="genericButton defaultButton" mat-raised-button (click)="backToList()">Cancel</button>
+        <button title="Save & Continue" type="button" class="genericButton activeButton float-right" mat-raised-button (click)="saveandContinue()">Save & Continue</button>
+      </div>
+    </form>
+  </div>
+</div>

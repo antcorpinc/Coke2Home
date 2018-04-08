@@ -1,0 +1,67 @@
+<div class="container-fluid pl-0 mealPlanContainer">
+  <h1 class="mainHeading mb-4">Associate Meal Plan</h1>
+  <form [formGroup]="associateMealPlanForm" (ngSubmit)="saveMealPlan()">
+    <div class="formSections pb-3 pt-3 " formArrayName="associatedMealPlanArray" *ngFor="let mealPlan of associatedMealPlanArray.controls; let i=index">
+      <div class="row customeRow">
+        <div class="col-md-12">
+
+          <div [formGroupName]="i">
+            <h2 class="semiBold mb-0 mavenProMedium darkGreyText">
+              <mat-checkbox formControlName="isSelected" class="semiBold" (change)="resetOnUncheck($event, mealPlan.get('mealId').value)">
+                {{mealPlan.get('mealName').value}}
+              </mat-checkbox>
+            </h2>
+
+            <div *ngIf="mealPlan.get('isSelected').value">
+              <div formGroupName="mealPlanOptions" class="mb-2">
+
+
+                <div class="row mb-4 mt-4 customeRow">
+                  <div class="col-md-3">
+                    <div class="row customeRow">
+                      <div class="col-md-4 pr-0">
+                        <mat-form-field>
+                          <input matInput placeholder="" name="currency" readonly value="{{currencyCode}}">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-8 pl-0">
+                        <mat-form-field>
+                          <input matInput placeholder="" pattern="^[0-9]\d*(\.\d{1,2})?$" name="price" formControlName="price" class="text-right hideUpDownArrow">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 text-right roomRateText">
+                        Per person, per day
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h2 class="pb-4 pt-3"> {{mealPlan.get('mealName').value}} Details</h2>
+                <div formArrayName="cuisineOptions" *ngFor="let cuisineOption of getcuisineOptions(i).controls; let j=index" class="breakFastSelection pr-3 pb-3">
+
+                  <div [formGroupName]="j">
+                    <mat-checkbox formControlName="isSelected" class="pt-2 pb-2 pl-2 mr-2 mealTypeCheckbox">
+                      {{cuisineOption.get('cusine').value}}
+                    </mat-checkbox>
+                  </div>
+                </div>
+              </div>
+
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controlButtons paddingTop50px pb-4 mb-1">
+      <button title="Save" type="submit" class="genericButton activeButton mat-raised-button mat-primary" [disabled]="!associateMealPlanForm.valid"
+        mat-raised-button>Save</button>
+      <button title="Cancel" type="reset" (click)="cancelMealPlan()" class="genericButton defaultButton" mat-raised-button>Cancel</button>
+    </div>
+  </form>
+</div>

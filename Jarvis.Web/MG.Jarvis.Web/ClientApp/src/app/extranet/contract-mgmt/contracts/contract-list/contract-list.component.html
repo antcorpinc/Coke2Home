@@ -1,0 +1,220 @@
+<div class="container-fluid">
+  <div class="mt-5">
+
+    <h1 class="mainHeading">Contracts</h1>
+    <div class="row mt-4 mb-5">
+      <form [formGroup]="searchContracts" (ngSubmit)="findContracts(searchContracts.get('searchText').value,searchContracts.get('fromDate').value,searchContracts.get('toDate').value,searchContracts.get('startOrEndDate').value)"
+        class="w-100">
+        <div class="col-md-12">
+          <div class="lightBlueContainer pb-2 pl-4 pr-4">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-2">
+                    <mat-form-field>
+                      <span class="font-weight-bold" matPrefix>From &nbsp;</span>
+                      <mat-datepicker-toggle matSuffix [for]="fromdate"></mat-datepicker-toggle>
+                      <input matInput [matDatepicker]="fromdate" placeholder="DD-MMM-YY" formControlName="fromDate">
+                      <mat-datepicker #fromdate></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-2">
+                    <mat-form-field>
+                      <span class="font-weight-bold" matPrefix>To &nbsp;</span>
+                      <input matInput [matDatepicker]="todate" placeholder="DD-MMM-YY" formControlName="toDate" [min]="searchContracts.get('fromDate').value">
+                      <mat-datepicker-toggle matSuffix [for]="todate"></mat-datepicker-toggle>
+                      <mat-datepicker #todate></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-2 alignItemCenter">
+                    <mat-radio-group formControlName="startOrEndDate">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <mat-radio-button [value]="'start'">Start date</mat-radio-button>
+                        </div>
+                        <div class="col-md-6">
+                          <mat-radio-button [value]="'end'">End date</mat-radio-button>
+                        </div>
+                      </div>
+                    </mat-radio-group>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field>
+                      <input matInput placeholder="Search by Hotel Name, Contract Name, Contact, Location" formControlName="searchText" (keydown.backspace)="checkBackspacePressed()"
+                        (keyup)="checkIsInputCleared($event)" (keypress)="checkEnter($event)">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-2 text-right controlButtons">
+                    <button [hidden]='isRead' class="genericButton activeButton mat-primary mat-raised-button" title="Search" type="submit">
+                      Search</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row mb-4">
+      <div *ngIf="createView" class="col-md-12 text-right controlButtons">
+        <button [hidden]='isRead' class="btn defaultButton" title="Create New Contract" type="button" (click)="createContract()">
+          Create New Contract</button>
+      </div>
+    </div>
+
+    <table class="table mt-5 mb-5 genericTable">
+      <thead>
+        <tr class="title-Bar">
+          <th></th>
+          <th (click)="sort('hotelName')">
+            Hotel Name
+            <i class="fa" [ngClass]="{'fa-sort': column != 'hotelName',
+                      'fa-sort-desc': (column == 'hotelName' && !isDesc),
+                      'fa-sort-asc': (column == 'hotelName' && isDesc) }" aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('contactPerson')">
+            Contact
+            <i class="fa" [ngClass]="{'fa-sort': column != 'contactPerson',
+                      'fa-sort-desc': (column == 'contactPerson' && !isDesc),
+                      'fa-sort-asc': (column == 'contactPerson' && isDesc) }" aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('location')">
+            Location
+            <i class="fa" [ngClass]="{'fa-sort': column != 'location',
+                      'fa-sort-desc': (column == 'location' && !isDesc),
+                      'fa-sort-asc': (column == 'location' && isDesc) }" aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('id')">
+            Contract ID
+            <i class="fa" [ngClass]="{'fa-sort': column != 'id',
+                      'fa-sort-desc': (column == 'id' && !isDesc),
+                      'fa-sort-asc': (column == 'id' && isDesc) }" aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('name')">
+            Contract Name
+            <i class="fa" [ngClass]="{'fa-sort': column != 'name',
+                      'fa-sort-desc': (column == 'name' && !isDesc),
+                      'fa-sort-asc': (column == 'name' && isDesc) }" aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('startDateEndDate')">
+            Start-End Date
+            <i class="fa" [ngClass]="{'fa-sort': column != 'startDateEndDate',
+                      'fa-sort-desc': (column == 'startDateEndDate' && !isDesc),
+                      'fa-sort-asc': (column == 'startDateEndDate' && isDesc) }" aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('status')">
+            Status
+            <i class="fa" [ngClass]="{'fa-sort': column != 'status',
+                      'fa-sort-desc': (column == 'status' && !isDesc),
+                      'fa-sort-asc': (column == 'status' && isDesc) }" aria-hidden="true"></i>
+          </th>
+          <th class="ActionTh"></th>
+        </tr>
+        <tr class="white-space"></tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let contract of (!isSearch ? contractsList : filteredData) | orderByContracts: {property:column,direction: direction} | paginate: { itemsPerPage: pagesize, currentPage: currentpage}">
+          <tr (click)="contract.isExpanded = !contract.isExpanded">
+            <td>
+              <div *ngIf="contract.promoContracts.length !== 0" class="ml-1">
+                <i class="fa" [ngClass]="{'fa-angle-down': contract.isExpanded === false ,
+                                          'fa-angle-up': contract.isExpanded === true  }" aria-hidden="true"></i>
+              </div>
+            </td>
+            <td class="hotelTitle">
+              <div>{{contract.hotelName}}</div>
+              <span *ngIf="contract.promoContracts.length !== 0" class="extraRowsCount">
+                <span>+</span> {{contract.promoContracts.length}} More</span>
+            </td>
+            <td>
+              <div *ngFor="let contact of contract.contacts">
+                {{contact.contactPerson}}
+                <br> {{contract.designation}}
+                <br> {{contact.emailAddress}}
+                <br> {{contact.contactNumber}}
+              </div>
+            </td>
+            <td>{{contract.location}}</td>
+            <td>{{contract.id}}</td>
+            <td>
+              <div>{{contract.name}}</div>
+              <div class="lightGrey mt-1">
+                <i class="fa fa-file-o" aria-hidden="true"></i>
+                {{contract.contractType}}</div>
+            </td>
+            <td>
+              <span class="d-block">{{contract.startDate | date : "dd-MMM-yy"}} to</span>
+              <span class="d-block">{{contract.endDate | date: "dd-MMM-yy"}}</span>
+            </td>
+            <td>
+              <i class="fa fa-circle active_status"></i>{{contract.status}}</td>
+            <td class="text-center placeholderColorGray" *ngIf='createView || deleteView'>
+              <mat-select placeholder="Actions" name="Actions" [(ngModel)]="actions">
+                <mat-option value="{{contract.contractId}}-edit" #edit (click)="GoContractUpdate(edit.value)">Edit</mat-option>
+                <mat-option value="{{contract.contractId}}-delete" #delete (click)="GoContractUpdate(delete.value)">Delete</mat-option>
+              </mat-select>
+            </td>
+          </tr>
+          <ng-container *ngFor="let promoContract of contract.promoContracts">
+            <tr *ngIf="contract.isExpanded === true" class="backgroundNone">
+              <td class="borderBottomNone borderTopNone"></td>
+              <td class="borderBottomNone borderTopNone"></td>
+              <td class="borderBottomNone borderTopNone"></td>
+              <td class="borderBottomNone borderTopNone"></td>
+              <td class="dottedBorderBottom">{{promoContract.id}}</td>
+              <td class="dottedBorderBottom">
+                <div>{{promoContract.name}}</div>
+                <div class="lightGrey mt-1">
+                  <i class="fa fa-file-o" aria-hidden="true"></i>
+                  {{promoContract.contractType}}</div>
+              </td>
+              <td class="dottedBorderBottom">
+                <span class="d-block">{{contract.startDate | date : "dd-MMM-yy"}} to</span>
+                <span class="d-block">{{contract.endDate | date: "dd-MMM-yy"}}</span>
+              </td>
+              <td class="dottedBorderBottom">
+                <i class="fa fa-circle active_status"></i>{{promoContract.status}}</td>
+              <td class="text-center placeholderColorGray dottedBorderBottom" *ngIf='createView || deleteView'>
+                <mat-select placeholder="Actions" name="Actions" [(ngModel)]="actions">
+                  <mat-option value="{{contract.contractId}}-edit" #edit (click)="GoContractUpdate(edit.value)">Edit</mat-option>
+                  <mat-option value="{{contract.contractId}}-delete" #delete (click)="GoContractUpdate(delete.value)">Delete</mat-option>
+                </mat-select>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <div style="color:orange" *ngIf="noDataAvailable">
+      No Contract is created.
+    </div>
+    <div>
+      <!-- Displaying items 1 to 5 of {{contractsList.length}}  TO BE DONE -->
+      Displaying items {{(currentpage === 1) ? currentpage : ((currentpage - 1) * pagesize + 1) }} to {{(pagesize > contractsList.length)
+      ? contractsList.length : ((((currentpage - 1) * pagesize + 1)+ pagesize - 1)
+      < contractsList.length ? (((currentpage - 1) * pagesize + 1)+ pagesize - 1) : contractsList.length)}} of {{contractsList.length}}
+        </div>
+        <div *ngIf="!noDataAvailable" class="row PaginationControls pl-5 ml-4">
+          <div class="col-md-10">
+            <div class="contractsPagination">
+              <pagination-controls (pageChange)="currentpage = $event" boundaryLinks=true directionLinks=true autoHide="false">
+              </pagination-controls>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="page-size">
+              <mat-select placeholder="Show" class="form-group" (select)="onPageChange($event)" [(ngModel)]="pagesize">
+                <mat-option [value]="5">5</mat-option>
+                <mat-option [value]="10">10</mat-option>
+                <mat-option [value]="25">25</mat-option>
+                <mat-option [value]="50">50</mat-option>
+              </mat-select>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>

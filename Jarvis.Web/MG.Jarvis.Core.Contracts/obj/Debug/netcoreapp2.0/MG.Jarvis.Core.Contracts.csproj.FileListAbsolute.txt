@@ -1,0 +1,9 @@
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Core.Contracts\bin\Debug\netcoreapp2.0\MG.Jarvis.Core.Contracts.deps.json
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Core.Contracts\bin\Debug\netcoreapp2.0\MG.Jarvis.Core.Contracts.dll
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Core.Contracts\bin\Debug\netcoreapp2.0\MG.Jarvis.Core.Contracts.pdb
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Core.Contracts\obj\Debug\netcoreapp2.0\MG.Jarvis.Core.Contracts.csproj.CoreCompileInputs.cache
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Core.Contracts\obj\Debug\netcoreapp2.0\MG.Jarvis.Core.Contracts.AssemblyInfoInputs.cache
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Core.Contracts\obj\Debug\netcoreapp2.0\MG.Jarvis.Core.Contracts.AssemblyInfo.cs
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Core.Contracts\obj\Debug\netcoreapp2.0\MG.Jarvis.Core.Contracts.dll
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Core.Contracts\obj\Debug\netcoreapp2.0\MG.Jarvis.Core.Contracts.pdb
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Core.Contracts\obj\Debug\netcoreapp2.0\MG.Jarvis.Core.Contracts.csprojResolveAssemblyReference.cache

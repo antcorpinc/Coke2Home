@@ -1,0 +1,1156 @@
+<h3 class="mainHeading">Allocations</h3>
+<div class="row">
+    <div class="text-center col-md-12 pb-4">
+        <mat-button-toggle-group class="allocationState" #group="matButtonToggleGroup">
+            <mat-button-toggle [value]="true">
+                Static
+            </mat-button-toggle>
+            <mat-button-toggle [value]="false">
+                Dynamic
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+</div>
+
+<div class="row allocationStatus text-center">
+    <div class="col-md-12 justify-content-center alignItemCenter">
+
+        <div class="mr-2 circle-checked">
+            <span class="checkmark"></span>
+        </div>
+        <span class="allocationStatusTxt">Bookable</span>
+        <div class="ml-4 mr-2 restrictedStatus">
+            <span class="asteriskIcon">*</span>
+        </div>
+        <span class="allocationStatusTxt">Bookable with restrictions</span>
+        <div class="ml-4 mr-2 notAvailableStatus">
+            <i class="fa fa-exclamation"></i>
+        </div>
+        <span class="allocationStatusTxt">Not Available And/ or has no price</span>
+        <div class="ml-4 mr-2 soldOutStatus">
+            <i class="fa fa-key"></i>
+        </div>
+        <span class="allocationStatusTxt">Sold Out</span>
+        <div class="ml-4 mr-2 closedStatus">
+            <i class="fa fa-times-thin"></i>
+        </div>
+        <span class="allocationStatusTxt">Closed</span>
+
+    </div>
+</div>
+
+
+<div class="row alignItemCenter">
+    <div class="col-md-12 pl-0">
+        <div class="row  allocationDates">
+            <div class="col-md-2">
+                <i class="fa fa-caret-left" aria-hidden="true" title="Previous"></i>
+            </div>
+
+            <div class="col-md-8">
+                <div class="row justify-content-center">
+                    <div class="col-md-3 text-center pr-0">
+                        <label class="optionsList mb-0">Custom Date From:</label>
+                    </div>
+                    <div class="col-md-3 pl-0">
+                        <mat-form-field>
+                            <input matInput [matDatepicker]="picker1">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-1 pr-3 text-right">
+                        <label class="optionsList mb-0">To:</label>
+                    </div>
+                    <div class="col-md-3 pl-0">
+                        <mat-form-field>
+                            <input matInput [matDatepicker]="picker2">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <button mat-raised-button class="genericSmallButton defaultButton" title="Apply">Apply</button>
+                </div>
+            </div>
+
+            <div class="col-md-2 text-right">
+                <i class="fa fa-caret-right" aria-hidden="true" title="Next"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row alignItemCenter pt-4 mt-2 pb-2">
+    <div class="col-md-12 pr-0">
+        <div class=" row darkBackground pt-1 pb-1">
+            <div class="col-md-3">
+                <div class="row">
+                    <!-- <div class="col-md-7">
+                        <label class="optionsList">Pooled Allotment</label>
+                    </div> -->
+                    <div class="col-md-12 pl-0 pr-0">
+                        <mat-form-field>
+                            <input matInput placeholder="Pooled Allotment">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 controlButtons d-flex pl-0">
+                <button mat-raised-button class="genericSmallButton defaultButton" title="Apply">Apply</button>
+                <a href="#" class="clearLink pt-2">Clear</a>
+            </div>
+
+            <div class="float-right col-md-7 controlButtons">
+                <button mat-raised-button class="genericSmallButton defaultButton mat-raised-button" title="Bulk Update">Bulk Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 pl-0">
+        <div class="mt-3 allocationsExpansionPanel allocationStatus">
+            <table class="table">
+                <tbody>
+                    <div class="scrollIt">
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td *ngFor="let dateData of dateArray" [ngClass]="{'darkBackground': (dateData.isWeekend)}">
+                                <span class="dateHeading"><b>{{dateData.date}}</b></span>
+                                <!-- <span class="dateHeading font-weight-bold">01</span>
+                                <span class="dateHeading">Aug</span> -->
+                            </td>
+                            <!-- <td>
+                                <span class="dateHeading">Wed</span>
+                                <span class="dateHeading font-weight-bold">02</span>
+                                <span class="dateHeading">Aug</span>
+                            </td>
+                            <td>
+                                <span class="dateHeading">Thu</span>
+                                <span class="dateHeading font-weight-bold">03</span>
+                                <span class="dateHeading">Aug</span>
+                            </td>
+                            <td>
+                                <span class="dateHeading">Fri</span>
+                                <span class="dateHeading font-weight-bold">04</span>
+                                <span class="dateHeading">Aug</span>
+                            </td>
+                            <td class="darkBackground">
+                                <span class="dateHeading">Sat</span>
+                                <span class="dateHeading font-weight-bold">05</span>
+                                <span class="dateHeading">Aug</span>
+                            </td>
+                            <td class="darkBackground">
+                                <span class="dateHeading">Sun</span>
+                                <span class="dateHeading font-weight-bold">06</span>
+                                <span class="dateHeading">Aug</span>
+                            </td>
+                            <td>
+                                <span class="dateHeading">Mon</span>
+                                <span class="dateHeading font-weight-bold">07</span>
+                                <span class="dateHeading">Aug</span>
+                            </td>
+                            <td>
+                                <span class="dateHeading">Tue</span>
+                                <span class="dateHeading font-weight-bold">08</span>
+                                <span class="dateHeading">Aug</span>
+                            </td>
+                            <td>
+                                <span class="dateHeading">Wed</span>
+                                <span class="dateHeading font-weight-bold">09</span>
+                                <span class="dateHeading">Aug</span>
+                            </td>
+                            <td>
+                                <span class="dateHeading">Thu</span>
+                                <span class="dateHeading font-weight-bold">10</span>
+                                <span class="dateHeading">Aug</span>
+                            </td> -->
+                        </tr>
+                        <tr>
+                            <td colspan="17" class="p-0">
+                                <mat-expansion-panel class="expandCollapseContainer" expanded='true'>
+                                    <mat-expansion-panel-header class="panelHeader">
+                                        <mat-panel-title class="blueBackground p-2">
+                                            <h6 class="semiboldText pt-2 pb-0 pl-2">Haven - Double or Twin Room</h6>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <tr>
+                                        <td class="align-middle">
+                                            <h5 class="h5 semiboldText">Rooms to sell</h5>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="2/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="4/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="7/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="8/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="2/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="2/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="2/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="2/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="8/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="greyBackground">
+                                        <td (click)="showRowOne=!showRowOne">
+                                            <label class="optionsList">Standard Rate</label>
+                                            <span>
+                                                <i class="fa" [ngClass]="{'fa-angle-down': (!showRowOne),
+                                                'fa-angle-up': (showRowOne) }" aria-hidden="true"></i>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 notAvailableStatus">
+                                                <i class="fa fa-exclamation"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 notAvailableStatus">
+                                                <i class="fa fa-exclamation"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr class="greyBackground noPadding">
+                                        <td>
+                                            <label class="optionsList pt-3">Rooms to sell</label>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="6" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="6" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                    </tr>
+
+                                    <tr *ngIf="showRowOne">
+                                        <td>
+                                            <h6 class="semiboldText pt-3 mt-1">Single Bed Rate (IDR)</h6>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="showRowOne" class="text-right">
+                                        <td colspan="11">
+                                            <div class="controlButtons">
+                                                <button class="genericButton activeButton mr-2 p-2 text-white" mat-raised-button title="Save" type="submit">Save</button>
+                                                <button class="genericButton defaultButton p-2" mat-raised-button title="Reset" type="reset">Reset</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="greyBackground">
+                                        <td (click)="showRowTwo=!showRowTwo">
+                                            <label class="optionsList">Non Refundable</label>
+                                            <span>
+                                                <i class="fa" [ngClass]="{'fa-angle-down': (!showRowTwo),
+                                                'fa-angle-up': (showRowTwo) }" aria-hidden="true"></i>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 notAvailableStatus">
+                                                <i class="fa fa-exclamation"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 notAvailableStatus">
+                                                <i class="fa fa-exclamation"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr class="greyBackground noPadding">
+                                        <td>
+                                            <label class="optionsList pt-3">Rooms to sell</label>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="6" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="6" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr *ngIf="showRowTwo">
+                                        <td>
+                                            <h6 class="semiboldText pt-3 mt-1">Single Bed Rate (IDR)</h6>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="showRowTwo" class="text-right">
+                                        <td colspan="11">
+                                            <div class="controlButtons">
+                                                <button class="genericButton activeButton mr-2 p-2 text-white" mat-raised-button title="Save" type="submit">Save</button>
+                                                <button class="genericButton defaultButton p-2" mat-raised-button title="Reset" type="reset">Reset</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </mat-expansion-panel>
+                                <mat-expansion-panel class="expandCollapseContainer" expanded='true'>
+                                    <mat-expansion-panel-header class="panelHeader">
+                                        <mat-panel-title class="blueBackground p-2">
+                                            <h6 class="semiboldText pt-2 pb-0 pl-2">Haven - Double Sunroof</h6>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <tr>
+                                        <td class="align-middle">
+                                            <h5 class="h5 semiboldText">Rooms to sell</h5>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="2/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="4/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="7/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="8/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="2/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="2/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="2/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="2/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="8/10" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="greyBackground">
+                                        <td (click)="showRowThree=!showRowThree">
+                                            <label class="optionsList">Standard Rate</label>
+                                            <span>
+                                                <i class="fa" [ngClass]="{'fa-angle-down': (!showRowThree),
+                                                'fa-angle-up': (showRowThree) }" aria-hidden="true"></i>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 notAvailableStatus">
+                                                <i class="fa fa-exclamation"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 soldOutStatus">
+                                                <i class="fa fa-key"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 notAvailableStatus">
+                                                <i class="fa fa-exclamation"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr class="greyBackground noPadding">
+                                        <td>
+                                            <label class="optionsList pt-3">Rooms to sell</label>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="6" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="6" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr *ngIf="showRowThree">
+                                        <td>
+                                            <h6 class="semiboldText pt-3 mt-1">Single Bed Rate (IDR)</h6>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="showRowThree" class="text-right">
+                                        <td colspan="11">
+                                            <div class="controlButtons">
+                                                <button class="genericButton activeButton mr-2 p-2 text-white" mat-raised-button title="Save" type="submit">Save</button>
+                                                <button class="genericButton defaultButton p-2" mat-raised-button title="Reset" type="reset">Reset</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="greyBackground">
+                                        <td (click)="showRowFour=!showRowFour">
+                                            <label class="optionsList">Non Refundable</label>
+                                            <span>
+                                                <i class="fa" [ngClass]="{'fa-angle-down': (!showRowFour),
+                                                'fa-angle-up': (showRowFour) }" aria-hidden="true"></i>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 closedStatus">
+                                                <i class="fa fa-times-thin"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 closedStatus">
+                                                <i class="fa fa-times-thin"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 closedStatus">
+                                                <i class="fa fa-times-thin"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 notAvailableStatus">
+                                                <i class="fa fa-exclamation"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 notAvailableStatus">
+                                                <i class="fa fa-exclamation"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr class="greyBackground noPadding">
+                                        <td>
+                                            <label class="optionsList pt-3">Rooms to sell</label>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="6" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="6" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="5" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr *ngIf="showRowFour">
+                                        <td>
+                                            <h6 class="semiboldText pt-3 mt-1">Single Bed Rate (IDR)</h6>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="showRowFour" class="text-right">
+                                        <td colspan="11">
+                                            <div class="controlButtons">
+                                                <button class="genericButton activeButton mr-2 p-2 text-white" mat-raised-button title="Save" type="submit">Save</button>
+                                                <button class="genericButton defaultButton p-2" mat-raised-button title="Reset" type="reset">Reset</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td (click)="showRowfive=!showRowfive">
+                                            <div class="d-flex">
+                                                <i class="fa fa-tag pt-1 pr-2" aria-hidden="true"></i>
+                                                <label class="optionsList">Non Refundable M28%(Standard Rate 28%)</label>
+                                                <span>
+                                                    <i class="fa" [ngClass]="{'fa-angle-down': (!showRowfive),
+                                                    'fa-angle-up': (showRowfive) }" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 circle-checked">
+                                                <span class="checkmark alignItemCenter"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 notAvailableStatus">
+                                                <i class="fa fa-exclamation"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 soldOutStatus">
+                                                <i class="fa fa-key"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 notAvailableStatus">
+                                                <i class="fa fa-exclamation"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ml-4 mr-2 restrictedStatus">
+                                                <span class="asteriskIcon">*</span>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                    <tr *ngIf="showRowfive">
+                                        <td>
+                                            <h6 class="semiboldText pt-3 mt-1">Single Bed Rate (IDR)</h6>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput value="3,562,410" class="text-center">
+                                            </mat-form-field>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="showRowfive" class="text-right">
+                                        <td colspan="11">
+                                            <div class="controlButtons">
+                                                <button class="genericButton activeButton mr-2 p-2 text-white" mat-raised-button title="Save" type="submit">Save</button>
+                                                <button class="genericButton defaultButton p-2" mat-raised-button title="Reset" type="reset">Reset</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </mat-expansion-panel>
+                            </td>
+                        </tr>
+                    </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

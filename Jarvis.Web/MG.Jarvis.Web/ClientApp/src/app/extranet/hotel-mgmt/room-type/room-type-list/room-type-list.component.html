@@ -1,0 +1,77 @@
+<div class="innerPageWrapper">
+<h1 class="mainHeading mb-4">
+  Room Type</h1>
+<div class="row pt-1">
+  <div class="col-md-12 text-right controlButtons pb-1">
+         <button [hidden]='isRead'  title="Create New Room" type="submit" class="genericButton defaultButton mb-3 genericButton genericSmallButton mat-raised-button" mat-raised-button (click)="createRoomType()">Create New Room</button>         
+  </div>
+</div>
+
+<mat-table #roomTable [dataSource]="dataSource" matSort matSortActive="roomName" matSortDirection="asc" class="genericTable mb-4 flexNone">
+
+  <ng-container matColumnDef="roomName">
+    <mat-header-cell class="roomNameTh ProximaFontFamily" *matHeaderCellDef mat-sort-header> Room Name </mat-header-cell>
+    <mat-cell  class="roomNameTh" *matCellDef="let element"> {{element.roomName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="noOfRooms">
+    <mat-header-cell class="text-center roomSingleTh ProximaFontFamily" *matHeaderCellDef mat-sort-header> Total Number of Rooms </mat-header-cell>
+    <mat-cell class="text-center roomSingleTh" *matCellDef="let element"> {{element.noOfRooms}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="noOfDoubleRooms">
+    <mat-header-cell class="text-center roomDoubleTh ProximaFontFamily" *matHeaderCellDef mat-sort-header> Total Number of Double Rooms
+    </mat-header-cell>
+    <mat-cell class="text-center roomDoubleTh" *matCellDef="let element">{{element.noOfDoubleRooms}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="noOfTwinRooms">
+    <mat-header-cell class="text-center roomTwinTh ProximaFontFamily" *matHeaderCellDef mat-sort-header> Total Number of Twin Rooms </mat-header-cell>
+    <mat-cell class="text-center roomTwinTh" *matCellDef="let element"> {{element.noOfTwinRooms}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="isFreeSale">
+    <mat-header-cell class="roomFreeSaleTh ProximaFontFamily" *matHeaderCellDef mat-sort-header> Is Free Sale </mat-header-cell>
+    <mat-cell class="roomFreeSaleTh" *matCellDef="let element">
+      <ng-container *ngIf="element.isFreeSale == true">Yes</ng-container>
+      <ng-container *ngIf="!element.isFreeSale">No</ng-container>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="noOfGuests">
+    <mat-header-cell class="text-center roomGuestNumberTh ProximaFontFamily" *matHeaderCellDef mat-sort-header> Total Number of Guest (Per Room) </mat-header-cell>
+    <mat-cell class="text-center roomGuestNumberTh" *matCellDef="let element"> {{element.noOfGuests}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="isActive">
+    <mat-header-cell class="roomStatusTh ProximaFontFamily" *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+    <mat-cell class="roomStatusTh" *matCellDef="let element">
+      <ng-container *ngIf="element.isActive == true">
+        <i class="fa fa-circle active_status" aria-hidden="true"></i>Active</ng-container>
+      <ng-container *ngIf="!element.isActive">
+        <i class="fa fa-circle inactive_status" aria-hidden="true"></i>InActive</ng-container>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions" class="text-center">
+    <mat-header-cell class="roomActionTh ProximaFontFamily" [hidden]='isRead' *matHeaderCellDef mat-sort-header> </mat-header-cell>
+    <mat-cell class="roomActionTh placeholderColorGray" [hidden]='isRead' *matCellDef="let element">
+      <mat-select placeholder="Actions" name="Actions" [(ngModel)]="actions">
+        <mat-option value="{{element.roomId}}-edit" #edit (click)="GoRoomUpdate(edit.value)">Edit</mat-option>
+        <mat-option value="{{element.roomId}}-delete" #delete (click)="GoRoomDelete(delete.value)">Delete</mat-option>
+      </mat-select>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<div style="color:orange" *ngIf="noDataAvailable">
+    No Room type is created.
+  </div>
+  
+  <mat-paginator *ngIf="!noDataAvailable" #paginator class="genericPagination" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>
+
+</div>

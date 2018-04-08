@@ -1,0 +1,22 @@
+﻿
+@model AppSettingsViewComponentModel
+<script>
+
+    var JarvisAppSettings = {
+        BaseUrls: {
+            Api: "@Model.ApiUrl",
+            Auth: "@Model.AuthUrl",
+            Web: "@Model.WebUrl",
+            BackOfficeApi: "@Model.BackOfficeApiUrl",
+            ExtranetApi: "@Model.ExtranetApiUrl",
+            UserMgmtApi: "@Model.UserMgmtApiUrl"
+            
+        },
+        Name: "@Model.Name",
+        AccessToken: "@Model.AccessToken",
+        IdToken: "@Model.IdToken",
+        FirstName: "@Model.FirstName",
+        SubjectId: "@Model.SubjectId",
+        Disabled: "@Model.Disabled"
+    }
+</script>

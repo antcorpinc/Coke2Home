@@ -1,0 +1,15 @@
+<div class="modalContainer">
+    <div class="modalHeading">
+        <span class="float-left modalHeader">{{ title }}</span>
+        <span class="closeIcon float-right" (click)="dialogRef.close(false)">
+            <i aria-hidden="true" class="fa fa-times-thin"></i>
+        </span>
+    </div>
+    <div class="modalContent">
+        <p>{{ message }}</p>
+        <div class="controlButtons mt-5">
+            <button type="button" title="OK" mat-raised-button class="genericButton activeButton mat-primary mat-raised-button" (click)="dialogRef.close(true)">OK</button>
+            <button type="button" title="Cancel" mat-raised-button class="genericButton defaultButton mat-raised-button" (click)="dialogRef.close(false)">Cancel</button>
+        </div>
+    </div>
+</div>

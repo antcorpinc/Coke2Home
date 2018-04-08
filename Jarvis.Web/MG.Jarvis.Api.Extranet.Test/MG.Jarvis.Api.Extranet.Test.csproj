@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <CodeAnalysisRuleSet>MG.ruleset</CodeAnalysisRuleSet>
+    <Features>IOperation</Features>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\RoomsControllerTest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MG.Jarvis.Core.Cache" Version="1.1.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="2.6.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <PackageReference Include="Moq" Version="4.8.0" />
+    <PackageReference Include="NUnit" Version="3.9.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MG.Jarvis.Api.Extranet\MG.Jarvis.Api.Extranet.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MG.Jarvis.Core.DAL">
+      <HintPath>..\..\..\Core\MG.Jarvis.Core.DAL\bin\Debug\netstandard2.0\MG.Jarvis.Core.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="MG.Jarvis.Core.Model">
+      <HintPath>..\..\..\Core\MG.Jarvis.Core.Model\bin\Debug\netstandard2.0\MG.Jarvis.Core.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="MG.Jarvis.Model">
+      <HintPath>..\MG.Jarvis.Model\bin\Debug\netcoreapp2.0\MG.Jarvis.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

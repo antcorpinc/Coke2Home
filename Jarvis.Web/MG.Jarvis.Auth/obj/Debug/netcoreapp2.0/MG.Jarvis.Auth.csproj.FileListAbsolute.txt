@@ -1,0 +1,17 @@
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\bin\Debug\netcoreapp2.0\MG.Jarvis.Auth.deps.json
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\bin\Debug\netcoreapp2.0\MG.Jarvis.Auth.runtimeconfig.json
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\bin\Debug\netcoreapp2.0\MG.Jarvis.Auth.runtimeconfig.dev.json
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\bin\Debug\netcoreapp2.0\MG.Jarvis.Auth.dll
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\bin\Debug\netcoreapp2.0\MG.Jarvis.Auth.pdb
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\bin\Debug\netcoreapp2.0\MG.Jarvis.Core.Contracts.dll
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\bin\Debug\netcoreapp2.0\MG.Jarvis.Data.dll
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\bin\Debug\netcoreapp2.0\MG.Jarvis.Model.dll
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\bin\Debug\netcoreapp2.0\MG.Jarvis.Data.pdb
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\bin\Debug\netcoreapp2.0\MG.Jarvis.Model.pdb
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\bin\Debug\netcoreapp2.0\MG.Jarvis.Core.Contracts.pdb
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\obj\Debug\netcoreapp2.0\MG.Jarvis.Auth.csprojResolveAssemblyReference.cache
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\obj\Debug\netcoreapp2.0\MG.Jarvis.Auth.csproj.CoreCompileInputs.cache
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\obj\Debug\netcoreapp2.0\MG.Jarvis.Auth.AssemblyInfoInputs.cache
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\obj\Debug\netcoreapp2.0\MG.Jarvis.Auth.AssemblyInfo.cs
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\obj\Debug\netcoreapp2.0\MG.Jarvis.Auth.dll
+D:\MG\MG-Grp\Source\Dev\Jarvis\Web\Jarvis.Web\MG.Jarvis.Auth\obj\Debug\netcoreapp2.0\MG.Jarvis.Auth.pdb

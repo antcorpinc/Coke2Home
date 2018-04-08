@@ -1,0 +1,37 @@
+
+.borderTop {
+    border-top: 1px solid #ebebeb;
+}
+
+.bookerHeader {
+    margin-top: -30px;
+}
+
+.transparent-circle {
+    border: 1px solid #4168a1;
+    height: 30px;
+    width: 30px;
+    border-radius: 1.25rem;
+    position: relative;
+    background: white;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+.transparent-circle span:before {
+    content: '+';
+    font-size: 1.9rem;
+    color: #4168a1;
+    position: absolute;
+    top: -7.8px;
+    right: 7px;
+  }
+
+  .transparent-circle .fa-times-thin:before {
+    content: '\D7';
+    font-size: 1.9rem;
+    color: #4168a1;
+    position: absolute;
+    top: -2px;
+    right: 6px;
+  }
